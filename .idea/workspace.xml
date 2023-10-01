@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/AbstractStack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/BinaryNumbers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ConstantLibrary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HashMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HexNumbers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Iterator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Logger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/MathFunctions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/OctalNumbers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/RomeNumerals.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/StackArr.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/StackList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/State.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/BinaryNumbersTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/HashMapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/HexNumbersTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/LinkedListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/LoggerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/MainTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/OctalNumbersTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/StackArrTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/StackListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/StateTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit3 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2WAX820ls0RYqWuxYyEyjvvGCJk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "last_opened_file_path": "C:/Users/Таня/IdeaProjects/Calculator"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.StackListTest">
+    <configuration name="BinaryNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CalculatorPL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BinaryNumbersTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinkedListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CalculatorPL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="LinkedListTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OctalNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CalculatorPL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OctalNumbersTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StackListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CalculatorPL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="StackListTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CalculatorPL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="StateTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.StackListTest" />
+        <item itemvalue="JUnit.OctalNumbersTest" />
+        <item itemvalue="JUnit.LinkedListTest" />
+        <item itemvalue="JUnit.BinaryNumbersTest" />
+        <item itemvalue="JUnit.StateTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="" />
+      <created>1696176198628</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696176198628</updated>
+    </task>
+    <servers />
+  </component>
+</project>
