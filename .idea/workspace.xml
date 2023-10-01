@@ -4,41 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/AbstractStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/BinaryNumbers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ConstantLibrary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/HashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/HexNumbers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Iterator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/LinkedList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Logger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/MathFunctions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/OctalNumbers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/RomeNumerals.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/StackArr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/StackList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/BinaryNumbersTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/HashMapTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/HexNumbersTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/LinkedListTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/LoggerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/MainTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/OctalNumbersTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StackArrTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StackListTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StateTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="Maven">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +125,18 @@
       <option name="presentableId" value="Default" />
       <updated>1696176198628</updated>
     </task>
+    <task id="LOCAL-00001" summary="Maven">
+      <created>1696188102015</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696188102015</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Maven" />
+    <option name="LAST_COMMIT_MESSAGE" value="Maven" />
   </component>
 </project>
