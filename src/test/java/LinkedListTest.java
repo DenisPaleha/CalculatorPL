@@ -24,8 +24,9 @@ public class LinkedListTest extends TestCase {
     }
 
 
+    /** Получаем данные по индексу */
     @Test
-    public void testGet() { // Получаем данные по индексу
+    public void testGet() {
         LinkedList list1 = new LinkedList();
         BigDecimal one = new BigDecimal(10);
         BigDecimal two = new BigDecimal(20);
@@ -84,7 +85,7 @@ public class LinkedListTest extends TestCase {
     }
 
     @Test
-    public void testDeleteFirst() {        // Не работает!!
+    public void testDeleteFirst() {
         LinkedList list1 = new LinkedList();
         BigDecimal one = new BigDecimal(10);
         BigDecimal two = new BigDecimal(20);

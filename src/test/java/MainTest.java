@@ -15,7 +15,7 @@ public class MainTest {
     @Test
     public void testLoadState() {
         State state = new State();
-        state.loadState(); //Загружаем сохраненные в txt документе данные
+        state.loadState();
         boolean result = false;
         File memoryTxt = new File("MemoryTwo.txt");
         if (memoryTxt.exists()) {
@@ -28,7 +28,7 @@ public class MainTest {
      * Проверяем работоспособность функции "Является ли строка Дробным числом"
      */
     @Test
-    public void testCheckDouble() {
+    public void testIsDouble() {
         boolean decimalTrue = Main.checkDouble("9876.2");
         boolean decimalFalse = Main.checkDouble("fdn");
         Assert.assertTrue(decimalTrue);
@@ -39,7 +39,7 @@ public class MainTest {
      * Проверяем работоспособность функции "Является ли строка Римским числом"
      */
     @Test
-    public void checkRome() {
+    public void testIsRome() {
         boolean romeTrue = RomeNumerals.defineRomeContent("mmclxxxvii");
         boolean romeFalse = RomeNumerals.defineRomeContent("fdn");
         Assert.assertTrue(romeTrue);
@@ -50,7 +50,7 @@ public class MainTest {
      * Проверяем работоспособность функции "Является ли строка Восьмеричным числом"
      */
     @Test
-    public void checkOctal() {
+    public void testIsOctal() {
         boolean octalTrue = OctalNumbers.hasOctalNumber("0o465");
         boolean octalFalse = OctalNumbers.hasOctalNumber("fdn");
         Assert.assertTrue(octalTrue);
@@ -61,7 +61,7 @@ public class MainTest {
      * Проверяем работоспособность функции "Является ли строка Шестнадцатеричным числом"
      */
     @Test
-    public void checkHex() {
+    public void testIsHex() {
         boolean hexTrue = HexNumbers.hasHexNumber("0xab5");
         boolean hexFalse = HexNumbers.hasHexNumber("fdn");
         Assert.assertTrue(hexTrue);
@@ -72,7 +72,7 @@ public class MainTest {
      * Проверяем перевод десятичных чисел в восьмеричные, шестнадцатеричные, двоичные и римские
      */
     @Test
-    public void convertToOctHexRom() throws Exception {
+    public void convertToOctHexRomBin() throws Exception {
         int num = 48; // Переводим BigDecimal в int
         String actualOct = OctalNumbers.convertDecimalToOctal(num);
         Assert.assertEquals("0o60", actualOct);
@@ -126,9 +126,9 @@ public class MainTest {
     @Test
     public void mainMath() {
         State state = new State();
-        state.loadState(); //Загружаем сохраненные в txt документе данные
-        state.clear(); // Очищаем содержимое памяти (мало ли что там в доке было)
-        String line = "1000 420 2 42 12 3 2 St + - * / % root"; // Сохраняем введенное в переменную line ----
+        state.loadState();
+        state.clear();
+        String line = "1000 420 2 42 12 3 2 St + - * / % root"; // Сохраняем введенное в переменную line
 
         try {  // Проверка исключения для операции деления - просто заглушка
 
@@ -198,7 +198,7 @@ public class MainTest {
      * Проверяем работу математических операторов через вызов команд содержащихся в ХэшМар
      */
     @Test
-    public void mainMathInHashMap() {
+    public void testMathInHashMap() {
         State state = new State();
         state.loadState(); //Загружаем сохраненные в txt документе данные
 
@@ -282,7 +282,7 @@ public class MainTest {
      */
     @Test
     //   @Disabled // Тест отключен
-    public void mainSaveArr() {
+    public void testSaveArr() {
         // Для массива
         State state = new State();
         state.push(BigDecimal.valueOf(12));
@@ -307,7 +307,7 @@ public class MainTest {
     }
 
     @Test
-    public void mainSaveList() {
+    public void testSaveList() {
         State state = new State();
         state.setStorageType(false); // Переключаем на структуру данных LinkedList
 //        Draft.switchMethod(state); // Переключаем на структуру данных LinkedList
