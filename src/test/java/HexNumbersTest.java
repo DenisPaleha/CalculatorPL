@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class HexNumbersTest extends TestCase {
 
     /**
-     * Функция проверяет не является ли введенная строка шестнадцатеричным (16) числом
+     * The function checks if the entered string is a hexadecimal (16) number
      */
     @Test
     public void testHasHexNumber() {
@@ -16,7 +16,7 @@ public class HexNumbersTest extends TestCase {
     }
 
     /**
-     * Проверяем конвертацию из строки шестнадцатеричного числа в BidDecimal десятичного
+     * Check the conversion of a hexadecimal (string) number to a decimal (BidDecimal) number
      */
     @Test
     public void testConvertHexToDecimal() {
@@ -27,7 +27,8 @@ public class HexNumbersTest extends TestCase {
     }
 
     /**
-     * Функция получает на вход строку проверяет ее возможность и возвращает BigDecimal для вставки в массив или список
+     * The function receives a string as a parameter, checks the possibility for conversion,
+     * and returns a BigDecimal to insert into the stack
      */
     @Test
     public void testHexNumbersToPush() {
@@ -43,7 +44,7 @@ public class HexNumbersTest extends TestCase {
     }
 
     /**
-     * Функция проверяет, содержит ли строка недопустимые значения (не учитывая Префикс!)
+     * The function checks if there are invalid values in the string (not considering the Prefix!).
      */
     @Test
     public void testIsHexCorrect() {
@@ -57,7 +58,7 @@ public class HexNumbersTest extends TestCase {
     }
 
     /**
-     * Функция проверяет правильность конвертации десятичных чисел в восьмеричные
+     * The function checks the conversion of decimal numbers to octal numbers
      */
     @Test
     public void testConvertDecimalToHex() {
