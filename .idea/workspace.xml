@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="minor revisions">
-      <change afterPath="$PROJECT_DIR$/src/main/java/LocaleStrings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/English.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Russian.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="added property files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MemoryTwo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MemoryTwo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ConstantLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConstantLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LocaleStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LocaleStrings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StateTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LocaleStrings">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="LocaleStrings" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="LocaleStrings" />
       <module name="CalculatorPL" />
@@ -120,9 +120,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.LocaleStrings" />
         <item itemvalue="JUnit.LocaleStringsTest" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.StackListTest" />
         <item itemvalue="JUnit.OctalNumbersTest" />
       </list>
@@ -186,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696230620444</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added property files">
+      <created>1696260327734</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696260327734</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,6 +213,7 @@
     <MESSAGE value="file name changes" />
     <MESSAGE value="adding txt files to gitignore" />
     <MESSAGE value="minor revisions" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor revisions" />
+    <MESSAGE value="added property files" />
+    <option name="LAST_COMMIT_MESSAGE" value="added property files" />
   </component>
 </project>

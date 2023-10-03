@@ -1,5 +1,6 @@
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
+
 import java.math.BigDecimal;
 
 public class StateTest extends TestCase {
@@ -18,9 +19,12 @@ public class StateTest extends TestCase {
         state.push(BigDecimal.valueOf(12));
         assertFalse(state.isEmpty());
     }
-    /** Проверяем переключение типа данных на противоположный*/
+
+    /**
+     * Проверяем переключение типа данных на противоположный
+     */
     @Test
-    public void testIsArrayChange(){
+    public void testIsArrayChange() {
         State state = new State();
         state.setStorageType(false);
         assertFalse(state.isArray());
@@ -115,7 +119,7 @@ public class StateTest extends TestCase {
     }
 
     @Test
-    public void testCopyStack(){
+    public void testCopyStack() {
         State state = new State();
         state.push(BigDecimal.valueOf(120));
         state.push(BigDecimal.valueOf(12));
@@ -165,7 +169,7 @@ public class StateTest extends TestCase {
 
     @Test
 //    @Disabled
-    public void testStateSaveArr(){
+    public void testStateSaveArr() {
         State state = new State();
 //        state.setStorageType(true); // Должен быть true по умолчанию! +++
         assertTrue(state.isArray());
@@ -179,7 +183,7 @@ public class StateTest extends TestCase {
     }
 
     @Test
-    public void testStateSaveList(){
+    public void testStateSaveList() {
         State state = new State();
         state.setStorageType(false);
         state.setLanguage(false);
@@ -321,7 +325,7 @@ public class StateTest extends TestCase {
     }
 
     @Test
-   public void testMemoryClearFromList() {
+    public void testMemoryClearFromList() {
         State state = new State();
         state.setStorageType(false);
         state.push(BigDecimal.valueOf(12));
@@ -374,13 +378,10 @@ public class StateTest extends TestCase {
 
     @Test
 //    @Disabled
-    public void testPrintPhrasesRUS(){
+    public void testPrintPhrasesRUS() {
         State state = new State();
         state.setLanguage(false);
-        int length = state.phrasesArrLength();
-        for (int i = 0; i<length; i++){
-            System.out.println(i + " : " + state.getPhrases(i));
-        }
+        System.out.println(state.getPhrase("roman_number")); // Римское число
     }
 
 }

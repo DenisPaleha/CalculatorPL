@@ -6,9 +6,15 @@ public class LocaleStrings {
 
     private Properties properties;
 
-    public LocaleStrings(String fileName) {
+    public LocaleStrings(Boolean isEnglish) {
         properties = new Properties();
-        try (InputStream inputStream = getClass().getResourceAsStream(fileName)){
+        String fileName;
+        if (isEnglish) {
+            fileName = "/English.properties";
+        } else {
+            fileName = "/Russian.properties";
+        }
+        try (InputStream inputStream = getClass().getResourceAsStream(fileName)) {
 
             if (inputStream != null) {
                 properties.load(inputStream);
@@ -25,17 +31,16 @@ public class LocaleStrings {
     }
 
     public static void main(String[] args) {
+        boolean isEnglish = false;
 
-        String languageFile = "/English.properties";
-//        String languageFile = "/Russian.properties";
-        LocaleStrings localeStrings = new LocaleStrings(languageFile); // Убедитесь, что путь к файлу правильный
+        LocaleStrings localeStrings = new LocaleStrings(isEnglish); // Убедитесь, что путь к файлу правильный
         String hello1 = localeStrings.getString("hello_massage_one");
         String hello2 = localeStrings.getString("hello_massage_two");
         String roman = localeStrings.getString("roman_number");
-        String decimal = localeStrings.getString("decimal");
+        String equal_decimal = localeStrings.getString("equal_decimal");
         System.out.println(hello1);
         System.out.println(hello2);
-        System.out.println(roman + decimal + "100.00");
+        System.out.println(roman + "C " + equal_decimal + "100.00");
 
     }
 }

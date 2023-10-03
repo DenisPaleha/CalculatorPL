@@ -29,10 +29,6 @@ public class ConstantLibrary {
     public static final String OUT_RUS = "outRus"; // Language switch command (Russian)
     public static final String OUT_ENG = "outEng"; // Language switch command (English)
 
-    //--------Language---------
-    public static final String RUSSIAN_LANGUAGE = "Введите текст в формате: m 10 5 + + 3 /&Для вызова справки нажмите h + Enter&Загруженная Память = &Римское число & = десятичному &Восьмеричное число & = десятичному &Шестнадцатеричное число & = десятичному &Двоичное число & = десятичному &Память очищена&Теперь в калькуляторе используется структура данных Массив&Теперь в калькуляторе используется структура данных Список&Данные сохранены&Римское число = &Восьмеричное число = &Шестнадцатеричное число = &Двоичное число = &Включена десятичная система исчисления&Включена двоичная система исчисления&Включена восьмеричная система исчисления&Включена шестнадцатеричная система исчисления&Включена римская система исчисления&Введено неизвестное значение &Выход из программы&Результат = &Результат = &Ошибка вывода возвращает копию state, при завершении программы";
-    public static final String ENGLISH_LANGUAGE = "Enter text in the format: m 10 5 + + 3 /&To get help, press h + Enter&Loaded Memory = &Roman number & = decimal &Octal number & = decimal &Hexadecimal number & = decimal &Binary number & = decimal &Memory cleared&Now the calculator uses an Array data structure&Now the calculator uses a List data structure&Data saved&Roman number = &Octal number = &Hexadecimal number = &Binary number = &Decimal system is enabled&Binary system is enabled&Octal system is enabled&Hexadecimal system is enabled&Roman system is enabled&Unknown value entered &Exiting the program&Result = &Result = &Output error returns a copy of state, at the end of the program";
-
     //    Библиотека констант, для класса OctalAndHexNumbers ===========================================================
     public static final String PREFIX_8 = "0o";
     public static final String PREFIX_16 = "0x";

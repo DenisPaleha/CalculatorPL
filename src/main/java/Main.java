@@ -14,9 +14,9 @@ public class Main {
         HashMap hashmap = new HashMap(8);
         hashmap.loadHashMap();
 
-        System.out.println(state.getPhrases(0)); // Main info
-        System.out.println(state.getPhrases(1)); // Info on calling help
-        System.out.println(state.getPhrases(2) + state.memoryResult); // Reading the saved memory string
+        System.out.println(state.getPhrase("hello_massage_one")); // Main info
+        System.out.println(state.getPhrase("hello_massage_two")); // Info on calling help
+        System.out.println(state.getPhrase("loaded_memory") + state.memoryResult); // Reading the saved memory string
 
         Scanner sc = new Scanner(System.in).useLocale(Locale.ENGLISH);
 
@@ -48,25 +48,25 @@ public class Main {
                     } else if (hasRome) {
                         BigDecimal romeResult = RomeNumerals.convertRomeToPush(str);
                         state.push(romeResult); // Add the obtained number to the stack.
-                        output = state.getPhrases(3) + str + state.getPhrases(4) + romeResult;
+                        output = state.getPhrase("roman_number") + str + state.getPhrase("equal_decimal") + romeResult;
                         logger.logOutput(output);
                         System.out.println(output);
                     } else if (hasOctal) {
                         BigDecimal octalResult = OctalNumbers.convertOctalToPush(str);
                         state.push(octalResult);
-                        output = state.getPhrases(5) + str + state.getPhrases(6) + octalResult;
+                        output = state.getPhrase("octal_number") + str + state.getPhrase("equal_decimal") + octalResult;
                         logger.logOutput(output);
                         System.out.println(output);
                     } else if (hasHex) {
                         BigDecimal hexResult = HexNumbers.hexNumbersToPush(str);
                         state.push(hexResult);
-                        output = state.getPhrases(7) + str + state.getPhrases(8) + hexResult;
+                        output = state.getPhrase("hexadecimal_number") + str + state.getPhrase("equal_decimal") + hexResult;
                         logger.logOutput(output);
                         System.out.println(output);
                     } else if (hesBinary) {
                         BigDecimal binaryResult = BinaryNumbers.binaryToPush(str);
                         state.push(binaryResult);
-                        output = state.getPhrases(9) + str + state.getPhrases(10) + binaryResult;
+                        output = state.getPhrase("binary_number") + str + state.getPhrase("equal_decimal") + binaryResult;
                         logger.logOutput(output);
                         System.out.println(output);
                     } else if (keyHashMap) { // If the string matches an existing key
@@ -119,7 +119,7 @@ public class Main {
 
                         } else if (str.equals(ConstantLibrary.CLEAR)) { // Memory clearing function, "c" command
                             state.clear(); // Clear memory
-                            output = state.getPhrases(11);
+                            output = state.getPhrase("memory_cleared");
                             logger.logOutput(output);
                             System.out.println(output);
 
@@ -138,15 +138,15 @@ public class Main {
                             storageType = !storageType; // Change the current boolean value to the opposite
                             state.setStorageType(storageType); // Change the stack data structure to the opposite and transfer the content
                             if (storageType) {
-                                output = state.getPhrases(12);
+                                output = state.getPhrase("now_calculator_uses_Array");
                             } else {
-                                output = state.getPhrases(13);
+                                output = state.getPhrase("now_calculator_uses_List");
                             }
                             logger.logOutput(output);
                             System.out.println(output);
 
                         } else if (str.equals(ConstantLibrary.SAVE)) {  //  "S" command Saves all data to MemoryTwo.txt
-                            output = state.getPhrases(14);
+                            output = state.getPhrase("data_saved");
                             logger.logOutput(output);
                             state.saveState();
 
@@ -154,64 +154,64 @@ public class Main {
                             System.out.println(ConstantLibrary.HEAD_MESSAGE_ROME_1);
                             double mem = state.memoryResult.doubleValue(); // Convert BigDecimal to double
                             String result = RomeNumerals.convertDecimalToRome(mem);
-                            output = state.getPhrases(15) + result;
+                            output = state.getPhrase("roman_number_equal") + result;
                             logger.logOutput(output);
                             System.out.println(output); // Roman numeral
 
                         } else if (str.equals(ConstantLibrary.TO_OCTAL)) {
                             int num = state.memoryResult.intValue(); // Convert BigDecimal to int with rounding to the nearest integer
                             String result = OctalNumbers.convertDecimalToOctal(num); // Conversion
-                            output = state.getPhrases(16) + result;
+                            output = state.getPhrase("octal_number_equal") + result;
                             logger.logOutput(output);
                             System.out.println(output);
 
                         } else if (str.equals(ConstantLibrary.TO_HEX)) {
                             int num = state.memoryResult.intValue(); // Convert BigDecimal to int with rounding to the nearest integer
                             String result = HexNumbers.convertDecimalToHex(num); // Conversion
-                            output = state.getPhrases(17) + result;
+                            output = state.getPhrase("hexadecimal_number_equal") + result;
                             logger.logOutput(output);
                             System.out.println(output);
 
                         } else if (str.equals(ConstantLibrary.TO_BIN)) {
                             int num = state.memoryResult.intValue(); // Convert BigDecimal to int with rounding to the nearest integer
                             String result = BinaryNumbers.convertDecimalToBinary(num); // Conversion
-                            output = state.getPhrases(18) + result;
+                            output = state.getPhrase("binary_number_equal") + result;
                             logger.logOutput(output);
                             System.out.println(output);
 
                         } else if (str.equals(ConstantLibrary.OUT_DEC)) { // Automatically converts all results to
                             state.setNumberSystem(ConstantLibrary.OUT_DEC);
-                            output = state.getPhrases(19); // Decimal number system enabled
+                            output = state.getPhrase("decimal_enabled"); // Decimal number system enabled
                             logger.logOutput(output);
                             System.out.println(output);
 
                         } else if (str.equals(ConstantLibrary.OUT_BIN)) {
                             state.setNumberSystem(ConstantLibrary.OUT_BIN);
-                            output = state.getPhrases(20); // Binary number system enabled
+                            output = state.getPhrase("binary_enabled"); // Binary number system enabled
                             logger.logOutput(output);
                             System.out.println(output);
 
                         } else if (str.equals(ConstantLibrary.OUT_OCT)) {
                             state.setNumberSystem(ConstantLibrary.OUT_OCT);
-                            output = state.getPhrases(21); // Octal number system enabled
+                            output = state.getPhrase("octal_enabled"); // Octal number system enabled
                             logger.logOutput(output);
                             System.out.println(output);
 
                         } else if (str.equals(ConstantLibrary.OUT_HEX)) {
                             state.setNumberSystem(ConstantLibrary.OUT_HEX);
-                            output = state.getPhrases(22); // Hexadecimal number system enabled
+                            output = state.getPhrase("hexadecimal_enabled"); // Hexadecimal number system enabled
                             logger.logOutput(output);
                             System.out.println(output);
 
                         } else if (str.equals(ConstantLibrary.OUT_ROM)) {
                             state.setNumberSystem(ConstantLibrary.OUT_ROM);
-                            output = state.getPhrases(23); // Roman number system enabled
+                            output = state.getPhrase("roman_enabled"); // Roman number system enabled
                             logger.logOutput(output);
                             System.out.println(output);
 
                         } else if (str.equals(ConstantLibrary.OUT_RUS)) { // Language switch
                             state.setLanguage(false);
-                            output = "Language: Russian";
+                            output = "Язык: Русский";
                             logger.logOutput(output);
                             System.out.println(output);
 
@@ -226,14 +226,14 @@ public class Main {
                         }
 
                     } else {
-                        output = state.getPhrases(24) + str;
+                        output = state.getPhrase("unknown_value") + str;
                         logger.logOutput(output);
                         System.out.println(output);
                     }
                 }
                 if (theEnd) { // If theEnd boolean value is true, exit the program.
                     state.saveState();
-                    output = state.getPhrases(25);
+                    output = state.getPhrase("exiting");
                     logger.logOutput(output);
                     System.out.println(output);
                     lineScanner.close();
@@ -249,12 +249,12 @@ public class Main {
                 }catch (Exception e) {
                     result = out.toString();
                 }
-                logger.logOutput(state.getPhrases(26) + result); // Result
-                System.out.println(state.getPhrases(27) + result); // Result
+                logger.logOutput(state.getPhrase("result") + result); // Result
+                System.out.println(state.getPhrase("result") + result); // Result
             } catch (Exception e) {
 //                e.printStackTrace();
                 System.out.println(e.getMessage()); // In case of an error
-                output = state.getPhrases(28);
+                output = state.getPhrase("output_error");
                 logger.logOutput(output);
                 System.out.println(output);
                 state = copy; //  return previous State values

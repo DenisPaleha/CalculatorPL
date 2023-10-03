@@ -12,28 +12,19 @@ public class State {
     private String numberSystem = ConstantLibrary.OUT_DEC; // Number system
     private final String fileName = "MemoryTwo.txt";
     private AbstractStack stack = new StackArr();
-    private String[] phrases = ConstantLibrary.ENGLISH_LANGUAGE.split("&");
+    private LocaleStrings localeStrings = new LocaleStrings(isEnglish); // +++
+    
 
     /**
      * Function to switch the program's language.
      */
-    public void setLanguage(boolean newLanguage) {
-        if (this.isEnglish == newLanguage) {
-            return; // Nothing will happen if attempting to switch to the already set language
-        }
-
-        if (!newLanguage) { // newLanguage == false
-            this.phrases = ConstantLibrary.RUSSIAN_LANGUAGE.split("&");
-        } else {
-            this.phrases = ConstantLibrary.ENGLISH_LANGUAGE.split("&");
-        }
+    public void setLanguage(boolean newLanguage) {  // true = English
         this.isEnglish = newLanguage;
+        this.localeStrings = new LocaleStrings(newLanguage);
     }
 
-    /** Function to return a string by index */
-    public String getPhrases(int index){return this.phrases[index];}
-    /** Function to return the length of the phrases array */
-    public int phrasesArrLength(){return this.phrases.length;}
+    /** Function to return a string by string keyWord */ //+++
+    public String getPhrase(String keyWord) {return this.localeStrings.getString(keyWord);}
 
     public boolean isEnglish(){return this.isEnglish;}
 
