@@ -8,18 +8,14 @@ import java.util.Scanner;
 
 public class Logger {
     private final String fileName;
+    private final String directoryName = "LoggerFiles";
     private final File outputFile; // Декларируем объект File, представляющий путь к файлу и имя файла
-    private Path dirPath; // Объект типа Path содержащий строку и путем
 
     public Logger() {  // The constructor should generate a file name and create the file itself.
         this.fileName = generateFileName();
-        String directoryName = "LoggerFiles";
-        this.dirPath = Paths.get(directoryName);
-
-        createNewDir(directoryName);
-
-        this.outputFile = new File(directoryName, fileName); // Объект File, представляющий путь к файлу и имя файла
-
+        // Объект типа Path содержащий строку и путем
+        createNewDir(this.directoryName);
+        this.outputFile = new File(this.directoryName, fileName); // Объект File, представляющий путь к файлу и имя файла
         writeFileToDir(outputFile); // Write file to dir
     }
 
@@ -67,7 +63,7 @@ public class Logger {
     }
 
     /**
-     * Function for reading files from the logger.
+     * Function for reading files from the logger. Need for test only
      */
     public String readLog() {  // Check what the function returns if the file is empty! +++
         String result = ""; // The final string should contain line breaks.
@@ -106,60 +102,77 @@ public class Logger {
     }
 
     public void createNewDir(String path) { // "LoggerFiles/TempLogs"
-        Path dirTmpPath = Paths.get(path); // Создаем временную директорию
-        if (!Files.exists(dirTmpPath)) { // If the directory has not been created yet (at the first startup)
+        Path newDirPath = Paths.get(path); // Create Path of new Directory
+        if (!Files.exists(newDirPath)) { // If the directory has not been created yet (at the first startup)
             try {
-                Files.createDirectory(dirTmpPath); // Create new directory
+                Files.createDirectory(newDirPath); // Create new directory
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void clearLogg(String tempPath) {  // tempPath = "LoggerFiles/TempLogs"
-        File LogsFolder = new File("LoggerFiles"); // Файл с содержимым всей директории
-        File[] filesInFolder = LogsFolder.listFiles(); // Создаем массив с именами файлов в папке Логер
+
+    /**
+     * Function for automatic clearing of the log storage folder
+     */
+    public void clearLogg() {  // tempPath = "LoggerFiles/TempLogs"
+        final String tempPath = "LoggerFiles/TempLogs"; // указываем путь для субдиректории TempLogs
 
         createNewDir(tempPath); // tempPath = "LoggerFiles/TempLogs"
-        File tempDirAndFile = new File(String.valueOf(tempPath), this.fileName); // Объект File, представляющий путь к файлу и имя файла
+        File tempDirAndFile = new File(tempPath, this.fileName); // Объект File, представляющий путь к файлу и имя файла
+        try {
+            File LogsFolder = new File(this.directoryName); // Файл с содержимым всей директории
+            File[] filesInFolder = LogsFolder.listFiles(); // Создаем массив с именами файлов в папке Логер
 
-        int i = 0; // счетчик минимума и максимума для начала сохранения и очистки.
-        if (filesInFolder != null) {
-            for (File file : filesInFolder) { // извлекаем все имена по очереди и считаем
-                i++;
-                if (i > 5) { // Если в папке более Х имен, начинаем записывать следующие в резервную строку
-                    writeFileToDir(tempDirAndFile); //Copy file to dir TempLog
-                }
-                if (i > 9) {
-                    // Удаляем все файлы из папки "LoggerFiles"
-                    cleanFolder(new File(String.valueOf(this.dirPath)));
-                    System.out.println("<Больше десяти - Удаляем");
-                    // Копируем все файлы из папки темп в очищенную папку "LoggerFiles"
-                    copyAllFromSourceDirToTargetDir(String.valueOf(tempPath), String.valueOf(LogsFolder));
-//                    System.out.println("Файлы успешно скопированы назад");
 
-                    // И удаляем все из папки темпа tempPath
-                    cleanFolder(new File(String.valueOf(tempPath)));
-//                    System.out.println("Папка Темп очищена");
+            int i = 0;
+            if (filesInFolder != null) {
+                for (File file : filesInFolder) { // extract all the files one by one and calculate
+                    i++;
+                    if (i > 5) {
+                        writeFileToDir(tempDirAndFile); //Copy file to dir TempLog
+                    }
+                    if (i > 9) {
+                        cleanFolder(new File(this.directoryName)); // Delete all files from "LoggerFiles" folder
+
+                        copyAllFromSourceDirToTargetDir(tempPath, this.directoryName); // Copy all files to "LoggerFiles" folder
+
+                        cleanFolder(new File(tempPath)); // Delete all files from "tempPath" folder
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
 
+    /**
+     * Function for copying files from one folder to another
+     */
     public void copyAllFromSourceDirToTargetDir(String sourceDir, String targetDir) {
-        File sourceFolder = new File(sourceDir); // Файл с содержимым всей директории
-        File[] filesInFolder = sourceFolder.listFiles(); // Создаем массив с файлами в папке из sourceDir
+        try {
+            File sourceFolder = new File(sourceDir); // Файл с содержимым всей директории
+            File[] filesInFolder = sourceFolder.listFiles(); // Создаем массив с файлами в папке из sourceDir
 
-        if (filesInFolder != null) {
-            for (File file : filesInFolder) { // извлекаем все имена по очереди и записываем
+            if (filesInFolder != null) {
+                for (File file : filesInFolder) { // get files one by one
 //                System.out.println(file.getName());
-                File targetDirAndFile = new File(targetDir,file.getName()); // Объект File, представляющий путь к файлу и имя файла
-                writeFileToDir(targetDirAndFile); // Write file to dir targetDir
+                    File targetDirAndFile = new File(targetDir, file.getName()); // Object File = path to folder and name of file
+                    writeFileToDir(targetDirAndFile); // Write file to folder "targetDir"
+                }
+            } else {
+                System.out.println("Folder is not exist");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
+    /**
+     * Function delete all files in folder
+     */
     public void cleanFolder(File folder) {
         if (folder.exists()) {
             File[] files = folder.listFiles();

@@ -10,7 +10,7 @@ public class Main {
         state.loadState();
 
         Logger logger = new Logger();
-        logger.clearLogg("LoggerFiles/TempLogs");
+        logger.clearLogg();
 
         HashMap hashmap = new HashMap(8);
         hashmap.loadHashMap();
