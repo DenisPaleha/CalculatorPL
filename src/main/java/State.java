@@ -4,7 +4,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class State {
-
     private boolean isArray = true; // Data structure switch: true = array; false = list;
     private boolean isEnglish = true; // Language switch
     BigDecimal memoryResult = new BigDecimal("0.0"); // Saved memory
@@ -12,7 +11,6 @@ public class State {
     private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();
     private LocaleStrings localeStrings = new LocaleStrings(isEnglish); // +++
-    
 
     /**
      * Function to switch the program's language.
@@ -110,26 +108,9 @@ public class State {
         Writer writer = new Writer(fileTxtName, false);
         writer.writerInTxt(allMemory);
         writer.closeWriter();
-//        writerInTxt(allMemory, this.fileName); // Save memory to the MemoryTwo.txt document
         System.out.println("Data saved...");
         return allMemoryTest;
     }
-
-//    /**
-//     * Universal function for writing to a txt file
-//     * Input parameters: string with data, file name string, for example, 'memory.txt'
-//     */
-//    public void writerInTxt(String content, String fileName) {
-//        try (FileWriter writer = new FileWriter(fileName, false)) {
-//            // Create the 'MemoryOne.txt' document with the append parameter set to false
-//            writer.write(content); // Write the contents of the 'str' variable to the txt document
-//            writer.close();
-//            writer.flush();
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-////            System.out.println("Write error in memory."); // Why does this run every time? IOException ex +++
-//        }
-//    }
 
     /**
      * Function for loading the State from saved txt data.

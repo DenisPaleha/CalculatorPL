@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.*;
 import java.time.LocalDateTime;
@@ -9,13 +8,12 @@ import java.util.Scanner;
 public class Logger {
     private final String fileTxtName;
     private final String directoryName = "LoggerFiles";
-    private final File outputFile; // Декларируем объект File, представляющий путь к файлу и имя файла
+    private final File outputFile; // Creating File, combining the file path and file name
 
     public Logger() {  // The constructor should generate a file name and create the file itself.
-        this.fileTxtName = generateFileName();
-        // Объект типа Path содержащий строку и путем
-        createNewDir(this.directoryName);
-        this.outputFile = new File(this.directoryName, fileTxtName); // Объект File, представляющий путь к файлу и имя файла
+        this.fileTxtName = generateFileName(); // generate a filename
+        createNewDir(this.directoryName); // Create a folder if there is no folder
+        this.outputFile = new File(this.directoryName, fileTxtName); // File object combining the file path and file name
         writeFileToDir(this.outputFile); // Write file to dir
     }
 
@@ -29,10 +27,10 @@ public class Logger {
     }
 
     /**
-     * The function writes a string to a file located in the selected directory
+     * TThe function writes a string to a file located in the selected directory
      */
-    public void writeLogToDoc(String content) {
-        Writer writer = new Writer(outputFile.toString(), true); // Append false - overwrite, true - continue writing
+    public void writeLogToDoc(String content) { // Append false - overwrite, true - continue writing
+        Writer writer = new Writer(this.outputFile.toString(), true);
         writer.writerInTxt(content);
         writer.closeWriter();
     }
@@ -47,31 +45,11 @@ public class Logger {
     }
 
     /**
-     * Function for reading files from the logger. Need for test only
-     */
-    public String readLog() {  // Check what the function returns if the file is empty! +++
-        String result = ""; // The final string should contain line breaks.
-        try {
-            Scanner scanner = new Scanner(new File(this.fileTxtName));
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine(); // Each line starts with date and time.
-                result += line + "\n";  // Add a line break.
-            }
-            scanner.close();
-            return result;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "Hey! Logger notes are not being read!";
-    }
-
-    /**
      * Function to write a string to the file.
      */
     public void logInput(String string) {
         String dateTime = generateFileName();
         String logInput = dateTime + " in " + string + "\n";
-        // There can be exceptions here, for example, spaces.
         writeLogToDoc(logInput); // Append the string to the document.
     }
 
@@ -81,7 +59,6 @@ public class Logger {
     public void logOutput(String string) {
         String dateTime = generateFileName();
         String logOutput = dateTime + " out " + string + "\n";
-        // There can be exceptions here, for example, spaces.
         writeLogToDoc(logOutput); // Append the string to the document.
     }
 
@@ -155,24 +132,37 @@ public class Logger {
      */
     public void cleanFolder(File folder) {
         if (folder.exists()) {
-            try {
-                File[] files = folder.listFiles();
-                if (files != null) {
-                    for (File file : files) {
-                        file.delete();
-                    }
+            File[] files = folder.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    file.delete();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     }
 
-    /**
-     * Need for test only
-     */
+/** Need for test only */
     public String getFileName() {
         return this.fileTxtName;
+    }
+
+    /**
+     * Function for reading files from the logger. Need for test only
+     */
+    public String readLog() {  // Check what the function returns if the file is empty! +++
+        String result = ""; // The final string should contain line breaks.
+        try {
+            Scanner scanner = new Scanner(new File(this.fileTxtName));
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine(); // Each line starts with date and time.
+                result += line + "\n";  // Add a line break.
+            }
+            scanner.close();
+            return result;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Hey! Logger notes are not being read!";
     }
 
 }
