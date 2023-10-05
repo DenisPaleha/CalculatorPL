@@ -1,4 +1,3 @@
-import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -10,7 +9,7 @@ public class State {
     private boolean isEnglish = true; // Language switch
     BigDecimal memoryResult = new BigDecimal("0.0"); // Saved memory
     private String numberSystem = ConstantLibrary.OUT_DEC; // Number system
-    private final String fileName = "MemoryTwo.txt";
+//    private final String fileName = "MemoryTwo.txt";
     private AbstractStack stack = new StackArr();
     private LocaleStrings localeStrings = new LocaleStrings(isEnglish); // +++
     
@@ -108,37 +107,40 @@ public class State {
         String allMemory = dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n";
         String allMemoryTest = dataInfo + " " + memoryRes + " " + methodStatus + " " + languageStatus;
         // Pack all memory types into strings
-        writerInTxt(allMemory, this.fileName); // Save memory to the MemoryTwo.txt document
+        Writer writer = new Writer();
+        writer.writerInTxt(allMemory);
+        writer.closeWriter();
+//        writerInTxt(allMemory, this.fileName); // Save memory to the MemoryTwo.txt document
         System.out.println("Data saved...");
         return allMemoryTest;
     }
 
-    /**
-     * Universal function for writing to a txt file
-     * Input parameters: string with data, file name string, for example, 'memory.txt'
-     */
-    public void writerInTxt(String content, String fileName) {
-        try (FileWriter writer = new FileWriter(fileName, false)) {
-            // Create the 'MemoryOne.txt' document with the append parameter set to false
-            writer.write(content); // Write the contents of the 'str' variable to the txt document
-            writer.close();
-            writer.flush();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-//            System.out.println("Write error in memory."); // Why does this run every time? IOException ex +++
-        }
-    }
+//    /**
+//     * Universal function for writing to a txt file
+//     * Input parameters: string with data, file name string, for example, 'memory.txt'
+//     */
+//    public void writerInTxt(String content, String fileName) {
+//        try (FileWriter writer = new FileWriter(fileName, false)) {
+//            // Create the 'MemoryOne.txt' document with the append parameter set to false
+//            writer.write(content); // Write the contents of the 'str' variable to the txt document
+//            writer.close();
+//            writer.flush();
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+////            System.out.println("Write error in memory."); // Why does this run every time? IOException ex +++
+//        }
+//    }
 
     /**
      * Function for loading the State from saved txt data.
      */
     public void loadState() {
-        if (!Files.exists(Paths.get(fileName))) { // Check if the file exists
+        if (!Files.exists(Paths.get(Writer.fileName))) { // Check if the file exists
             saveState(); // If the file does not exist, save the state
         }
 
         try {
-            String fileContent = new String(Files.readAllBytes(Paths.get(fileName)));
+            String fileContent = new String(Files.readAllBytes(Paths.get(Writer.fileName)));
             // Now 'fileContent' contains the file's content as a single string
             String[] massive = fileContent.split("\n"); // Create a string array and split the 'line' string into it
 

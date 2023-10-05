@@ -28,6 +28,12 @@ public class Logger {
      */
 
     public void writeFileToDir(File outputFile) {
+//        Writer writer = new Writer();
+//        writer.setContinueRecording(true);
+//        writer.setFileName(outputFile.toString());
+//        writer.writerInTxt(" New document \n");
+//        writer.closeWriter();
+
         try (FileWriter writer = new FileWriter(outputFile, true)) {
             // Creating the "fileLogg" document, deleting anything already present if the file already exists.
             writer.write(" New document \n");
@@ -52,6 +58,12 @@ public class Logger {
      * where false means overwriting the document, and true means continuing to write to the document.
      */
     public void writeLogToDoc(String content, boolean append) { // Append false - overwrite, true - continue writing
+//        Writer writer = new Writer();
+//        writer.setContinueRecording(append);
+//        writer.setFileName(this.outputFile.toString());
+//        writer.writerInTxt(content);
+//        writer.closeWriter();
+
         try (FileWriter writer = new FileWriter(this.outputFile, append)) {
             // Creating the "MemoryTwo.txt" document with overwrite or append functionality.
             writer.write(content);
