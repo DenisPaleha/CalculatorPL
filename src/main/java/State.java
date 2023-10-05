@@ -9,7 +9,7 @@ public class State {
     private boolean isEnglish = true; // Language switch
     BigDecimal memoryResult = new BigDecimal("0.0"); // Saved memory
     private String numberSystem = ConstantLibrary.OUT_DEC; // Number system
-//    private final String fileName = "MemoryTwo.txt";
+    private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();
     private LocaleStrings localeStrings = new LocaleStrings(isEnglish); // +++
     
@@ -107,7 +107,7 @@ public class State {
         String allMemory = dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n";
         String allMemoryTest = dataInfo + " " + memoryRes + " " + methodStatus + " " + languageStatus;
         // Pack all memory types into strings
-        Writer writer = new Writer();
+        Writer writer = new Writer(fileTxtName, false);
         writer.writerInTxt(allMemory);
         writer.closeWriter();
 //        writerInTxt(allMemory, this.fileName); // Save memory to the MemoryTwo.txt document
@@ -135,12 +135,12 @@ public class State {
      * Function for loading the State from saved txt data.
      */
     public void loadState() {
-        if (!Files.exists(Paths.get(Writer.fileName))) { // Check if the file exists
+        if (!Files.exists(Paths.get(this.fileTxtName))) { // Check if the file exists
             saveState(); // If the file does not exist, save the state
         }
 
         try {
-            String fileContent = new String(Files.readAllBytes(Paths.get(Writer.fileName)));
+            String fileContent = new String(Files.readAllBytes(Paths.get(this.fileTxtName)));
             // Now 'fileContent' contains the file's content as a single string
             String[] massive = fileContent.split("\n"); // Create a string array and split the 'line' string into it
 

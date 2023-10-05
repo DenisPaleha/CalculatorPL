@@ -3,25 +3,14 @@ import java.io.IOException;
 
 public class Writer {
     private FileWriter writer;
-    public static String fileName = "Memory.txt";
 
-//    private boolean continueRecording = false;
-
-    public Writer() {
+    public Writer(String fileTxtName, boolean append) {
         try {
-            writer = new FileWriter(fileName, false);
+            writer = new FileWriter(fileTxtName, append);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-
-//    public String getFileName() {
-//        return this.fileName;
-//    }
-
-//    public void setFileName(String newFileName){this.fileName = newFileName;}
-
-//    public void setContinueRecording(boolean append){this.continueRecording = append;}
 
     public void writerInTxt(String content) {
         try {
