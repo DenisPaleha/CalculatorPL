@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Locale;
@@ -233,6 +235,7 @@ public class Main {
                     }
                 }
                 if (theEnd) { // If theEnd boolean value is true, exit the program.
+
                     state.saveState();
                     output = state.getPhrase("exiting");
                     logger.logOutput(output);

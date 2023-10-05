@@ -124,7 +124,7 @@ public class State {
             writer.close();
             writer.flush();
         } catch (IOException ex) {
-//            ex.printStackTrace();
+            ex.printStackTrace();
 //            System.out.println("Write error in memory."); // Why does this run every time? IOException ex +++
         }
     }
