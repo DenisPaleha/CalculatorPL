@@ -134,6 +134,8 @@ public class LinkedList {
         return firstItem.data;
     }
 
+    public Node getHead(){return this.head;}
+
     public Iterator iterator() {
         return new Iterator(this);
     }
