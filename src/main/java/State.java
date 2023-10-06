@@ -170,7 +170,6 @@ public class State {
                 try {
                     result = RomeNumerals.convertDecimalToRome(num); // Convert to Roman numerals
                 } catch (Exception e) {
-//                e.printStackTrace();
                     System.out.println(e.getMessage()); // In case of an error, display the message.
                     result = out.toString(); // Return the original value
                 }

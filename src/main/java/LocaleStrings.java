@@ -13,7 +13,6 @@ public class LocaleStrings {
             fileName = "/Russian.properties";
         }
         try (InputStream inputStream = getClass().getResourceAsStream(fileName)) {
-
             if (inputStream != null) {
                 properties.load(inputStream);
             } else {
