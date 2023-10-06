@@ -10,7 +10,9 @@ public class State {
     private String numberSystem = ConstantLibrary.OUT_DEC; // Number system
     private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();
-    private LocaleStrings localeStrings = new LocaleStrings(isEnglish); // +++
+    private LocaleStrings localeStrings = new LocaleStrings(isEnglish);
+
+    private int tripMeter = 0;// invisible counter (is only visible in Memory.txt string 5)
 
     /**
      * Function to switch the program's language.
@@ -20,7 +22,7 @@ public class State {
         this.localeStrings = new LocaleStrings(newLanguage);
     }
 
-    /** Function to return a string by string keyWord */ //+++
+    /** Function to return a string by string keyWord */
     public String getPhrase(String keyWord) {return this.localeStrings.getString(keyWord);}
 
     public boolean isEnglish(){return this.isEnglish;}
@@ -101,8 +103,9 @@ public class State {
         String memoryRes = tmp.toString(); // Store it as a string
         String methodStatus = String.valueOf(this.isArray); // Stores the method state (array/list - true/false).
         String languageStatus = String.valueOf(this.isEnglish); // Stores the language state (English/Russian - true/false)
+        String tripMeter = String.valueOf(this.tripMeter); // invisible counter
 
-        String allMemory = dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n";
+        String allMemory = dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n" + tripMeter + "\n";
         String allMemoryTest = dataInfo + " " + memoryRes + " " + methodStatus + " " + languageStatus;
         // Pack all memory types into strings
         Writer writer = new Writer(fileTxtName, false);
@@ -129,17 +132,19 @@ public class State {
             String memoryRes = massive[1]; // Memory of the last number
             String methodStatus = massive[2]; // Data structure state
             String languageStatus = massive[3]; // Language state - as a string
+            String tripMeter = massive[4];
 
             this.memoryResult = new BigDecimal(memoryRes); // Memory
             this.isArray = methodStatus.equals("true");  // Simplified notation: If methodStatus = true, then this.isArray = true
             setLanguage(languageStatus.equals("true")); // Simplified notation: If languageStatus = true, then this.isEnglish = true and update the phrases array
             clear(); // Clearing is necessary to avoid duplicating data during loading
             stack.write(dataInfo); // Write the contents of the 'dataInfo' string to the stack
+            this.tripMeter = Integer.parseInt(tripMeter) + 1;
 
         } catch (IOException e) { // In case of unsuccessful loading from the file, restore default data
             e.printStackTrace();
             this.memoryResult = new BigDecimal("0.0");
-            this.isArray = true;  // Maybe this is redundant? +++
+            this.isArray = true;
             stack = new StackArr();
         }
     }
