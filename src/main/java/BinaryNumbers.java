@@ -1,18 +1,11 @@
 import java.math.BigDecimal;
 
 public class BinaryNumbers {
+
     /**
-     * Function checks if a string contains a binary number (2)
-     * Binary numbers use the prefix 0b (zero + b)
+     * Function checks if a string contains a binary number (2), use the prefix 0b (zero + b)
      */
-    public static Boolean hasBinaryNumber(String str) {
-        if (str.length() > 1) {
-            String substringFromBegin = str.substring(0, 2); // Truncate the string. Get the prefix
-            return substringFromBegin.equalsIgnoreCase(ConstantLibrary.PREFIX_2);
-        } else {
-            return false;
-        }
-    }
+    public static Boolean hasBinaryNumber(String str){return str.startsWith("0b");}
 
     /**
      * Function checks if a number contains any unsupported digits (other than 1-2)

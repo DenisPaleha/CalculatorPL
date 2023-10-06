@@ -3,17 +3,9 @@ import java.math.BigDecimal;
 public class OctalNumbers {
 
     /**
-     * Function checks if the input string is an octal (base 8) number.
-     * Octal numbers use the prefix 0o.
+     * Function checks if the input string is an octal (base 8) number. Use the prefix 0o.
      */
-    public static Boolean hasOctalNumber(String str) {
-        if (str.length() > 1) {
-            String substringFromBegin = str.substring(0, 2); // Get the prefix
-            return substringFromBegin.equalsIgnoreCase(ConstantLibrary.PREFIX_8);
-        } else {
-            return false;
-        }
-    }
+    public static Boolean hasOctalNumber(String str) {return str.startsWith("0o");}
 
     /**
      * Function takes an octal number string without the prefix (0o) and returns a BigDecimal.

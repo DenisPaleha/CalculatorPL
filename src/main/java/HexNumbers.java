@@ -3,17 +3,9 @@ import java.math.BigDecimal;
 public class HexNumbers {
 
     /**
-     * Function checks if the entered string is a hexadecimal (base 16) number
-     * Hexadecimal numbers use the 0x prefix
+     * Function checks if the entered string is a hexadecimal (base 16) number. Use the 0x prefix
      */
-    public static Boolean hasHexNumber(String str) {
-        if (str.length() > 1) {
-            String substringFromBegin = str.substring(0, 2); // Get the prefix
-            return substringFromBegin.equalsIgnoreCase(ConstantLibrary.PREFIX_16);
-        } else {
-            return false;
-        }
-    }
+    public static Boolean hasHexNumber(String str){return str.startsWith("0x");}
 
     /**
      * Function takes a BigDecimal without the hexadecimal (base 16) prefix and returns a string with the decimal result
