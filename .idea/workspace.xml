@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="added property files">
+    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="+ tripMeter (invisible counter)">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MemoryTwo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MemoryTwo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConstantLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConstantLibrary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LocaleStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LocaleStrings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/English.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/English.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Russian.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Russian.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MainTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,20 +44,23 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2WAX820ls0RYqWuxYyEyjvvGCJk" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
     "last_opened_file_path": "C:/Users/Таня/IdeaProjects/EditorTxt",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "File.Encoding"
@@ -77,13 +81,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="LocaleStrings" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="LocaleStrings" />
-      <module name="CalculatorPL" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="CalculatorPL" />
@@ -91,28 +88,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LocaleStringsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CalculatorPL" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LocaleStringsTest" />
+      <option name="MAIN_CLASS_NAME" value="HexNumbersTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OctalNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CalculatorPL" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="OctalNumbersTest" />
+      <option name="MAIN_CLASS_NAME" value="LinkedListTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StackListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CalculatorPL" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="StackListTest" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CalculatorPL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="StateTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -121,10 +127,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.LocaleStrings" />
-        <item itemvalue="JUnit.LocaleStringsTest" />
-        <item itemvalue="JUnit.StackListTest" />
-        <item itemvalue="JUnit.OctalNumbersTest" />
+        <item itemvalue="JUnit.MainTest" />
+        <item itemvalue="JUnit.StateTest" />
+        <item itemvalue="JUnit.LinkedListTest" />
+        <item itemvalue="JUnit.HexNumbersTest" />
       </list>
     </recent_temporary>
   </component>
@@ -193,7 +199,119 @@
       <option name="project" value="LOCAL" />
       <updated>1696260327734</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Main &amp; State classes rewritten using properti files">
+      <created>1696321017422</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696321017422</updated>
+    </task>
+    <task id="LOCAL-00010" summary="English translation">
+      <created>1696325616973</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696325616973</updated>
+    </task>
+    <task id="LOCAL-00011" summary="commentary">
+      <created>1696325656207</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1696325656208</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Finalizing the logger">
+      <created>1696412761324</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1696412761324</updated>
+    </task>
+    <task id="LOCAL-00013" summary="+ try-catch">
+      <created>1696427508265</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1696427508265</updated>
+    </task>
+    <task id="LOCAL-00014" summary="pom.xml change - minus example">
+      <created>1696492750132</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1696492750132</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Moved writer to a separate class">
+      <created>1696497534391</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1696497534391</updated>
+    </task>
+    <task id="LOCAL-00016" summary="The Logger class is run by the Writer class">
+      <created>1696503551209</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1696503551209</updated>
+    </task>
+    <task id="LOCAL-00017" summary="code cleanup">
+      <created>1696515764568</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1696515764569</updated>
+    </task>
+    <task id="LOCAL-00018" summary="code cleanup">
+      <created>1696515958648</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1696515958648</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Changed how numbers are recognized - str.startsWith();">
+      <created>1696577395550</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1696577395550</updated>
+    </task>
+    <task id="LOCAL-00020" summary="property strings are processed by String.format() method">
+      <created>1696583394948</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1696583394948</updated>
+    </task>
+    <task id="LOCAL-00021" summary="better code formatting">
+      <created>1696583514000</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1696583514000</updated>
+    </task>
+    <task id="LOCAL-00022" summary="better code formatting">
+      <created>1696583762632</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1696583762632</updated>
+    </task>
+    <task id="LOCAL-00023" summary="better code formatting">
+      <created>1696621032560</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1696621032560</updated>
+    </task>
+    <task id="LOCAL-00024" summary="+ tripMeter (invisible counter)">
+      <created>1696621062669</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1696621062669</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,12 +326,26 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Maven" />
     <MESSAGE value="added README.md file" />
     <MESSAGE value="file name changes" />
     <MESSAGE value="adding txt files to gitignore" />
     <MESSAGE value="minor revisions" />
     <MESSAGE value="added property files" />
-    <option name="LAST_COMMIT_MESSAGE" value="added property files" />
+    <MESSAGE value="Main &amp; State classes rewritten using properti files" />
+    <MESSAGE value="English translation" />
+    <MESSAGE value="commentary" />
+    <MESSAGE value="Finalizing the logger" />
+    <MESSAGE value="+ try-catch" />
+    <MESSAGE value="pom.xml change - minus example" />
+    <MESSAGE value="Moved writer to a separate class" />
+    <MESSAGE value="The Logger class is run by the Writer class" />
+    <MESSAGE value="code cleanup" />
+    <MESSAGE value="Changed how numbers are recognized - str.startsWith();" />
+    <MESSAGE value="property strings are processed by String.format() method" />
+    <MESSAGE value="better code formatting" />
+    <MESSAGE value="+ tripMeter (invisible counter)" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ tripMeter (invisible counter)" />
   </component>
 </project>

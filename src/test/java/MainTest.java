@@ -17,7 +17,7 @@ public class MainTest {
         State state = new State();
         state.loadState();
         boolean result = false;
-        File memoryTxt = new File("MemoryTwo.txt");
+        File memoryTxt = new File("Memory.txt");
         if (memoryTxt.exists()) {
             result = true;
         }

@@ -11,8 +11,7 @@ public class State {
     private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();
     private LocaleStrings localeStrings = new LocaleStrings(isEnglish);
-
-    private int tripMeter = 0;// invisible counter (is only visible in Memory.txt string 5)
+    private int tripMeter = 0; // invisible counter (only visible in Memory.txt string 5)
 
     /**
      * Function to switch the program's language.
