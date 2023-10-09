@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.*;
 import java.time.LocalDateTime;
@@ -6,9 +7,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Logger {
-    private final String fileTxtName;
+    private String fileTxtName;
     private final String directoryName = "LoggerFiles";
-    private final File outputFile; // Creating File, combining the file path and file name
+    private File outputFile; // Creating File, combining the file path and file name
 
     public Logger() {  // The constructor should generate a file name and create the file itself.
         this.fileTxtName = generateFileName(); // generate a filename
@@ -21,18 +22,18 @@ public class Logger {
      * Function write file to dir
      */
     public void writeFileToDir(File outputFile) {
-        Writer writer = new Writer(outputFile.toString(), true); // true = rewritable
-        writer.writerInTxt("New document \n");
-        writer.closeWriter();
+            Writer writer = new Writer(outputFile.toString(), true); // true = rewritable
+            writer.writerInTxt("New document \n");
+            writer.closeWriter();
     }
 
     /**
      * TThe function writes a string to a file located in the selected directory
      */
     public void writeLogToDoc(String content) { // Append false - overwrite, true - continue writing
-        Writer writer = new Writer(this.outputFile.toString(), true);
-        writer.writerInTxt(content);
-        writer.closeWriter();
+            Writer writer = new Writer(this.outputFile.toString(), true);
+            writer.writerInTxt(content);
+            writer.closeWriter();
     }
 
     /**
@@ -141,7 +142,9 @@ public class Logger {
         }
     }
 
-/** Need for test only */
+    /**
+     * Need for test only
+     */
     public String getFileName() {
         return this.fileTxtName;
     }

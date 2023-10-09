@@ -244,7 +244,6 @@ public class Main {
                     state.memoryResult = state.peek();
                 }
                 BigDecimal out = state.memoryResult.setScale(2, 5); // Round the result to two decimal places for display
-                // Use try-catch block to handle exceptions
                 String result;
                 try {
                     result = state.universalConverter(out);

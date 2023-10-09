@@ -19,7 +19,7 @@ public class LocaleStrings {
                 System.err.println("File not found: " + fileName);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Не удается прочитать файл: resources/" + fileName);
         }
     }
 
