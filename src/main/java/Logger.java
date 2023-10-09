@@ -93,13 +93,13 @@ public class Logger {
      * Function for automatic clearing of the log storage folder
      */
     public void clearLogg() {  // tempPath = "LoggerFiles/TempLogs"
-        final String tempPath = "LoggerFiles/TempLogs"; // указываем путь для субдиректории TempLogs
+        final String tempPath = "LoggerFiles/TempLogs"; // Path for the TempLogs subdirectory
 
         createNewDir(tempPath); // tempPath = "LoggerFiles/TempLogs"
-        File tempDirAndFile = new File(tempPath, this.fileTxtName); // Объект File, представляющий путь к файлу и имя файла
+        File tempDirAndFile = new File(tempPath, this.fileTxtName); // File object containing the file path and file name
         try {
-            File LogsFolder = new File(this.directoryName); // Файл с содержимым всей директории
-            File[] filesInFolder = LogsFolder.listFiles(); // Создаем массив с именами файлов в папке Логер
+            File LogsFolder = new File(this.directoryName); // File with contents of the entire directory
+            File[] filesInFolder = LogsFolder.listFiles(); // Create an array with file names in the Logger folder
 
             int i = 0;
             if (filesInFolder != null) {

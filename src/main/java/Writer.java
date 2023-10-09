@@ -1,9 +1,8 @@
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class Writer {
-    private FileWriter writer;
+    private final FileWriter writer;
 
     public Writer(String fileTxtName, boolean append) throws IOException {
             writer = new FileWriter(fileTxtName, append);
