@@ -5,23 +5,14 @@ import java.io.IOException;
 public class Writer {
     private FileWriter writer;
 
-    public Writer(String fileTxtName, boolean append) {
-        try {
+    public Writer(String fileTxtName, boolean append) throws IOException {
             writer = new FileWriter(fileTxtName, append);
-        }  catch (FileNotFoundException e) {
-            System.out.println("File " + fileTxtName + " is not found");
-        } catch (IOException e) {
-            System.out.println("Writing to " + fileTxtName +" error");
-
-        }
     }
 
-    public void writerInTxt(String content) {
+    public void writerInTxt(String content) throws IOException {
         try {
             writer.write(content);
             writer.flush();
-        }  catch (FileNotFoundException e) {
-            System.out.println("File for writing is not found");
         } catch (IOException e) {
             System.out.println("Writing error");
         }

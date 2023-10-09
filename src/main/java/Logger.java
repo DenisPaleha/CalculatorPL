@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.*;
 import java.time.LocalDateTime;
@@ -22,18 +21,34 @@ public class Logger {
      * Function write file to dir
      */
     public void writeFileToDir(File outputFile) {
+        try {
             Writer writer = new Writer(outputFile.toString(), true); // true = rewritable
             writer.writerInTxt("New document \n");
             writer.closeWriter();
+        } catch (IOException e) {
+            System.out.println("Writing to logger error");
+        }
     }
 
     /**
      * TThe function writes a string to a file located in the selected directory
      */
     public void writeLogToDoc(String content) { // Append false - overwrite, true - continue writing
+        try {
             Writer writer = new Writer(this.outputFile.toString(), true);
             writer.writerInTxt(content);
             writer.closeWriter();
+        } catch (IOException e) {
+            this.fileTxtName = generateFileName();
+            createNewDir(this.directoryName);
+            this.outputFile = new File(this.directoryName, fileTxtName);
+            try {
+                Writer writer = new Writer(outputFile.toString(), true);
+                writer.writerInTxt("Replacement document \n");
+            } catch (IOException ex) {
+                System.out.println("Can't create ore write to file " + this.outputFile);
+            }
+        }
     }
 
     /**
@@ -103,7 +118,7 @@ public class Logger {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Failed to clear the folder 'LoggerFiles'");
         }
     }
 
@@ -124,7 +139,7 @@ public class Logger {
                 System.out.println("Folder is not exist");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Unable to move folder " + sourceDir + " contents");
         }
     }
 
@@ -163,7 +178,7 @@ public class Logger {
             scanner.close();
             return result;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error reading a file " + this.fileTxtName);
         }
         return "Hey! Logger notes are not being read!";
     }

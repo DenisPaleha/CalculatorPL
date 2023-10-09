@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigDecimal;
 //import java.math.RoundingMode;
 import java.util.Locale;
@@ -108,7 +110,7 @@ public class Main {
                             BigDecimal value3 = MathFunctions.calculatePercentages(value1, value2);
                             state.push(value3);
                         } else if (str.equals(ConstantLibrary.HELP)) {
-                            if(state.isEnglish()){
+                            if (state.isEnglish()) {
                                 System.out.println(ConstantLibrary.HELP_TEXT_ENG);
                             } else {
                                 System.out.println(ConstantLibrary.HELP_TEXT_RUS);
@@ -247,7 +249,7 @@ public class Main {
                 String result;
                 try {
                     result = state.universalConverter(out);
-                }catch (Exception e) {
+                } catch (Exception e) {
                     result = out.toString();
                 }
                 output = String.format(state.getPhrase("result"), result);
