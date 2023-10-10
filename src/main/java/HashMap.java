@@ -156,32 +156,13 @@ public class HashMap {
     }
 
     /**
-     * This method writes data to the table.
+     * This method writes data for Main class.
      */
 
-    public void loadHashMap() {
+    public void loadMainHashMap() {
         put("e", ConstantLibrary.EXIT);
         put("exit", ConstantLibrary.EXIT);
         put("выход", ConstantLibrary.EXIT);
-
-        put("+", ConstantLibrary.PLUS);
-        put("plus", ConstantLibrary.PLUS);
-        put("плюс", ConstantLibrary.PLUS);
-
-        put("-", ConstantLibrary.MINUS);
-        put("minus", ConstantLibrary.MINUS);
-        put("минус", ConstantLibrary.MINUS);
-
-        put("*", ConstantLibrary.MULTIPLY);
-        put("multiply", ConstantLibrary.MULTIPLY);
-        put("умножить", ConstantLibrary.MULTIPLY);
-
-        put("/", ConstantLibrary.DIVIDE);
-        put(":", ConstantLibrary.DIVIDE);
-        put("divide", ConstantLibrary.DIVIDE);
-        put("разделить", ConstantLibrary.DIVIDE);
-        put("поделить", ConstantLibrary.DIVIDE);
-        put("делить", ConstantLibrary.DIVIDE);
 
         put("m", ConstantLibrary.MEMORY);
         put("м", ConstantLibrary.MEMORY); // рус.
@@ -189,21 +170,6 @@ public class HashMap {
 
         put("c", ConstantLibrary.CLEAR);
         put("с", ConstantLibrary.CLEAR); // рус.
-
-        put("st", ConstantLibrary.EXPONENT);
-        put("exponent", ConstantLibrary.EXPONENT);
-        put("ст", ConstantLibrary.EXPONENT);
-        put("степень", ConstantLibrary.EXPONENT);
-
-        put("root", ConstantLibrary.SQUARE);
-        put("square", ConstantLibrary.SQUARE);
-        put("sq", ConstantLibrary.SQUARE);
-        put("корень", ConstantLibrary.SQUARE);
-
-        put("%", ConstantLibrary.PERCENT);
-        put("percent", ConstantLibrary.PERCENT);
-        put("процент", ConstantLibrary.PERCENT);
-        put("проценты", ConstantLibrary.PERCENT);
 
         put("h", ConstantLibrary.HELP);
         put("help", ConstantLibrary.HELP);
@@ -246,6 +212,47 @@ public class HashMap {
         put("rus", ConstantLibrary.OUT_RUS);
         put("outeng",ConstantLibrary.OUT_ENG);
         put("eng",ConstantLibrary.OUT_ENG);
+    }
+
+    /**
+     * This method writes data for Core class.
+     */
+
+    public void loadCoreHashMap() {
+        put("+", ConstantLibrary.PLUS);
+        put("plus", ConstantLibrary.PLUS);
+        put("плюс", ConstantLibrary.PLUS);
+
+        put("-", ConstantLibrary.MINUS);
+        put("minus", ConstantLibrary.MINUS);
+        put("минус", ConstantLibrary.MINUS);
+
+        put("*", ConstantLibrary.MULTIPLY);
+        put("multiply", ConstantLibrary.MULTIPLY);
+        put("умножить", ConstantLibrary.MULTIPLY);
+
+        put("/", ConstantLibrary.DIVIDE);
+        put(":", ConstantLibrary.DIVIDE);
+        put("divide", ConstantLibrary.DIVIDE);
+        put("разделить", ConstantLibrary.DIVIDE);
+        put("поделить", ConstantLibrary.DIVIDE);
+        put("делить", ConstantLibrary.DIVIDE);
+
+        put("st", ConstantLibrary.EXPONENT);
+        put("exponent", ConstantLibrary.EXPONENT);
+        put("ст", ConstantLibrary.EXPONENT);
+        put("степень", ConstantLibrary.EXPONENT);
+
+        put("root", ConstantLibrary.SQUARE);
+        put("square", ConstantLibrary.SQUARE);
+        put("sq", ConstantLibrary.SQUARE);
+        put("корень", ConstantLibrary.SQUARE);
+
+        put("%", ConstantLibrary.PERCENT);
+        put("percent", ConstantLibrary.PERCENT);
+        put("процент", ConstantLibrary.PERCENT);
+        put("проценты", ConstantLibrary.PERCENT);
+
     }
 }
 

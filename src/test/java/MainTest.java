@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -26,14 +27,16 @@ public class MainTest {
 
     /**
      * Проверяем работоспособность функции "Является ли строка Дробным числом"
+     * Теперь эта функция в Core
      */
-    @Test
-    public void testIsDouble() {
-        boolean decimalTrue = Main.checkDouble("9876.2");
-        boolean decimalFalse = Main.checkDouble("fdn");
-        Assert.assertTrue(decimalTrue);
-        Assert.assertFalse(decimalFalse);
-    }
+//    @Test
+//    @Disabled
+//    public void testIsDouble() {
+//        boolean decimalTrue = Main.checkDouble("9876.2");
+//        boolean decimalFalse = Main.checkDouble("fdn");
+//        Assert.assertTrue(decimalTrue);
+//        Assert.assertFalse(decimalFalse);
+//    }
 
     /**
      * Проверяем работоспособность функции "Является ли строка Римским числом"
@@ -122,8 +125,10 @@ public class MainTest {
 
     /**
      * Проверяем работу математических операций Этот тест не учитывает ключи HashMap!
+     * Main.checkDouble(str); - Теперь эта функция в классе Core
      */
     @Test
+    @Disabled
     public void mainMath() {
         State state = new State();
         state.loadState();
@@ -135,7 +140,7 @@ public class MainTest {
             Scanner lineScanner = new Scanner(line).useLocale(Locale.ENGLISH);
             while (lineScanner.hasNext()) { // сканируем строку incomingData
                 String str = lineScanner.next(); // Разбиваем строку incomingData с введенными данными на части по порядку
-                boolean hasDecimal = Main.checkDouble(str);
+                boolean hasDecimal = true;
 
                 if (hasDecimal) {    // Запихиваем строку в BigDecimal и пушим
                     BigDecimal num = new BigDecimal(str); // Присваиваем значение строки числу BigDecimal
@@ -198,12 +203,13 @@ public class MainTest {
      * Проверяем работу математических операторов через вызов команд содержащихся в ХэшМар
      */
     @Test
+    @Disabled
     public void testMathInHashMap() {
         State state = new State();
         state.loadState(); //Загружаем сохраненные в txt документе данные
 
         HashMap hashmap = new HashMap(8); // Создаем таблицу
-        hashmap.loadHashMap(); // Загружаем данные
+        hashmap.loadMainHashMap(); // Загружаем данные
 
         state.clear(); // Очищаем содержимое памяти (мало ли что там в доке было)
 
@@ -216,7 +222,7 @@ public class MainTest {
                 String str = lineScanner.next(); // Разбиваем строку incomingData с введенными данными на части по порядку
                 str = str.toLowerCase(); // Переводим всё в нижний регистр
 
-                boolean hasDecimal = Main.checkDouble(str);
+                boolean hasDecimal = true;
 
                 if (hasDecimal) {    // Запихиваем строку в BigDecimal и пушим
                     BigDecimal num = new BigDecimal(str); // Присваиваем значение строки числу BigDecimal

@@ -12,8 +12,8 @@ public class Main {
         Logger logger = new Logger();
         logger.clearLogg();
 
-        HashMap hashmap = new HashMap(8);
-        hashmap.loadHashMap();
+        HashMap hashmapMain = new HashMap(8);
+        hashmapMain.loadMainHashMap();
 
         System.out.println(state.getPhrase("hello_massage_one")); // Main info
         System.out.println(state.getPhrase("hello_massage_two")); // Info on calling help
@@ -30,93 +30,28 @@ public class Main {
 
             State copy = state.copyState();  // Copy the State class instance to insert in case of expression reading error
 
+            Core core = new Core(state);                                                                //+++
+
             Scanner lineScanner = new Scanner(line).useLocale(Locale.ENGLISH); // Scan the incomingData variable
             // Insert possible values supported by the calculator
             try {
                 while (lineScanner.hasNext()) { // Scan the incomingData string
                     String str = lineScanner.next(); // Split the incomingData string with input data into parts in order
                     str = str.toLowerCase(); // Convert everything to lowercase
-                    boolean hasDecimal = checkDouble(str);
-                    boolean hasRome = RomeNumerals.defineRomeContent(str); // Check the content of the Roman numeral string
-                    boolean hasOctal = OctalNumbers.hasOctalNumber(str); // Check the content of the octal number string
-                    boolean hasHex = HexNumbers.hasHexNumber(str); // Check the content of the hexadecimal number string
-                    boolean hesBinary = BinaryNumbers.hasBinaryNumber(str); // Check the content of the binary number string
-                    boolean keyHashMap = hashmap.hasKey(str); // Check if str is a HashMap key
 
-                    if (hasDecimal) {    // Put the string in a BigDecimal and add it to the stack
-                        BigDecimal num = new BigDecimal(str); // Assign the value of the string to a BigDecimal number
-                        state.push(num);
-                    } else if (hasRome) {
-                        BigDecimal romeResult = RomeNumerals.convertRomeToPush(str);
-                        state.push(romeResult); // Add the obtained number to the stack.
-                        output = String.format(state.getPhrase("roman_number"), str, romeResult);
-                        logger.logOutput(output);
-                        System.out.println(output);
-                    } else if (hasOctal) {
-                        BigDecimal octalResult = OctalNumbers.convertOctalToPush(str);
-                        state.push(octalResult);
-                        output = String.format(state.getPhrase("octal_number"), str, octalResult);
-                        logger.logOutput(output);
-                        System.out.println(output);
-                    } else if (hasHex) {
-                        BigDecimal hexResult = HexNumbers.hexNumbersToPush(str);
-                        state.push(hexResult);
-                        output = String.format(state.getPhrase("hexadecimal_number"), str, hexResult);
-                        logger.logOutput(output);
-                        System.out.println(output);
-                    } else if (hesBinary) {
-                        BigDecimal binaryResult = BinaryNumbers.binaryToPush(str);
-                        state.push(binaryResult);
-                        output = String.format(state.getPhrase("binary_number"), str, binaryResult);
-                        logger.logOutput(output);
-                        System.out.println(output);
-                    } else if (keyHashMap) { // If the string matches an existing key
-                        str = hashmap.get(str); // Assign str a value by HashMap key
+                    boolean coreNotUsed; // Method core.calculator(str) trigger switch
+                    coreNotUsed = core.calculator(str);
 
-                        if (str.equals(ConstantLibrary.PLUS)) {
-                            BigDecimal value1 = state.pop();
-                            BigDecimal value2 = state.pop();
-                            BigDecimal value3 = MathFunctions.calculatePlus(value1, value2);
-                            state.push(value3);
-                        } else if (str.equals(ConstantLibrary.MINUS)) {
-                            BigDecimal value1 = state.pop();
-                            BigDecimal value2 = state.pop();
-                            BigDecimal value3 = MathFunctions.calculateMinus(value1, value2);
-                            state.push(value3);
-                        } else if (str.equals(ConstantLibrary.MULTIPLY)) {
-                            BigDecimal value1 = state.pop();
-                            BigDecimal value2 = state.pop();
-                            BigDecimal value3 = MathFunctions.calculateMultiply(value1, value2);
-                            state.push(value3);
-                        } else if (str.equals(ConstantLibrary.DIVIDE)) {
-                            BigDecimal value1 = state.pop();
-                            BigDecimal value2 = state.pop();
-                            BigDecimal value3 = MathFunctions.calculateDivide(value1, value2);
-                            state.push(value3);
-                        } else if (str.equals(ConstantLibrary.SQUARE)) { // Square root function
-                            BigDecimal value = state.pop();
-                            value = MathFunctions.calculateSquare(value);
-                            state.push(value);
-                        } else if (str.equals(ConstantLibrary.EXPONENT)) { // Exponentiation function
-                            BigDecimal value1 = state.pop();
-                            BigDecimal value2 = state.pop();
-                            BigDecimal value3 = MathFunctions.calculateExponent(value1, value2);
-                            state.push(value3);
-                        } else if (str.equals(ConstantLibrary.PERCENT)) { // Percentage calculation function
-                            BigDecimal value1 = state.pop();
-                            BigDecimal value2 = state.pop();
-                            BigDecimal value3 = MathFunctions.calculatePercentages(value1, value2);
-                            state.push(value3);
-                        } else if (str.equals(ConstantLibrary.HELP)) {
+                    boolean keyHashMap = hashmapMain.hasKey(str); // Check if str is a HashMap key
+                    if (keyHashMap) { // If the string matches an existing key
+                        str = hashmapMain.get(str); // Assign str a value by HashMap key
+
+                        if (str.equals(ConstantLibrary.HELP)) {
                             if (state.isEnglish()) {
                                 System.out.println(ConstantLibrary.HELP_TEXT_ENG);
                             } else {
                                 System.out.println(ConstantLibrary.HELP_TEXT_RUS);
                             }
-
-                        } else if (str.equals(ConstantLibrary.MEMORY)) { // "M" or "m" command
-                            BigDecimal value = state.peek();
-                            state.push(value);
 
                         } else if (str.equals(ConstantLibrary.CLEAR)) { // Memory clearing function, "c" command
                             state.clear(); // Clear memory
@@ -154,8 +89,12 @@ public class Main {
                         } else if (str.equals(ConstantLibrary.TO_ROME)) { // "ToRome" function, converts memory to Roman numeral
                             System.out.println(ConstantLibrary.HEAD_MESSAGE_ROME_1);
                             double mem = state.memoryResult.doubleValue(); // Convert BigDecimal to double
-                            String result = RomeNumerals.convertDecimalToRome(mem);
-                            output = String.format(state.getPhrase("roman_number_equal"), result);
+                            try {
+                                String result = RomeNumerals.convertDecimalToRome(mem);
+                                output = String.format(state.getPhrase("roman_number_equal"), result);
+                            } catch (Exception e) {
+                                output = e.getMessage();
+                            }
                             logger.logOutput(output);
                             System.out.println(output); // Roman numeral
 
@@ -227,11 +166,14 @@ public class Main {
                         }
 
                     } else {
-                        output = String.format(state.getPhrase("unknown_value"), str);
-                        logger.logOutput(output);
-                        System.out.println(output);
+                        if (coreNotUsed) {
+                            output = String.format(state.getPhrase("unknown_value"), str);
+                            logger.logOutput(output);
+                            System.out.println(output);
+                        }
                     }
                 }
+
                 if (theEnd) { // If theEnd boolean value is true, exit the program.
 
                     state.saveState();
@@ -262,20 +204,8 @@ public class Main {
                 state = copy; //  return previous State values
             }
         }
-    }
 
-    /**
-     * Function checks if the incoming value is a decimal number
-     */
-    public static boolean checkDouble(String str) {
-        try {
-            Double.parseDouble(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 
 }
-
 

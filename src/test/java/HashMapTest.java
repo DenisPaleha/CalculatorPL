@@ -101,9 +101,10 @@ public class HashMapTest extends TestCase {
      * Tests proper data loading
      */
     @Test
+
     public void testLoadHasMap() {
         HashMap hashmap = new HashMap(8);
-        hashmap.loadHashMap();
+        hashmap.loadMainHashMap();
         String result = hashmap.get("oct"); // Take an arbitrary constant from the list
         assertEquals(result, ConstantLibrary.TO_OCTAL);
     }
@@ -126,7 +127,7 @@ public class HashMapTest extends TestCase {
     @Disabled
     public void testPrintDataHashMap() {
         HashMap hashmap = new HashMap(8);
-        hashmap.loadHashMap();
+        hashmap.loadMainHashMap();
         hashmap.printHashMapKeys(); // Print keys to the screen
         hashmap.printHashMapValues(); // Print values to the screen
     }
