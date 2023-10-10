@@ -1,7 +1,5 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.math.BigDecimal;
-//import java.math.RoundingMode;
+import java.math.RoundingMode;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -245,7 +243,7 @@ public class Main {
                 } else {
                     state.memoryResult = state.peek();
                 }
-                BigDecimal out = state.memoryResult.setScale(2, 5); // Round the result to two decimal places for display
+                BigDecimal out = state.memoryResult.setScale(2, RoundingMode.HALF_UP); // Round the result to two decimal places for display
                 String result;
                 try {
                     result = state.universalConverter(out);

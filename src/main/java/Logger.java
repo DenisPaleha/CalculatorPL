@@ -27,7 +27,6 @@ public class Logger {
             writer.closeWriter();
         } catch (IOException e) {
             System.out.println("Writing to logger folder error");
-            System.out.println(e.getMessage());
         }
     }
 
@@ -50,7 +49,6 @@ public class Logger {
                 writeLogToDoc(content);
             } catch (IOException ex) {
                 System.out.println("Can't create file ore write " + content + " to file " + this.outputFile);
-                System.out.println(ex.getMessage());
             }
         }
     }
@@ -89,7 +87,6 @@ public class Logger {
                 Files.createDirectory(newDirPath); // Create new directory
             } catch (IOException e) {
                 System.out.println("Can't create a folder LoggerFiles/TempLogs");
-                System.out.println(e.getMessage());
             }
         }
     }
@@ -124,7 +121,6 @@ public class Logger {
             }
         } catch (Exception e) {
             System.out.println("Failed to clear the folder 'LoggerFiles'");
-            System.out.println(e.getMessage());
         }
     }
 

@@ -160,32 +160,20 @@ public class State {
         int num = out.intValue(); // Convert to int with rounding to the nearest integer
         String result;
         switch (numberSystem) {
-            case ConstantLibrary.OUT_DEC:  // If decimal is chosen, return BigDecimal as a string
-                result = out.toString();
-                break;
-            case ConstantLibrary.OUT_BIN:
-                result = BinaryNumbers.convertDecimalToBinary(num); // Convert to binary
-
-                break;
-            case ConstantLibrary.OUT_OCT:
-                result = OctalNumbers.convertDecimalToOctal(num); // Convert to octal
-
-                break;
-            case ConstantLibrary.OUT_HEX:
-                result = HexNumbers.convertDecimalToHex(num); // Convert to hexadecimal
-
-                break;
-            case ConstantLibrary.OUT_ROM:
+            case ConstantLibrary.OUT_DEC ->  // If decimal is chosen, return BigDecimal as a string
+                    result = out.toString();
+            case ConstantLibrary.OUT_BIN -> result = BinaryNumbers.convertDecimalToBinary(num); // Convert to binary
+            case ConstantLibrary.OUT_OCT -> result = OctalNumbers.convertDecimalToOctal(num); // Convert to octal
+            case ConstantLibrary.OUT_HEX -> result = HexNumbers.convertDecimalToHex(num); // Convert to hexadecimal
+            case ConstantLibrary.OUT_ROM -> {
                 try {
                     result = RomeNumerals.convertDecimalToRome(num); // Convert to Roman numerals
                 } catch (Exception e) {
                     System.out.println(e.getMessage()); // In case of an error, display the message.
                     result = out.toString(); // Return the original value
                 }
-                break;
-            default:
-                result = "Unknown numeral system.";
-                break;
+            }
+            default -> result = "Unknown numeral system.";
         }
         return result;
     }
