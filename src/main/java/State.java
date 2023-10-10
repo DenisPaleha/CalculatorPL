@@ -108,11 +108,12 @@ public class State {
         String allMemoryTest = dataInfo + " " + memoryRes + " " + methodStatus + " " + languageStatus;
         // Pack all memory types into strings
         try {
-        Writer writer = new Writer(fileTxtName, false);
+        Writer writer = new Writer(this.fileTxtName, false);
         writer.writerInTxt(allMemory);
         writer.closeWriter();
         }  catch (IOException e) {
-            System.out.println("File " + fileTxtName + " is not found");
+            System.out.println("Can't create a file " + this.fileTxtName);
+            System.out.println(e.getMessage());
         }
         System.out.println("Data saved...");
         return allMemoryTest;

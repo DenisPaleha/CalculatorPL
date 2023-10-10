@@ -9,19 +9,11 @@ public class Writer {
     }
 
     public void writerInTxt(String content) throws IOException {
-        try {
             writer.write(content);
             writer.flush();
-        } catch (IOException e) {
-            System.out.println("Writing error");
-        }
     }
 
-    public void closeWriter() {
-        try {
+    public void closeWriter() throws IOException {
             writer.close();
-        } catch (IOException e) {
-            System.out.println("Writing error");
-        }
     }
 }

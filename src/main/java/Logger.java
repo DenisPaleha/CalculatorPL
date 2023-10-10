@@ -26,7 +26,8 @@ public class Logger {
             writer.writerInTxt("New document \n");
             writer.closeWriter();
         } catch (IOException e) {
-            System.out.println("Writing to logger error");
+            System.out.println("Writing to logger folder error");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -39,14 +40,17 @@ public class Logger {
             writer.writerInTxt(content);
             writer.closeWriter();
         } catch (IOException e) {
+            System.out.println("Overwriting the folder and logs file");
             this.fileTxtName = generateFileName();
             createNewDir(this.directoryName);
             this.outputFile = new File(this.directoryName, fileTxtName);
             try {
                 Writer writer = new Writer(outputFile.toString(), true);
                 writer.writerInTxt("Replacement document \n");
+                writeLogToDoc(content);
             } catch (IOException ex) {
-                System.out.println("Can't create ore write to file " + this.outputFile);
+                System.out.println("Can't create file ore write " + content + " to file " + this.outputFile);
+                System.out.println(ex.getMessage());
             }
         }
     }
@@ -84,7 +88,8 @@ public class Logger {
             try {
                 Files.createDirectory(newDirPath); // Create new directory
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Can't create a folder LoggerFiles/TempLogs");
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -92,7 +97,7 @@ public class Logger {
     /**
      * Function for automatic clearing of the log storage folder
      */
-    public void clearLogg() {  // tempPath = "LoggerFiles/TempLogs"
+    public void clearLogg() {
         final String tempPath = "LoggerFiles/TempLogs"; // Path for the TempLogs subdirectory
 
         createNewDir(tempPath); // tempPath = "LoggerFiles/TempLogs"
@@ -119,6 +124,7 @@ public class Logger {
             }
         } catch (Exception e) {
             System.out.println("Failed to clear the folder 'LoggerFiles'");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -127,8 +133,8 @@ public class Logger {
      */
     public void copyAllFromSourceDirToTargetDir(String sourceDir, String targetDir) {
         try {
-            File sourceFolder = new File(sourceDir); // Файл с содержимым всей директории
-            File[] filesInFolder = sourceFolder.listFiles(); // Создаем массив с файлами в папке из sourceDir
+            File sourceFolder = new File(sourceDir); // File with contents of the entire directory
+            File[] filesInFolder = sourceFolder.listFiles(); // Create an array with files from the sourceDir folder
 
             if (filesInFolder != null) {
                 for (File file : filesInFolder) { // get files one by one
@@ -179,6 +185,7 @@ public class Logger {
             return result;
         } catch (IOException e) {
             System.out.println("Error reading a file " + this.fileTxtName);
+            System.out.println(e.getMessage());
         }
         return "Hey! Logger notes are not being read!";
     }
