@@ -11,6 +11,7 @@ public class State {
     private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();
     private LocaleStrings localeStrings = new LocaleStrings(isEnglish);
+    private int hashWord;
     private int tripMeter = 0; // invisible counter (only visible in Memory.txt string 5)
 
     /**
@@ -21,10 +22,16 @@ public class State {
         this.localeStrings = new LocaleStrings(newLanguage);
     }
 
-    /** Function to return a string by string keyWord */
-    public String getPhrase(String keyWord) {return this.localeStrings.getString(keyWord);}
+    /**
+     * Function to return a string by string keyWord
+     */
+    public String getPhrase(String keyWord) {
+        return this.localeStrings.getString(keyWord);
+    }
 
-    public boolean isEnglish(){return this.isEnglish;}
+    public boolean isEnglish() {
+        return this.isEnglish;
+    }
 
     /**
      * Function to change the stack data structure.
@@ -102,16 +109,18 @@ public class State {
         String memoryRes = tmp.toString(); // Store it as a string
         String methodStatus = String.valueOf(this.isArray); // Stores the method state (array/list - true/false).
         String languageStatus = String.valueOf(this.isEnglish); // Stores the language state (English/Russian - true/false)
+        String hashWord = String.valueOf(this.hashWord); // Hash of password
         String tripMeter = String.valueOf(this.tripMeter); // invisible counter
 
-        String allMemory = dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n" + tripMeter + "\n";
+
+        String allMemory = dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n" + hashWord + "\n" + tripMeter + "\n";
         String allMemoryTest = dataInfo + " " + memoryRes + " " + methodStatus + " " + languageStatus;
         // Pack all memory types into strings
         try {
-        Writer writer = new Writer(this.fileTxtName, false);
-        writer.writerInTxt(allMemory);
-        writer.closeWriter();
-        }  catch (IOException e) {
+            Writer writer = new Writer(this.fileTxtName, false);
+            writer.writerInTxt(allMemory);
+            writer.closeWriter();
+        } catch (IOException e) {
             System.out.println("Can't create a file " + this.fileTxtName);
             System.out.println(e.getMessage());
         }
@@ -124,6 +133,8 @@ public class State {
      */
     public void loadState() {
         if (!Files.exists(Paths.get(this.fileTxtName))) { // Check if the file exists
+            Password password = new Password();
+            this.hashWord = password.newPassword();
             saveState(); // If the file does not exist, save the state
         }
 
@@ -136,20 +147,24 @@ public class State {
             String memoryRes = massive[1]; // Memory of the last number
             String methodStatus = massive[2]; // Data structure state
             String languageStatus = massive[3]; // Language state - as a string
-            String tripMeter = massive[4];
+            String hashWord = massive[4];
+            String tripMeter = massive[5];
 
             this.memoryResult = new BigDecimal(memoryRes); // Memory
             this.isArray = methodStatus.equals("true");  // Simplified notation: If methodStatus = true, then this.isArray = true
             setLanguage(languageStatus.equals("true")); // Simplified notation: If languageStatus = true, then this.isEnglish = true and update the phrases array
             clear(); // Clearing is necessary to avoid duplicating data during loading
             stack.write(dataInfo); // Write the contents of the 'dataInfo' string to the stack
+            this.hashWord = Integer.parseInt(hashWord);
             this.tripMeter = Integer.parseInt(tripMeter) + 1;
+
 
         } catch (IOException e) { // In case of unsuccessful loading from the file, restore default data
             e.printStackTrace();
             this.memoryResult = new BigDecimal("0.0");
             this.isArray = true;
             stack = new StackArr();
+            this.hashWord = 0; // тут нужно что-то придумать, например ввести новый пароль ++++++++++++++++++++++++++!!!
         }
     }
 
@@ -207,6 +222,12 @@ public class State {
 
     public String infoRus() {
         return stack.infoRus();
+    }
+
+    /** The function checks the validity of the entered password */
+    public boolean isPasswordCorrect(String string) { // return true if password is correct
+        int tryPassword = string.hashCode();
+        return tryPassword == this.hashWord;
     }
 
 }

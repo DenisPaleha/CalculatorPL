@@ -6,8 +6,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
         State state = new State();
         state.loadState();
+
+        Password password = new Password();
+        password.checkPassword(state);
 
         Logger logger = new Logger();
         logger.clearLogg();
@@ -26,6 +30,7 @@ public class Main {
             String line = sc.nextLine(); // Save user input to the variable line
 
             logger.logInput(line); // Copy all input data to the logger
+
             String output; // Declare output string
 
             State copy = state.copyState();  // Copy the State class instance to insert in case of expression reading error

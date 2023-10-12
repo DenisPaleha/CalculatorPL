@@ -146,5 +146,13 @@ public class ConstantLibrary {
             "| Выход из программы: 'E + Enter'.                                                   |\n" +
             "--------------------------------------------------------------------------------------";
 
+    public static final String PASSWORD_TEXT_HALLO_ENG = """
+    The program stores your logs in encrypted form,\s
+    you have to set a password to read them.""";
+
+    public static final String PASSWORD_TEXT_RULES_ENG = """
+    Password can contain only Latin letters and/or numbers, e.g. 'password123'.\s
+    The minimum password length is 5 characters. Set a new password...""";
+
 }
 
