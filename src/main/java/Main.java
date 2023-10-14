@@ -7,11 +7,13 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
+
         State state = new State();
-        state.loadState();
+        state.loadState(scanner);
 
         Password password = new Password();
-        password.checkPassword(state);
+        password.checkPassword(state, scanner);
 
         Logger logger = new Logger();
         logger.clearLogg();
@@ -23,11 +25,9 @@ public class Main {
         System.out.println(state.getPhrase("hello_massage_two")); // Info on calling help
         System.out.println(String.format(state.getPhrase("loaded_memory"), state.memoryResult)); // Reading the saved memory string
 
-        Scanner sc = new Scanner(System.in).useLocale(Locale.ENGLISH);
-
-        while (sc.hasNextLine()) { // Main program loop with user input
+        while (scanner.hasNextLine()) { // Main program loop with user input
             boolean theEnd = false;
-            String line = sc.nextLine(); // Save user input to the variable line
+            String line = scanner.nextLine(); // Save user input to the variable line
 
             logger.logInput(line); // Copy all input data to the logger
 
@@ -185,7 +185,8 @@ public class Main {
                     output = state.getPhrase("exiting");
                     logger.logOutput(output);
                     System.out.println(output);
-                    lineScanner.close();
+                    lineScanner.close();                                                        // +++?
+                    scanner.close();
                     break;
                 } else {
                     state.memoryResult = state.peek();
@@ -200,6 +201,7 @@ public class Main {
                 output = String.format(state.getPhrase("result"), result);
                 logger.logOutput(output); // Result
                 System.out.println(output); // Result
+                lineScanner.close();                                                           // +++?
             } catch (Exception e) {
 //                e.printStackTrace();
                 System.out.println(e.getMessage()); // In case of an error

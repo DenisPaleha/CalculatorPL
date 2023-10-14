@@ -1,19 +1,17 @@
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Password {
 
     private String rawPass;
 
-
     /**
      * function asks the user to enter a password when the program is first launched.
      */
-    public int newPassword() {
+    public int newPassword(Scanner scanner) {
         System.out.println(ConstantLibrary.PASSWORD_TEXT_HALLO_ENG);
         System.out.println(ConstantLibrary.PASSWORD_TEXT_RULES_ENG);
 
-        passwordScanner();
+        passwordScanner(scanner);
 
         int hashWord = rawPass.hashCode();
 
@@ -29,8 +27,8 @@ public class Password {
         return str.length() < 5;
     }
 
-    private void passwordScanner() {
-        Scanner passwordScanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
+    private void passwordScanner(Scanner passwordScanner) {
+//        Scanner passwordScanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
         while (passwordScanner.hasNextLine()) { // scan input line
             String str = passwordScanner.nextLine(); // Save user input to the variable line
             if (!checkCharacterCount(str) && containsNonEnglishChars(str)) {
@@ -44,9 +42,9 @@ public class Password {
 //        passwordScanner.close();                                                            //  +++???+++
     }
 
-    public void checkPassword(State state) {
+    public void checkPassword(State state, Scanner passwordScanner) {
         System.out.println("Insert your password");
-        Scanner passwordScanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
+//        Scanner passwordScanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
         while (passwordScanner.hasNextLine()) { // scan input line
             String password = passwordScanner.nextLine();
             if (state.isPasswordCorrect(password)) {

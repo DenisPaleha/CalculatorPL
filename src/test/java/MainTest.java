@@ -10,13 +10,15 @@ import java.util.Scanner;
 
 public class MainTest {
 
+    Scanner sc = new Scanner(System.in).useLocale(Locale.ENGLISH);
+
     /**
      * Проверяем существует ли документ с сохраненными данными
      */
     @Test
     public void testLoadState() {
         State state = new State();
-        state.loadState();
+        state.loadState(sc);
         boolean result = false;
         File memoryTxt = new File("Memory.txt");
         if (memoryTxt.exists()) {
@@ -25,10 +27,10 @@ public class MainTest {
         Assert.assertTrue(result);
     }
 
-    /**
-     * Проверяем работоспособность функции "Является ли строка Дробным числом"
-     * Теперь эта функция в Core
-     */
+//    /**
+//     * Проверяем работоспособность функции "Является ли строка Дробным числом"
+//     * Теперь эта функция в Core
+//     */
 //    @Test
 //    @Disabled
 //    public void testIsDouble() {
@@ -131,7 +133,7 @@ public class MainTest {
     @Disabled
     public void mainMath() {
         State state = new State();
-        state.loadState();
+        state.loadState(sc);
         state.clear();
         String line = "1000 420 2 42 12 3 2 St + - * / % root"; // Сохраняем введенное в переменную line
 
@@ -206,7 +208,7 @@ public class MainTest {
     @Disabled
     public void testMathInHashMap() {
         State state = new State();
-        state.loadState(); //Загружаем сохраненные в txt документе данные
+        state.loadState(sc); //Загружаем сохраненные в txt документе данные
 
         HashMap hashmap = new HashMap(8); // Создаем таблицу
         hashmap.loadMainHashMap(); // Загружаем данные
@@ -295,7 +297,7 @@ public class MainTest {
         state.push(BigDecimal.valueOf(13));
         state.saveState();
 
-        state.loadState();
+        state.loadState(sc);
 
         System.out.println(state.infoEng());
 
@@ -321,7 +323,7 @@ public class MainTest {
         state.push(BigDecimal.valueOf(12));
         state.saveState(); // Сохраняем введенные данные.
         state.clear(); // Очищаем память State - иначе при загрузке она удвоится!
-        state.loadState(); //Загружаем сохраненные в txt документе данные
+        state.loadState(sc); //Загружаем сохраненные в txt документе данные
 
         BigDecimal result = state.pop();
         String actual = result.toString();
@@ -330,6 +332,8 @@ public class MainTest {
         result = state.pop(); // Просто убедиться, что список пуст.
         actual = result.toString();
         Assert.assertEquals("0", actual); // Данные удваиваются при сохранении Списка!
+
+        sc.close(); // <---------------------------------Close Scanner in the END
     }
 
 

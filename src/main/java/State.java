@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class State {
     private boolean isArray = true; // Data structure switch: true = array; false = list;
@@ -131,10 +132,10 @@ public class State {
     /**
      * Function for loading the State from saved txt data.
      */
-    public void loadState() {
+    public void loadState(Scanner scanner) {
         if (!Files.exists(Paths.get(this.fileTxtName))) { // Check if the file exists
             Password password = new Password();
-            this.hashWord = password.newPassword();
+            this.hashWord = password.newPassword(scanner);
             saveState(); // If the file does not exist, save the state
         }
 
