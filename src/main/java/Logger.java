@@ -38,6 +38,29 @@ public class Logger {
     }
 
     /**
+     * The function checks for directories and corrects errors if possible
+     */
+    public void isFoldersExist() throws Exception {
+        Path sourceDirectory = Paths.get(tempPath);
+        Path targetDirectory = Paths.get(loggerPath);
+
+        // Check if the specified directories exist
+        if (!Files.exists(sourceDirectory) || !Files.isDirectory(sourceDirectory)) {
+            createNewDir(loggerPath);
+            if (!Files.exists(sourceDirectory) || !Files.isDirectory(sourceDirectory)) {
+                throw new IOException("Can't create a folder " + loggerPath);
+            }
+        }
+
+        if (!Files.exists(targetDirectory) || !Files.isDirectory(targetDirectory)) {
+            createNewDir(tempPath);
+            if (!Files.exists(targetDirectory) || !Files.isDirectory(targetDirectory)) {
+                throw new IOException("Can't create a folder " + tempPath);
+            }
+        }
+    }
+
+    /**
      * Function returns a string with the date and time in the required format.
      */
     public String generateFileName() {
@@ -79,28 +102,12 @@ public class Logger {
      * Функция копирует файлы из папки логер в папку темп если в ней более 3 файлов
      */
 
-    public void CopyFilesFromLoggerToTemp() {
+    public void CopyFilesFromLoggerToTemp() throws Exception {
         Path sourceDirectory = Paths.get(loggerPath);
         Path targetDirectory = Paths.get(tempPath);
         int startingFileIndex = 3; // index shows from which file we start copying to Temp folder
-
+        isFoldersExist();
         try {
-            // Check if the specified directories exist
-            if (!Files.exists(sourceDirectory) || !Files.isDirectory(sourceDirectory)) {
-                createNewDir(this.loggerPath);
-                if (!Files.exists(sourceDirectory) || !Files.isDirectory(sourceDirectory)) {
-                    System.err.println("Can't create a folder " + loggerPath);               // пробрасываем дальше +++
-                    return;
-                }
-            }
-
-            if (!Files.exists(targetDirectory) || !Files.isDirectory(targetDirectory)) {
-                createNewDir(this.tempPath);
-                if (!Files.exists(targetDirectory) || !Files.isDirectory(targetDirectory)) {
-                    System.err.println("Can't create a folder " + tempPath);                 // пробрасываем дальше +++
-                    return;
-                }
-            }
 
             // Get the list of files in the source directory Logger
             List<Path> files = Files.list(sourceDirectory).toList();
@@ -124,11 +131,11 @@ public class Logger {
     /**
      * The function copies files from the Temp folder back to the Logger folder if there are more than X files there
      */
-    public void CopyFilesTempAndClean() {
+    public void CopyFilesTempAndClean() throws Exception {
         Path sourceDirectory = Paths.get(tempPath);
         Path targetDirectory = Paths.get(loggerPath);
         int startingFileIndex = 3; // If there are more than X files in the folder
-
+        isFoldersExist();
         try {
             // Get the list of files in the source directory Temp
             List<Path> files = Files.list(sourceDirectory).toList();
