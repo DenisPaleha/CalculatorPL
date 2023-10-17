@@ -5,7 +5,7 @@ public class HexNumbers {
     /**
      * Function checks if the entered string is a hexadecimal (base 16) number. Use the 0x prefix
      */
-    public static Boolean hasHexNumber(String str){return str.startsWith("0x");}
+    public static Boolean isHexNumber(String str){return str.startsWith("0x");}
 
     /**
      * Function takes a BigDecimal without the hexadecimal (base 16) prefix and returns a string with the decimal result

@@ -278,7 +278,7 @@ public class RomeNumerals {
     /**
      * Method checks the contents of the string to distinguish a Roman numeral from all others
      */
-    public static Boolean defineRomeContent(String str) {
+    public static Boolean isRome(String str) {
         if (str.equalsIgnoreCase("M") || str.equalsIgnoreCase("C")) {
             return false; // Exclude calls to the Clear and Memory functions
         }

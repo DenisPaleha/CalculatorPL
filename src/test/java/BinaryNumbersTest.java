@@ -9,11 +9,11 @@ public class BinaryNumbersTest extends TestCase {
     public void testHasBinaryNumber() {
         boolean isBinary;
         String x = ConstantLibrary.PREFIX_2 + "10011100010";
-        isBinary = BinaryNumbers.hasBinaryNumber(x);
+        isBinary = BinaryNumbers.isBinaryNumber(x);
         assertTrue(isBinary);
 
         x = "10011100010";
-        isBinary = BinaryNumbers.hasBinaryNumber(x);
+        isBinary = BinaryNumbers.isBinaryNumber(x);
         assertFalse(isBinary);
     }
 

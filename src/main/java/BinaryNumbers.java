@@ -5,7 +5,7 @@ public class BinaryNumbers {
     /**
      * Function checks if a string contains a binary number (2), use the prefix 0b (zero + b)
      */
-    public static Boolean hasBinaryNumber(String str){return str.startsWith("0b");}
+    public static Boolean isBinaryNumber(String str){return str.startsWith("0b");}
 
     /**
      * Function checks if a number contains any unsupported digits (other than 1-2)

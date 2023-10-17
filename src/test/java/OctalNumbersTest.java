@@ -9,8 +9,8 @@ public class OctalNumbersTest extends TestCase {
      */
     @Test
     public void testHasOctalNumber() {
-        boolean octalTrue = OctalNumbers.hasOctalNumber("0o465");
-        boolean octalFalse = OctalNumbers.hasOctalNumber("fdn");
+        boolean octalTrue = OctalNumbers.isOctalNumber("0o465");
+        boolean octalFalse = OctalNumbers.isOctalNumber("fdn");
         assertTrue(octalTrue);
         assertFalse(octalFalse);
     }

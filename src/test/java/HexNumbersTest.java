@@ -9,8 +9,8 @@ public class HexNumbersTest extends TestCase {
      */
     @Test
     public void testHasHexNumber() {
-        boolean hexTrue = HexNumbers.hasHexNumber("0xab5");
-        boolean hexFalse = HexNumbers.hasHexNumber("fdn");
+        boolean hexTrue = HexNumbers.isHexNumber("0xab5");
+        boolean hexFalse = HexNumbers.isHexNumber("fdn");
         assertTrue(hexTrue);
         assertFalse(hexFalse);
     }

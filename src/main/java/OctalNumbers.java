@@ -5,7 +5,7 @@ public class OctalNumbers {
     /**
      * Function checks if the input string is an octal (base 8) number. Use the prefix 0o.
      */
-    public static Boolean hasOctalNumber(String str) {return str.startsWith("0o");}
+    public static Boolean isOctalNumber(String str) {return str.startsWith("0o");}
 
     /**
      * Function takes an octal number string without the prefix (0o) and returns a BigDecimal.
