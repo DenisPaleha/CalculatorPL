@@ -3,53 +3,37 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+import java.util.List;
 
 public class Logger {
-    private String fileTxtName;
-    private final String directoryName = "LoggerFiles";
-    private File outputFile; // Creating File, combining the file path and file name
+    private final String fileTxtName;
+    private final String loggerPath = "LoggerFiles";
+    private final String tempPath = "LoggerFiles/TempLogs";
+    //    private final String newFile = "New document \n";
+    private final File outputFile; // Creating File, combining the file path and file name
+
 
     public Logger() {  // The constructor should generate a file name and create the file itself.
         this.fileTxtName = generateFileName(); // generate a filename
-        createNewDir(this.directoryName); // Create a folder if there is no folder
-        this.outputFile = new File(this.directoryName, fileTxtName); // File object combining the file path and file name
-        writeFileToDir(this.outputFile); // Write file to dir
+        createNewDir(this.loggerPath); // Create a logger folder if there is no folder
+        createNewDir(this.tempPath); // Create a temp folder if there is no folder
+        this.outputFile = new File(this.loggerPath, fileTxtName); // File object combining the file path and file name
+        writeFileToDir(this.outputFile, "New document \n"); // Write file to dir
     }
 
     /**
      * Function write file to dir
      */
-    public void writeFileToDir(File outputFile) {
+    public void writeFileToDir(File outputFile, String content) {
         try {
             Writer writer = new Writer(outputFile.toString(), true); // true = rewritable
-            writer.writerInTxt("New document \n");
-            writer.closeWriter();
-        } catch (IOException e) {
-            System.out.println("Writing to logger folder error");
-        }
-    }
-
-    /**
-     * TThe function writes a string to a file located in the selected directory
-     */
-    public void writeLogToDoc(String content) { // Append false - overwrite, true - continue writing
-        try {
-            Writer writer = new Writer(this.outputFile.toString(), true);
             writer.writerInTxt(content);
             writer.closeWriter();
         } catch (IOException e) {
-            System.out.println("Overwriting the folder and logs file");
-            this.fileTxtName = generateFileName();
-            createNewDir(this.directoryName);
-            this.outputFile = new File(this.directoryName, fileTxtName);
-            try {
-                Writer writer = new Writer(outputFile.toString(), true);
-                writer.writerInTxt("Replacement document \n");
-                writeLogToDoc(content);
-            } catch (IOException ex) {
-                System.out.println("Can't create file ore write " + content + " to file " + this.outputFile);
-            }
+            System.out.println("Writing to logger folder error");
+            // тут нужно что-то по эффективнее
+            // нужно попытаться перезаписать файл и директорию в случае если они были утрачены        +++
+            // если не получилось, то пробросить сообщение дальше                                     +++
         }
     }
 
@@ -68,7 +52,7 @@ public class Logger {
     public void logInput(String string) {
         String dateTime = generateFileName();
         String logInput = dateTime + " in " + string + "\n";
-        writeLogToDoc(logInput); // Append the string to the document.
+        writeFileToDir(this.outputFile, logInput); // Append the string to the document.
     }
 
     /**
@@ -77,114 +61,112 @@ public class Logger {
     public void logOutput(String string) {
         String dateTime = generateFileName();
         String logOutput = dateTime + " out " + string + "\n";
-        writeLogToDoc(logOutput); // Append the string to the document.
+        writeFileToDir(this.outputFile, logOutput); // Append the string to the document.
     }
 
-    public void createNewDir(String path) { // "LoggerFiles/TempLogs"
-        Path newDirPath = Paths.get(path); // Create Path of new Directory
+    public void createNewDir(String folderPath) { // "LoggerFiles/TempLogs"
+        Path newDirPath = Paths.get(folderPath); // Create Path of new Directory
         if (!Files.exists(newDirPath)) { // If the directory has not been created yet (at the first startup)
             try {
                 Files.createDirectory(newDirPath); // Create new directory
             } catch (IOException e) {
-                System.out.println("Can't create a folder LoggerFiles/TempLogs");
+                System.out.println("Can't create a folder " + folderPath);                    // +++ пробросить дальше
             }
         }
     }
 
     /**
-     * Function for automatic clearing of the log storage folder
+     * Функция копирует файлы из папки логер в папку темп если в ней более 3 файлов
      */
-    public void clearLogg() {
-        final String tempPath = "LoggerFiles/TempLogs"; // Path for the TempLogs subdirectory
 
-        createNewDir(tempPath); // tempPath = "LoggerFiles/TempLogs"
-        File tempDirAndFile = new File(tempPath, this.fileTxtName); // File object containing the file path and file name
+    public void CopyFilesFromLoggerToTemp() {
+        Path sourceDirectory = Paths.get(loggerPath);
+        Path targetDirectory = Paths.get(tempPath);
+        int startingFileIndex = 3; // index shows from which file we start copying to Temp folder
+
         try {
-            File LogsFolder = new File(this.directoryName); // File with contents of the entire directory
-            File[] filesInFolder = LogsFolder.listFiles(); // Create an array with file names in the Logger folder
-
-            int i = 0;
-            if (filesInFolder != null) {
-                for (File file : filesInFolder) { // extract all the files one by one and calculate
-                    i++;
-                    if (i > 5) {
-                        writeFileToDir(tempDirAndFile); //Copy file to dir TempLog
-                    }
-                    if (i > 9) {
-                        cleanFolder(new File(this.directoryName)); // Delete all files from "LoggerFiles" folder
-
-                        copyAllFromSourceDirToTargetDir(tempPath, this.directoryName); // Copy all files to "LoggerFiles" folder
-
-                        cleanFolder(new File(tempPath)); // Delete all files from "tempPath" folder
-                    }
+            // Check if the specified directories exist
+            if (!Files.exists(sourceDirectory) || !Files.isDirectory(sourceDirectory)) {
+                createNewDir(this.loggerPath);
+                if (!Files.exists(sourceDirectory) || !Files.isDirectory(sourceDirectory)) {
+                    System.err.println("Can't create a folder " + loggerPath);               // пробрасываем дальше +++
+                    return;
                 }
             }
-        } catch (Exception e) {
-            System.out.println("Failed to clear the folder 'LoggerFiles'");
+
+            if (!Files.exists(targetDirectory) || !Files.isDirectory(targetDirectory)) {
+                createNewDir(this.tempPath);
+                if (!Files.exists(targetDirectory) || !Files.isDirectory(targetDirectory)) {
+                    System.err.println("Can't create a folder " + tempPath);                 // пробрасываем дальше +++
+                    return;
+                }
+            }
+
+            // Get the list of files in the source directory Logger
+            List<Path> files = Files.list(sourceDirectory).toList();
+
+            for (int i = startingFileIndex; i < files.size() - 1; i++) {
+                // If you remove "-1" from the "files.size() - 1" expression, an extra subdirectory will be created.
+                Path file = files.get(i);
+                // Create a path for the target directory
+                Path targetFile = targetDirectory.resolve(file.getFileName());
+                // Copy the file to the target directory
+                Files.copy(file, targetFile, StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            CopyFilesTempAndClean(); // Move files from the Temp folder back to the Logger folder when it is full
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Тут нужно что-то другое и не тут, а в Main                                                          +++
         }
     }
 
     /**
-     * Function for copying files from one folder to another
+     * The function copies files from the Temp folder back to the Logger folder if there are more than X files there
      */
-    public void copyAllFromSourceDirToTargetDir(String sourceDir, String targetDir) {
-        try {
-            File sourceFolder = new File(sourceDir); // File with contents of the entire directory
-            File[] filesInFolder = sourceFolder.listFiles(); // Create an array with files from the sourceDir folder
+    public void CopyFilesTempAndClean() {
+        Path sourceDirectory = Paths.get(tempPath);
+        Path targetDirectory = Paths.get(loggerPath);
+        int startingFileIndex = 3; // If there are more than X files in the folder
 
-            if (filesInFolder != null) {
-                for (File file : filesInFolder) { // get files one by one
-                    File targetDirAndFile = new File(targetDir, file.getName()); // Object File = path to folder and name of file
-                    writeFileToDir(targetDirAndFile); // Write file to folder "targetDir"
+        try {
+            // Get the list of files in the source directory Temp
+            List<Path> files = Files.list(sourceDirectory).toList();
+
+            if (files.size() >= startingFileIndex) {
+                cleanFolder(loggerPath);  // delete everything from the loggerPath directory
+                for (Path file : files) {
+                    // Create a path for the target directory
+                    Path targetFile = targetDirectory.resolve(file.getFileName());
+                    // Copy the file to the target directory
+                    Files.move(file, targetFile, StandardCopyOption.REPLACE_EXISTING);
                 }
-            } else {
-                System.out.println("Folder is not exist");
             }
-        } catch (Exception e) {
-            System.out.println("Unable to move folder " + sourceDir + " contents");
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Тут нужно что-то предпринять и пробросить                                                       +++
         }
     }
 
     /**
      * Function delete all files in folder
      */
-    public void cleanFolder(File folder) {
-        if (folder.exists()) {
-            File[] files = folder.listFiles();
-            if (files != null) {
-                for (File file : files) {
-                    file.delete();
-                }
-            }
-        }
-    }
-
-    /**
-     * Need for test only
-     */
-    public String getFileName() {
-        return this.fileTxtName;
-    }
-
-    /**
-     * Function for reading files from the logger. Need for test only
-     */
-    public String readLog() {  // Check what the function returns if the file is empty! +++
-        String result = ""; // The final string should contain line breaks.
+    public void cleanFolder(String folderPath) {
+        File directory = new File(folderPath);
         try {
-            Scanner scanner = new Scanner(new File(this.fileTxtName));
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine(); // Each line starts with date and time.
-                result += line + "\n";  // Add a line break.
+            if (directory.exists() && directory.isDirectory()) {
+                File[] files = directory.listFiles();
+                if (files != null) {
+                    for (File file : files) {
+                        file.delete();
+                    }
+                }
+            } else {
+                System.out.println("Folder " + folderPath + " doesn't exist");                      // Вот куда это?
             }
-            scanner.close();
-            return result;
-        } catch (IOException e) {
-            System.out.println("Error reading a file " + this.fileTxtName);
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Cannot delete files from " + folderPath);                     // Пробрасываем наверх +++
         }
-        return "Hey! Logger notes are not being read!";
     }
 
 }
-
