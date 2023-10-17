@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class MainTest {
 
-    Scanner sc = new Scanner(System.in).useLocale(Locale.ENGLISH);
+//    Scanner sc = new Scanner(System.in).useLocale(Locale.ENGLISH);
 
     /**
      * Проверяем существует ли документ с сохраненными данными
@@ -18,7 +18,7 @@ public class MainTest {
     @Test
     public void testLoadState() {
         State state = new State();
-        state.loadState(sc);
+        state.loadState();
         boolean result = false;
         File memoryTxt = new File("Memory.txt");
         if (memoryTxt.exists()) {
@@ -45,8 +45,8 @@ public class MainTest {
      */
     @Test
     public void testIsRome() {
-        boolean romeTrue = RomeNumerals.defineRomeContent("mmclxxxvii");
-        boolean romeFalse = RomeNumerals.defineRomeContent("fdn");
+        boolean romeTrue = RomeNumerals.isRome("mmclxxxvii");
+        boolean romeFalse = RomeNumerals.isRome("fdn");
         Assert.assertTrue(romeTrue);
         Assert.assertFalse(romeFalse);
     }
@@ -56,8 +56,8 @@ public class MainTest {
      */
     @Test
     public void testIsOctal() {
-        boolean octalTrue = OctalNumbers.hasOctalNumber("0o465");
-        boolean octalFalse = OctalNumbers.hasOctalNumber("fdn");
+        boolean octalTrue = OctalNumbers.isOctalNumber("0o465");
+        boolean octalFalse = OctalNumbers.isOctalNumber("fdn");
         Assert.assertTrue(octalTrue);
         Assert.assertFalse(octalFalse);
     }
@@ -67,8 +67,8 @@ public class MainTest {
      */
     @Test
     public void testIsHex() {
-        boolean hexTrue = HexNumbers.hasHexNumber("0xab5");
-        boolean hexFalse = HexNumbers.hasHexNumber("fdn");
+        boolean hexTrue = HexNumbers.isHexNumber("0xab5");
+        boolean hexFalse = HexNumbers.isHexNumber("fdn");
         Assert.assertTrue(hexTrue);
         Assert.assertFalse(hexFalse);
     }
@@ -133,7 +133,7 @@ public class MainTest {
     @Disabled
     public void mainMath() {
         State state = new State();
-        state.loadState(sc);
+        state.loadState();
         state.clear();
         String line = "1000 420 2 42 12 3 2 St + - * / % root"; // Сохраняем введенное в переменную line
 
@@ -208,7 +208,7 @@ public class MainTest {
     @Disabled
     public void testMathInHashMap() {
         State state = new State();
-        state.loadState(sc); //Загружаем сохраненные в txt документе данные
+        state.loadState(); //Загружаем сохраненные в txt документе данные
 
         HashMap hashmap = new HashMap(8); // Создаем таблицу
         hashmap.loadMainHashMap(); // Загружаем данные
@@ -297,7 +297,7 @@ public class MainTest {
         state.push(BigDecimal.valueOf(13));
         state.saveState();
 
-        state.loadState(sc);
+        state.loadState();
 
         System.out.println(state.infoEng());
 
@@ -323,7 +323,7 @@ public class MainTest {
         state.push(BigDecimal.valueOf(12));
         state.saveState(); // Сохраняем введенные данные.
         state.clear(); // Очищаем память State - иначе при загрузке она удвоится!
-        state.loadState(sc); //Загружаем сохраненные в txt документе данные
+        state.loadState(); //Загружаем сохраненные в txt документе данные
 
         BigDecimal result = state.pop();
         String actual = result.toString();
@@ -333,7 +333,7 @@ public class MainTest {
         actual = result.toString();
         Assert.assertEquals("0", actual); // Данные удваиваются при сохранении Списка!
 
-        sc.close(); // <---------------------------------Close Scanner in the END
+//        sc.close(); // <---------------------------------Close Scanner in the END
     }
 
 

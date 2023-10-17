@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Scanner;
 
 public class State {
     private boolean isArray = true; // Data structure switch: true = array; false = list;
@@ -12,7 +11,6 @@ public class State {
     private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();
     private LocaleStrings localeStrings = new LocaleStrings(isEnglish);
-    private int hashWord;
     private int tripMeter = 0; // invisible counter (only visible in Memory.txt string 5)
 
     /**
@@ -110,11 +108,10 @@ public class State {
         String memoryRes = tmp.toString(); // Store it as a string
         String methodStatus = String.valueOf(this.isArray); // Stores the method state (array/list - true/false).
         String languageStatus = String.valueOf(this.isEnglish); // Stores the language state (English/Russian - true/false)
-        String hashWord = String.valueOf(this.hashWord); // Hash of password
         String tripMeter = String.valueOf(this.tripMeter); // invisible counter
 
 
-        String allMemory = dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n" + hashWord + "\n" + tripMeter + "\n";
+        String allMemory = dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n" + tripMeter + "\n";
         String allMemoryTest = dataInfo + " " + memoryRes + " " + methodStatus + " " + languageStatus;
         // Pack all memory types into strings
         try {
@@ -132,10 +129,8 @@ public class State {
     /**
      * Function for loading the State from saved txt data.
      */
-    public void loadState(Scanner scanner) {
+    public void loadState() {
         if (!Files.exists(Paths.get(this.fileTxtName))) { // Check if the file exists
-            Password password = new Password();
-            this.hashWord = password.newPassword(scanner);
             saveState(); // If the file does not exist, save the state
         }
 
@@ -148,15 +143,13 @@ public class State {
             String memoryRes = massive[1]; // Memory of the last number
             String methodStatus = massive[2]; // Data structure state
             String languageStatus = massive[3]; // Language state - as a string
-            String hashWord = massive[4];
-            String tripMeter = massive[5];
+            String tripMeter = massive[4];
 
             this.memoryResult = new BigDecimal(memoryRes); // Memory
             this.isArray = methodStatus.equals("true");  // Simplified notation: If methodStatus = true, then this.isArray = true
             setLanguage(languageStatus.equals("true")); // Simplified notation: If languageStatus = true, then this.isEnglish = true and update the phrases array
             clear(); // Clearing is necessary to avoid duplicating data during loading
             stack.write(dataInfo); // Write the contents of the 'dataInfo' string to the stack
-            this.hashWord = Integer.parseInt(hashWord);
             this.tripMeter = Integer.parseInt(tripMeter) + 1;
 
 
@@ -165,7 +158,6 @@ public class State {
             this.memoryResult = new BigDecimal("0.0");
             this.isArray = true;
             stack = new StackArr();
-            this.hashWord = 0; // тут нужно что-то придумать, например ввести новый пароль ++++++++++++++++++++++++++!!!
         }
     }
 
@@ -223,12 +215,6 @@ public class State {
 
     public String infoRus() {
         return stack.infoRus();
-    }
-
-    /** The function checks the validity of the entered password */
-    public boolean isPasswordCorrect(String string) { // return true if password is correct
-        int tryPassword = string.hashCode();
-        return tryPassword == this.hashWord;
     }
 
 }

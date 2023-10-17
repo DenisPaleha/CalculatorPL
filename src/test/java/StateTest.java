@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class StateTest extends TestCase {
 
-    Scanner sc = new Scanner(System.in).useLocale(Locale.ENGLISH);
+//    Scanner sc = new Scanner(System.in).useLocale(Locale.ENGLISH);
     @Test
     public void testStateIsEmpty() {
         State state = new State();
@@ -209,7 +209,7 @@ public class StateTest extends TestCase {
         state.pop();
         state.pop();
         state.pop();
-        state.loadState(sc); // загружаем сохраненное состояние
+        state.loadState(); // загружаем сохраненное состояние
 
         BigDecimal memoryResult = state.memoryResult;
         String actual = memoryResult.toString();
@@ -233,7 +233,7 @@ public class StateTest extends TestCase {
         state.pop();
         state.pop();
         state.pop();
-        state.loadState(sc);
+        state.loadState();
 
         BigDecimal memoryResult = state.memoryResult;
         String actual = memoryResult.toString();
@@ -386,7 +386,7 @@ public class StateTest extends TestCase {
         state.setLanguage(false);
         System.out.println(state.getPhrase("roman_number")); // Римское число
 
-        sc.close(); // <---------------------------------Close Scanner in the END
+//        sc.close(); // <---------------------------------Close Scanner in the END
     }
 
 }
