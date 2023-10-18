@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Locale;
@@ -25,7 +26,11 @@ public class Main {
             boolean theEnd = false;
             String line = scanner.nextLine(); // Save user input to the variable line
 
-            logger.logInput(line); // Copy all input data to the logger
+            try {
+                logger.logInput(line); // Copy all input data to the logger
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
             String output; // Declare output string
 
@@ -180,9 +185,13 @@ public class Main {
                     state.saveState();
                     output = state.getPhrase("exiting");
                     logger.logOutput(output);
-                    logger.CopyFilesFromLoggerToTemp();
+                    try {
+                        logger.CopyFilesFromLoggerToTemp();
+                    } catch (IOException e){
+                        System.out.println(e.getMessage());
+                    }
                     System.out.println(output);
-                    lineScanner.close();                                                        // +++?
+                    lineScanner.close();
                     scanner.close();
                     break;
                 } else {
@@ -202,7 +211,7 @@ public class Main {
 //                e.printStackTrace();
                 System.out.println(e.getMessage()); // In case of an error
                 output = state.getPhrase("output_error");
-                logger.logOutput(output);
+//                logger.logOutput(output);
                 System.out.println(output);
                 state = copy; //  return previous State values
             }

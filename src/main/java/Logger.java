@@ -4,17 +4,16 @@ import java.nio.file.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Logger {
-    private final String fileTxtName;
     private final String loggerPath = "LoggerFiles";
     private final String tempPath = "LoggerFiles/TempLogs";
-    //    private final String newFile = "New document \n";
-    private final File outputFile; // Creating File, combining the file path and file name
+    private File outputFile; // Creating File, combining the file path and file name
 
 
     public Logger() {  // The constructor should generate a file name and create the file itself.
-        this.fileTxtName = generateFileName(); // generate a filename
+        String fileTxtName = generateFileName(); // generate a filename
         createNewDir(this.loggerPath); // Create a logger folder if there is no folder
         createNewDir(this.tempPath); // Create a temp folder if there is no folder
         this.outputFile = new File(this.loggerPath, fileTxtName); // File object combining the file path and file name
@@ -31,9 +30,19 @@ public class Logger {
             writer.closeWriter();
         } catch (IOException e) {
             System.out.println("Writing to logger folder error");
-            // тут нужно что-то по эффективнее
-            // нужно попытаться перезаписать файл и директорию в случае если они были утрачены        +++
-            // если не получилось, то пробросить сообщение дальше                                     +++
+        }
+    }
+
+    /**
+     * Method checks if the file exists
+     */
+    public void isFileExist() throws Exception {
+        if (!Files.exists(this.outputFile.toPath())) {
+            String fileTxtName = generateFileName();
+            this.outputFile = new File(this.loggerPath, fileTxtName);
+            if (!Files.exists(this.outputFile.toPath())) {
+                throw new Exception("Can't create the log to file " + outputFile);
+            }
         }
     }
 
@@ -46,16 +55,16 @@ public class Logger {
 
         // Check if the specified directories exist
         if (!Files.exists(sourceDirectory) || !Files.isDirectory(sourceDirectory)) {
-            createNewDir(loggerPath);
+            createNewDir(this.loggerPath);
             if (!Files.exists(sourceDirectory) || !Files.isDirectory(sourceDirectory)) {
-                throw new IOException("Can't create a folder " + loggerPath);
+                throw new IOException("Can't create a folder " + this.loggerPath);
             }
         }
 
         if (!Files.exists(targetDirectory) || !Files.isDirectory(targetDirectory)) {
-            createNewDir(tempPath);
+            createNewDir(this.tempPath);
             if (!Files.exists(targetDirectory) || !Files.isDirectory(targetDirectory)) {
-                throw new IOException("Can't create a folder " + tempPath);
+                throw new IOException("Can't create a folder " + this.tempPath);
             }
         }
     }
@@ -72,18 +81,20 @@ public class Logger {
     /**
      * Function to write a string to the file.
      */
-    public void logInput(String string) {
+    public void logInput(String string) throws Exception {
         String dateTime = generateFileName();
         String logInput = dateTime + " in " + string + "\n";
+        isFileExist();
         writeFileToDir(this.outputFile, logInput); // Append the string to the document.
     }
 
     /**
      * Function to write a string to the file.
      */
-    public void logOutput(String string) {
+    public void logOutput(String string) throws Exception {
         String dateTime = generateFileName();
         String logOutput = dateTime + " out " + string + "\n";
+        isFileExist();
         writeFileToDir(this.outputFile, logOutput); // Append the string to the document.
     }
 
@@ -93,7 +104,7 @@ public class Logger {
             try {
                 Files.createDirectory(newDirPath); // Create new directory
             } catch (IOException e) {
-                System.out.println("Can't create a folder " + folderPath);                    // +++ пробросить дальше
+                System.out.println("Can't create a folder " + folderPath);
             }
         }
     }
@@ -101,30 +112,25 @@ public class Logger {
     /**
      * Функция копирует файлы из папки логер в папку темп если в ней более 3 файлов
      */
-
     public void CopyFilesFromLoggerToTemp() throws Exception {
         Path sourceDirectory = Paths.get(loggerPath);
         Path targetDirectory = Paths.get(tempPath);
         int startingFileIndex = 3; // index shows from which file we start copying to Temp folder
         isFoldersExist();
-        try {
 
-            // Get the list of files in the source directory Logger
-            List<Path> files = Files.list(sourceDirectory).toList();
+        try (Stream<Path> filesStream = Files.list(sourceDirectory)) {
+            List<Path> files = filesStream.toList(); // Get the list of files in the source directory Temp
 
             for (int i = startingFileIndex; i < files.size() - 1; i++) {
                 // If you remove "-1" from the "files.size() - 1" expression, an extra subdirectory will be created.
                 Path file = files.get(i);
-                // Create a path for the target directory
-                Path targetFile = targetDirectory.resolve(file.getFileName());
-                // Copy the file to the target directory
-                Files.copy(file, targetFile, StandardCopyOption.REPLACE_EXISTING);
+                Path targetFile = targetDirectory.resolve(file.getFileName());// Create a path for the target directory
+                Files.copy(file, targetFile, StandardCopyOption.REPLACE_EXISTING);// Copy the file to the target directory
             }
 
             CopyFilesTempAndClean(); // Move files from the Temp folder back to the Logger folder when it is full
         } catch (IOException e) {
-            e.printStackTrace();
-            // Тут нужно что-то другое и не тут, а в Main                                                          +++
+            throw new IOException("Can't copy files from " + loggerPath + " to " + tempPath);
         }
     }
 
@@ -136,29 +142,25 @@ public class Logger {
         Path targetDirectory = Paths.get(loggerPath);
         int startingFileIndex = 3; // If there are more than X files in the folder
         isFoldersExist();
-        try {
-            // Get the list of files in the source directory Temp
-            List<Path> files = Files.list(sourceDirectory).toList();
+        try (Stream<Path> filesStream = Files.list(sourceDirectory)) {
+            List<Path> files = filesStream.toList(); // Get the list of files in the source directory Temp
 
             if (files.size() >= startingFileIndex) {
                 cleanFolder(loggerPath);  // delete everything from the loggerPath directory
                 for (Path file : files) {
-                    // Create a path for the target directory
-                    Path targetFile = targetDirectory.resolve(file.getFileName());
-                    // Copy the file to the target directory
-                    Files.move(file, targetFile, StandardCopyOption.REPLACE_EXISTING);
+                    Path targetFile = targetDirectory.resolve(file.getFileName()); // Create a path for the target directory
+                    Files.move(file, targetFile, StandardCopyOption.REPLACE_EXISTING); // Copy the file to the target directory
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
-            // Тут нужно что-то предпринять и пробросить                                                       +++
+            throw new IOException("Can't clean the TempLogs folder");
         }
     }
 
     /**
      * Function delete all files in folder
      */
-    public void cleanFolder(String folderPath) {
+    public void cleanFolder(String folderPath) throws IOException {
         File directory = new File(folderPath);
         try {
             if (directory.exists() && directory.isDirectory()) {
@@ -169,10 +171,10 @@ public class Logger {
                     }
                 }
             } else {
-                System.out.println("Folder " + folderPath + " doesn't exist");                      // Вот куда это?
+                throw new IOException("Folder " + folderPath + " doesn't exist");
             }
-        } catch (Exception e) {
-            System.out.println("Cannot delete files from " + folderPath);                     // Пробрасываем наверх +++
+        } catch (IOException e) {
+            throw new IOException("Cannot delete files from " + folderPath);
         }
     }
 
