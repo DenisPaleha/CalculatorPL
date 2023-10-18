@@ -3,6 +3,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
 
 import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Locale;
@@ -18,13 +19,17 @@ public class MainTest {
     @Test
     public void testLoadState() {
         State state = new State();
-        state.loadState();
-        boolean result = false;
-        File memoryTxt = new File("Memory.txt");
-        if (memoryTxt.exists()) {
-            result = true;
+        try {
+            state.loadState();
+            boolean result = false;
+            File memoryTxt = new File("Memory.txt");
+            if (memoryTxt.exists()) {
+                result = true;
+            }
+            Assert.assertTrue(result);
+        }catch (IOException e){
+            System.out.println(e.getMessage());
         }
-        Assert.assertTrue(result);
     }
 
 //    /**
@@ -133,7 +138,11 @@ public class MainTest {
     @Disabled
     public void mainMath() {
         State state = new State();
+        try{
         state.loadState();
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
         state.clear();
         String line = "1000 420 2 42 12 3 2 St + - * / % root"; // Сохраняем введенное в переменную line
 
@@ -208,7 +217,11 @@ public class MainTest {
     @Disabled
     public void testMathInHashMap() {
         State state = new State();
-        state.loadState(); //Загружаем сохраненные в txt документе данные
+        try {
+            state.loadState(); //Загружаем сохраненные в txt документе данные
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
 
         HashMap hashmap = new HashMap(8); // Создаем таблицу
         hashmap.loadMainHashMap(); // Загружаем данные
@@ -295,9 +308,12 @@ public class MainTest {
         State state = new State();
         state.push(BigDecimal.valueOf(12));
         state.push(BigDecimal.valueOf(13));
+        try {
         state.saveState();
-
         state.loadState();
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
 
         System.out.println(state.infoEng());
 
@@ -321,9 +337,13 @@ public class MainTest {
 //        Draft.switchMethod(state); // Переключаем на структуру данных LinkedList
 
         state.push(BigDecimal.valueOf(12));
+        try{
         state.saveState(); // Сохраняем введенные данные.
         state.clear(); // Очищаем память State - иначе при загрузке она удвоится!
         state.loadState(); //Загружаем сохраненные в txt документе данные
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
 
         BigDecimal result = state.pop();
         String actual = result.toString();

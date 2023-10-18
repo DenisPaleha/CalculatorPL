@@ -102,7 +102,7 @@ public class State {
     /**
      * Function for saving memory.
      */
-    public String saveState() {  // Make the method return a String for testing purposes
+    public String saveState() throws IOException {  // Make the method return a String for testing purposes
         String dataInfo = stack.copy(); // Create a string with the stack's content
         BigDecimal tmp = peek(); // Store the last value
         String memoryRes = tmp.toString(); // Store it as a string
@@ -119,8 +119,9 @@ public class State {
             writer.writerInTxt(allMemory);
             writer.closeWriter();
         } catch (IOException e) {
-            System.out.println("Can't create a file " + this.fileTxtName);
-            System.out.println(e.getMessage());
+            throw new IOException("Can't safe memory to the " + this.fileTxtName);
+//            System.out.println("Can't create a file " + this.fileTxtName);
+//            System.out.println(e.getMessage());
         }
         System.out.println("Data saved...");
         return allMemoryTest;
@@ -129,7 +130,7 @@ public class State {
     /**
      * Function for loading the State from saved txt data.
      */
-    public void loadState() {
+    public void loadState() throws IOException {
         if (!Files.exists(Paths.get(this.fileTxtName))) { // Check if the file exists
             saveState(); // If the file does not exist, save the state
         }

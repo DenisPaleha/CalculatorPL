@@ -10,9 +10,9 @@ public class Logger {
     private final String loggerPath = "LoggerFiles";
     private final String tempPath = "LoggerFiles/TempLogs";
     private File outputFile; // Creating File, combining the file path and file name
+    private final int availableFileIndex = 3; // Minimum number of logs available
 
-
-    public Logger() {  // The constructor should generate a file name and create the file itself.
+    public Logger() throws IOException {  // The constructor should generate a file name and create the file itself.
         String fileTxtName = generateFileName(); // generate a filename
         createNewDir(this.loggerPath); // Create a logger folder if there is no folder
         createNewDir(this.tempPath); // Create a temp folder if there is no folder
@@ -23,13 +23,13 @@ public class Logger {
     /**
      * Function write file to dir
      */
-    public void writeFileToDir(File outputFile, String content) {
+    public void writeFileToDir (File outputFile, String content) throws IOException {
         try {
             Writer writer = new Writer(outputFile.toString(), true); // true = rewritable
             writer.writerInTxt(content);
             writer.closeWriter();
         } catch (IOException e) {
-            System.out.println("Writing to logger folder error");
+            throw new IOException("Writing to logger folder error");
         }
     }
 
@@ -115,13 +115,12 @@ public class Logger {
     public void CopyFilesFromLoggerToTemp() throws Exception {
         Path sourceDirectory = Paths.get(loggerPath);
         Path targetDirectory = Paths.get(tempPath);
-        int startingFileIndex = 3; // index shows from which file we start copying to Temp folder
         isFoldersExist();
 
         try (Stream<Path> filesStream = Files.list(sourceDirectory)) {
             List<Path> files = filesStream.toList(); // Get the list of files in the source directory Temp
 
-            for (int i = startingFileIndex; i < files.size() - 1; i++) {
+            for (int i = availableFileIndex; i < files.size() - 1; i++) {
                 // If you remove "-1" from the "files.size() - 1" expression, an extra subdirectory will be created.
                 Path file = files.get(i);
                 Path targetFile = targetDirectory.resolve(file.getFileName());// Create a path for the target directory
@@ -140,12 +139,11 @@ public class Logger {
     public void CopyFilesTempAndClean() throws Exception {
         Path sourceDirectory = Paths.get(tempPath);
         Path targetDirectory = Paths.get(loggerPath);
-        int startingFileIndex = 3; // If there are more than X files in the folder
         isFoldersExist();
         try (Stream<Path> filesStream = Files.list(sourceDirectory)) {
             List<Path> files = filesStream.toList(); // Get the list of files in the source directory Temp
 
-            if (files.size() >= startingFileIndex) {
+            if (files.size() >= availableFileIndex) {
                 cleanFolder(loggerPath);  // delete everything from the loggerPath directory
                 for (Path file : files) {
                     Path targetFile = targetDirectory.resolve(file.getFileName()); // Create a path for the target directory

@@ -1,6 +1,7 @@
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Locale;
 import java.util.Scanner;
@@ -181,8 +182,12 @@ public class StateTest extends TestCase {
         state.push(BigDecimal.valueOf(120));
         state.push(BigDecimal.valueOf(130));
         state.push(BigDecimal.valueOf(140));
+        try {
         String actual = state.saveState(); // Читаем строку результата state.saveState()
         assertEquals("120 130 140  140 true false", actual);
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
@@ -193,8 +198,12 @@ public class StateTest extends TestCase {
         state.push(BigDecimal.valueOf(120));
         state.push(BigDecimal.valueOf(130));
         state.push(BigDecimal.valueOf(140));
+        try{
         String actual = state.saveState(); // Читаем строку результата state.saveState()
         assertEquals("120 130 140  140 false false", actual);
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
@@ -204,12 +213,16 @@ public class StateTest extends TestCase {
         state.push(BigDecimal.valueOf(120));
         state.push(BigDecimal.valueOf(130));
         state.push(BigDecimal.valueOf(140));
+        try{
         state.saveState(); // сохраняем состояние
 
         state.pop();
         state.pop();
         state.pop();
         state.loadState(); // загружаем сохраненное состояние
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
 
         BigDecimal memoryResult = state.memoryResult;
         String actual = memoryResult.toString();
@@ -229,11 +242,16 @@ public class StateTest extends TestCase {
         state.push(BigDecimal.valueOf(12));
         state.push(BigDecimal.valueOf(13));
         state.push(BigDecimal.valueOf(14));
+
+        try{
         state.saveState();
         state.pop();
         state.pop();
         state.pop();
         state.loadState();
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
 
         BigDecimal memoryResult = state.memoryResult;
         String actual = memoryResult.toString();
