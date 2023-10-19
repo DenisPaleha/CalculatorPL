@@ -13,7 +13,7 @@ public class Logger {
     private final int availableFileIndex = 3; // Minimum number of logs available
 
     public Logger() throws IOException {  // The constructor should generate a file name and create the file itself.
-        String fileTxtName = generateFileName(); // generate a filename
+        String fileTxtName = generateFileName() + ".txt"; // generate a filename
         createNewDir(this.loggerPath); // Create a logger folder if there is no folder
         createNewDir(this.tempPath); // Create a temp folder if there is no folder
         this.outputFile = new File(this.loggerPath, fileTxtName); // File object combining the file path and file name
