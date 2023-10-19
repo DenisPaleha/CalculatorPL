@@ -2,7 +2,7 @@ import java.math.BigDecimal;
 
 public abstract class AbstractStack {
 
-    // Все наследующие абстрактному классу классы должны содержать следующие функции:
+    // All classes that inherit an abstract class must contain the following functions:
     public abstract boolean isEmpty();
 
     public abstract void push(BigDecimal value);
@@ -25,7 +25,7 @@ public abstract class AbstractStack {
         if (isEmpty()) {
             return "0 ";
         } else {
-            while (!isEmpty()) { // копируем содержимое стека в зеркальную копию
+            while (!isEmpty()) { // copy the contents of the stack to the mirror copy
                 tmp = pop();
                 mirror.push(tmp);
             }
@@ -42,8 +42,8 @@ public abstract class AbstractStack {
      * The function writes the contents of the string to the stack
      */
     public void write(String dataString) {
-        String[] dataArr = dataString.split(" "); // Создаем массив строк и нарезаем в него строку.
-        for (String data : dataArr) { // (int i = 0; i < dataArr.length; i++) последовательно извлекаем содержимое
+        String[] dataArr = dataString.split(" ");
+        for (String data : dataArr) { // (int i = 0; i < dataArr.length; i++) extract the contents
             BigDecimal tmp = new BigDecimal(data);
             push(tmp);
         }
