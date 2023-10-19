@@ -120,8 +120,6 @@ public class State {
             writer.closeWriter();
         } catch (IOException e) {
             throw new IOException("Can't safe memory to the " + this.fileTxtName);
-//            System.out.println("Can't create a file " + this.fileTxtName);
-//            System.out.println(e.getMessage());
         }
         System.out.println("Data saved...");
         return allMemoryTest;
