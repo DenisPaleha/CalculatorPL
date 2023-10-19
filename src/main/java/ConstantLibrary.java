@@ -91,7 +91,7 @@ public class ConstantLibrary {
     public static final int MAX_VALUE = 4000;
 
     //----------Help--------------
-    public static final String HELP_TEXT_ENG = "| +++++++++++++++++++++++++++++++++  Help  +++++++++++++++++++++++++++++++++++++++++|\n" +
+    public static final String HELP_TEXT_ENG = "| +++++++++++++++++++++++++++++  Help  ++++++++++++++++++++++++++++++++++++|\n" +
             "| The calculator supports operators: +, -, multiply '*', and divide '/'               |\n" +
             "| Language switching commands: rus, eng                                               |\n" +
             "| The 'M' command allows you to insert the last obtained result into the calculation, |\n" +
@@ -101,7 +101,7 @@ public class ConstantLibrary {
             "| The 'root' command extracts the square root of the last number.                     |\n" +
             "| The '%' command extracts the percentage of the penultimate number equal to the last |\n" +
             "| number. For example, '120 10 %' will return 12.00                                   |\n" +
-            "| The 'info' command displays the contents of the State variables on the screen.      |\n" +
+            "| The 'info' command displays the contents of the State class on the screen.          |\n" +
             "| The 'S' command saves the current data to a document.                               |\n" +
             "| The 'sm' command switches between the Array / List data structure method.           |\n" +
             "| The 'toRom' command converts the memory content into Roman numerals.                |\n" +
@@ -119,7 +119,7 @@ public class ConstantLibrary {
             "---------------------------------------------------------------------------------------";
 
 
-    public static final String HELP_TEXT_RUS = "| +++++++++++++++++++++++++++++++++  Справка  +++++++++++++++++++++++++++++++++++++++|\n" +
+    public static final String HELP_TEXT_RUS = "| ++++++++++++++++++++++++++++  Справка  ++++++++++++++++++++++++++++++++|\n" +
             "| Калькулятор поддерживает операторы: +, -, умножить '*' и разделить '/'             |\n" +
             "| Команды переключения языка: rus, eng                                               |\n" +
             "| Команда 'M' позволяет вставить в вычисление последний полученный результат,        |\n" +
@@ -129,7 +129,7 @@ public class ConstantLibrary {
             "| Команда 'root' - извлечет квадратный корень из последнего числа.                   |\n" +
             "| Команда '%' - извлечет из предпоследнего числа проценты, количество которых равно  |\n" +
             "| последнему числу. Например, '120 10 %' вернет 12.00                                |\n" +
-            "| Команда 'info' - выведет на экран содержимое переменных State.                     |\n" +
+            "| Команда 'info' - выведет на экран содержимое класса State.                         |\n" +
             "| Команда 'S' - Сохраняет текущие данные в документ.                                 |\n" +
             "| Команда 'sm' - переключает метод структуры данных Массив / Строка                  |\n" +
             "| Команда 'toRom' - конвертирует содержимое памяти в римские числа.                  |\n" +
