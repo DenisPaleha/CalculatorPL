@@ -23,8 +23,7 @@ public class Main {
             System.out.println(state.getPhrase("hello_massage_two")); // Info on calling help
             System.out.println(String.format(state.getPhrase("loaded_memory"), state.memoryResult)); // Reading the saved memory string
 
-            while (scanner.hasNextLine()) { // Main program loop with user input
-                boolean theEnd = false;
+            PROGRAM: while (scanner.hasNextLine()) { // Main program loop with user input
                 String line = scanner.nextLine(); // Save user input to the variable line
 
                 try {
@@ -169,9 +168,21 @@ public class Main {
                                 System.out.println(output);
 
                             } else if (operand.equals(ConstantLibrary.EXIT)) { // Exit function "E"
-                                theEnd = true;
-                            }
+                                state.saveState();
+                                output = state.getPhrase("exiting");
+                                logger.logOutput(output);
 
+                                try {
+                                    logger.CopyFilesFromLoggerToTemp();
+                                } catch (IOException e) {
+                                    System.out.println(e.getMessage());
+                                }
+
+                                System.out.println(output);
+                                lineScanner.close();
+                                scanner.close();
+                                break PROGRAM;
+                            }
                         } else {
                             if (coreNotUsed) {
                                 output = String.format(state.getPhrase("unknown_value"), operand);
@@ -180,24 +191,8 @@ public class Main {
                             }
                         }
                     }
+                    state.memoryResult = state.peek();
 
-                    if (theEnd) { // If theEnd boolean value is true, exit the program.
-
-                        state.saveState();
-                        output = state.getPhrase("exiting");
-                        logger.logOutput(output);
-                        try {
-                            logger.CopyFilesFromLoggerToTemp();
-                        } catch (IOException e) {
-                            System.out.println(e.getMessage());
-                        }
-                        System.out.println(output);
-                        lineScanner.close();
-                        scanner.close();
-                        break;
-                    } else {
-                        state.memoryResult = state.peek();
-                    }
                     BigDecimal out = state.memoryResult.setScale(2, RoundingMode.HALF_UP); // Round the result to two decimal places for display
                     String result;
                     try {
@@ -217,6 +212,7 @@ public class Main {
                     state = copy; //  return previous State values
                 }
             }
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
