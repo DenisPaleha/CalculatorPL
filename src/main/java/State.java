@@ -1,3 +1,5 @@
+import static mypackage.ConstantLibrary.*;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -7,7 +9,7 @@ public class State {
     private boolean isArray = true; // Data structure switch: true = array; false = list;
     private boolean isEnglish = true; // Language switch
     BigDecimal memoryResult = new BigDecimal("0.0"); // Saved memory
-    private String numberSystem = ConstantLibrary.OUT_DEC; // Number system
+    private String numberSystem = OUT_DEC; // Number system
     private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();
     private LocaleStrings localeStrings = new LocaleStrings(isEnglish);
@@ -167,12 +169,12 @@ public class State {
         int num = out.intValue(); // Convert to int with rounding to the nearest integer
         String result;
         switch (numberSystem) {
-            case ConstantLibrary.OUT_DEC ->  // If decimal is chosen, return BigDecimal as a string
+            case OUT_DEC ->  // If decimal is chosen, return BigDecimal as a string
                     result = out.toString();
-            case ConstantLibrary.OUT_BIN -> result = BinaryNumbers.convertDecimalToBinary(num); // Convert to binary
-            case ConstantLibrary.OUT_OCT -> result = OctalNumbers.convertDecimalToOctal(num); // Convert to octal
-            case ConstantLibrary.OUT_HEX -> result = HexNumbers.convertDecimalToHex(num); // Convert to hexadecimal
-            case ConstantLibrary.OUT_ROM -> {
+            case OUT_BIN -> result = BinaryNumbers.convertDecimalToBinary(num); // Convert to binary
+            case OUT_OCT -> result = OctalNumbers.convertDecimalToOctal(num); // Convert to octal
+            case OUT_HEX -> result = HexNumbers.convertDecimalToHex(num); // Convert to hexadecimal
+            case OUT_ROM -> {
                 try {
                     result = RomeNumerals.convertDecimalToRome(num); // Convert to Roman numerals
                 } catch (Exception e) {

@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import static mypackage.ConstantLibrary.*;
 
 public class BinaryNumbers {
 
@@ -12,7 +13,7 @@ public class BinaryNumbers {
      */
     public static Boolean isBinaryCorrect(String str) { // Input the number (including the prefix)
         String[] binaryNums = str.split(""); // Convert the string into an array of strings
-        String[] validValues = new String[]{ConstantLibrary.ZERO, ConstantLibrary.ONE};
+        String[] validValues = new String[]{ZERO, ONE};
         int i = 0;
         while (i < binaryNums.length) { // Check all strings in the binaryNums array
             String x = binaryNums[i]; // x = a string from the binaryNums array
@@ -51,8 +52,7 @@ public class BinaryNumbers {
         str = str.substring(2); // Remove the prefix
         Boolean isCorrect = isBinaryCorrect(str); // Check validity
         if (isCorrect) {
-            BigDecimal result = new BigDecimal(convertBinaryToDecimal(str));
-            return result;
+            return new BigDecimal(convertBinaryToDecimal(str));
         } else {
             System.out.println("Write error: Binary number " + str + " contains invalid characters.");
         }
@@ -69,7 +69,7 @@ public class BinaryNumbers {
             result = input % 2 + "" + result;
             input = input / 2;
         }
-        result = ConstantLibrary.PREFIX_2 + result; // Add the prefix (0b)
+        result = PREFIX_2 + result; // Add the prefix (0b)
         return result;
     }
 }

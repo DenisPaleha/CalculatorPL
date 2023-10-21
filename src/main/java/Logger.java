@@ -10,7 +10,7 @@ public class Logger {
     private final String loggerPath = "LoggerFiles";
     private final String tempPath = "LoggerFiles/TempLogs";
     private File outputFile; // Creating File, combining the file path and file name
-    private final int availableFileIndex = 3; // Minimum number of logs available
+    private final int availableFileIndex = 3; // minimum number of files in the folder loggerPath
 
     public Logger() throws IOException {  // The constructor should generate a file name and create the file itself.
         String fileTxtName = generateFileName() + ".txt"; // generate a filename

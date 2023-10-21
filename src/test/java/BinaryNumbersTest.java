@@ -1,3 +1,4 @@
+import static mypackage.ConstantLibrary.*;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,7 @@ public class BinaryNumbersTest extends TestCase {
     @Test
     public void testHasBinaryNumber() {
         boolean isBinary;
-        String x = ConstantLibrary.PREFIX_2 + "10011100010";
+        String x = PREFIX_2 + "10011100010";
         isBinary = BinaryNumbers.isBinaryNumber(x);
         assertTrue(isBinary);
 
@@ -34,7 +35,7 @@ public class BinaryNumbersTest extends TestCase {
     public void testDecimalToBinary() {
         int decimal = 1250;
         String result = BinaryNumbers.convertDecimalToBinary(decimal);
-        assertEquals(ConstantLibrary.PREFIX_2 + "10011100010", result);
+        assertEquals(PREFIX_2 + "10011100010", result);
     }
 
     @Test

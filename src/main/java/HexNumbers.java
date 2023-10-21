@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import static mypackage.ConstantLibrary.*;
 
 public class HexNumbers {
 
@@ -14,17 +15,17 @@ public class HexNumbers {
         String[] hexNums = str.split(""); // Convert the string into an array of strings
 
         for (int i = 0; i < hexNums.length; i++) { // Replace alphabetic characters with their decimal equivalents
-            if (hexNums[i].equalsIgnoreCase(ConstantLibrary.TEN)) {
+            if (hexNums[i].equalsIgnoreCase(TEN)) {
                 hexNums[i] = "10";
-            } else if (hexNums[i].equalsIgnoreCase(ConstantLibrary.ELEVEN)) {
+            } else if (hexNums[i].equalsIgnoreCase(ELEVEN)) {
                 hexNums[i] = "11";
-            } else if (hexNums[i].equalsIgnoreCase(ConstantLibrary.TWELVE)) {
+            } else if (hexNums[i].equalsIgnoreCase(TWELVE)) {
                 hexNums[i] = "12";
-            } else if (hexNums[i].equalsIgnoreCase(ConstantLibrary.THIRTEEN)) {
+            } else if (hexNums[i].equalsIgnoreCase(THIRTEEN)) {
                 hexNums[i] = "13";
-            } else if (hexNums[i].equalsIgnoreCase(ConstantLibrary.FOURTEEN)) {
+            } else if (hexNums[i].equalsIgnoreCase(FOURTEEN)) {
                 hexNums[i] = "14";
-            } else if (hexNums[i].equalsIgnoreCase(ConstantLibrary.FIFTEEN)) {
+            } else if (hexNums[i].equalsIgnoreCase(FIFTEEN)) {
                 hexNums[i] = "15";
             }
         }
@@ -53,7 +54,7 @@ public class HexNumbers {
      */
     public static Boolean isHexCorrect(String str) { // The string with the number already without the prefix
         String[] hexNums = str.split(""); // Convert the string into an array of strings
-        String[] validValues = new String[]{ConstantLibrary.ZERO, ConstantLibrary.ONE, ConstantLibrary.TWO, ConstantLibrary.THREE, ConstantLibrary.FOUR, ConstantLibrary.FIVE, ConstantLibrary.SIX, ConstantLibrary.SEVEN, ConstantLibrary.EIGHT, ConstantLibrary.NINE, ConstantLibrary.TEN, ConstantLibrary.ELEVEN, ConstantLibrary.TWELVE, ConstantLibrary.THIRTEEN, ConstantLibrary.FOURTEEN, ConstantLibrary.FIFTEEN};
+        String[] validValues = new String[]{ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN};
         int i = 0;
         while (i < hexNums.length) {
             String x = hexNums[i];
@@ -84,23 +85,23 @@ public class HexNumbers {
         while (input > 0) {
             int x = input % 16;
             if (x == 10) {
-                result = ConstantLibrary.TEN + result;
+                result = TEN + result;
             } else if (x == 11) {
-                result = ConstantLibrary.ELEVEN + result;
+                result = ELEVEN + result;
             } else if (x == 12) {
-                result = ConstantLibrary.TWELVE + result;
+                result = TWELVE + result;
             } else if (x == 13) {
-                result = ConstantLibrary.THIRTEEN + result;
+                result = THIRTEEN + result;
             } else if (x == 14) {
-                result = ConstantLibrary.FOURTEEN + result;
+                result = FOURTEEN + result;
             } else if (x == 15) {
-                result = ConstantLibrary.FIFTEEN + result;
+                result = FIFTEEN + result;
             } else {
                 result = x + "" + result;
             }
             input = input / 16;
         }
-        result = ConstantLibrary.PREFIX_16 + result; // Add the prefix
+        result = PREFIX_16 + result; // Add the prefix
         return result;
     }
 }

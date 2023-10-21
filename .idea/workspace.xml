@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="reconfiguration pom.xml">
-      <change afterPath="$PROJECT_DIR$/LoggerFiles/23-10-09_14-03-31" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerFiles/23-10-09_14-03-43" afterDir="false" />
+    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="label of break operator - PROGRAM">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Runner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LocaleStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LocaleStrings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BinaryNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BinaryNumbers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ConstantLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mypackage/ConstantLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HashMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HexNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HexNumbers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/OctalNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/OctalNumbers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RomeNumerals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RomeNumerals.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Writer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BinaryNumbersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BinaryNumbersTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/HashMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HashMapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MainTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,11 +63,10 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit3&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3&quot;: &quot;junit.framework.TestCase&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Таня/IdeaProjects/EditorTxt&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
@@ -76,6 +82,9 @@
       <recent name="C:\Users\Таня\IdeaProjects\CalculatorPL\src" />
       <recent name="C:\Users\Таня\IdeaProjects\CalculatorPL\src\main\resources" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
     </key>
@@ -88,19 +97,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Runner" />
       <module name="CalculatorPL" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="HexNumbersTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CalculatorPL" />
+    <configuration name="LoggerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LinkedListTest" />
+      <option name="MAIN_CLASS_NAME" value="LoggerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -127,10 +133,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Runner" />
         <item itemvalue="JUnit.MainTest" />
         <item itemvalue="JUnit.StateTest" />
-        <item itemvalue="JUnit.LinkedListTest" />
-        <item itemvalue="JUnit.HexNumbersTest" />
+        <item itemvalue="JUnit.LoggerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -325,7 +331,161 @@
       <option name="project" value="LOCAL" />
       <updated>1696749501064</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Exceptions IO">
+      <created>1696861827951</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1696861827951</updated>
+    </task>
+    <task id="LOCAL-00028" summary="ignore logger files">
+      <created>1696863170114</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1696863170114</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Exceptions Continue remodeling">
+      <created>1696868350197</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1696868350197</updated>
+    </task>
+    <task id="LOCAL-00030" summary="small design changes">
+      <created>1696868778535</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1696868778535</updated>
+    </task>
+    <task id="LOCAL-00031" summary="IOExceptions additions and revisions">
+      <created>1696927228063</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1696927228063</updated>
+    </task>
+    <task id="LOCAL-00032" summary="IOExceptions additions and revisions">
+      <created>1696928155578</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1696928155578</updated>
+    </task>
+    <task id="LOCAL-00033" summary="new class Core.java">
+      <created>1696968950843</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1696968950843</updated>
+    </task>
+    <task id="LOCAL-00034" summary="new class Password.java">
+      <created>1697120834060</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1697120834060</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Use of one scanner instead of two">
+      <created>1697299137891</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1697299137891</updated>
+    </task>
+    <task id="LOCAL-00036" summary="pom.xml &amp; jar file">
+      <created>1697365054091</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1697365054091</updated>
+    </task>
+    <task id="LOCAL-00037" summary="pom.xml &amp; jar file">
+      <created>1697370436109</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1697370436109</updated>
+    </task>
+    <task id="LOCAL-00038" summary="password disabled">
+      <created>1697557334352</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1697557334352</updated>
+    </task>
+    <task id="LOCAL-00039" summary="variable renaming">
+      <created>1697557395173</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1697557395173</updated>
+    </task>
+    <task id="LOCAL-00040" summary="logger is working as designed">
+      <created>1697557459780</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1697557459780</updated>
+    </task>
+    <task id="LOCAL-00041" summary="isFoldersExist();">
+      <created>1697563405591</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1697563405591</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Remaking Exceptions">
+      <created>1697623676219</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1697623676219</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Remaking Exceptions">
+      <created>1697638148933</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1697638148933</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Info changing">
+      <created>1697731229645</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1697731229646</updated>
+    </task>
+    <task id="LOCAL-00045" summary="comments +">
+      <created>1697731269373</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1697731269373</updated>
+    </task>
+    <task id="LOCAL-00046" summary="new file is txt">
+      <created>1697731299035</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1697731299035</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Exceptions throw to Main">
+      <created>1697731353226</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1697731353226</updated>
+    </task>
+    <task id="LOCAL-00048" summary="label of break operator - PROGRAM">
+      <created>1697796338832</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1697796338832</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -341,27 +501,31 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Maven" />
-    <MESSAGE value="added README.md file" />
-    <MESSAGE value="file name changes" />
-    <MESSAGE value="adding txt files to gitignore" />
-    <MESSAGE value="minor revisions" />
-    <MESSAGE value="added property files" />
-    <MESSAGE value="Main &amp; State classes rewritten using properti files" />
-    <MESSAGE value="English translation" />
-    <MESSAGE value="commentary" />
-    <MESSAGE value="Finalizing the logger" />
-    <MESSAGE value="+ try-catch" />
-    <MESSAGE value="pom.xml change - minus example" />
-    <MESSAGE value="Moved writer to a separate class" />
-    <MESSAGE value="The Logger class is run by the Writer class" />
-    <MESSAGE value="code cleanup" />
-    <MESSAGE value="Changed how numbers are recognized - str.startsWith();" />
     <MESSAGE value="property strings are processed by String.format() method" />
     <MESSAGE value="better code formatting" />
     <MESSAGE value="+ tripMeter (invisible counter)" />
     <MESSAGE value="migration to jdk 17" />
     <MESSAGE value="reconfiguration pom.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="reconfiguration pom.xml" />
+    <MESSAGE value="Exceptions IO" />
+    <MESSAGE value="ignore logger files" />
+    <MESSAGE value="Exceptions Continue remodeling" />
+    <MESSAGE value="small design changes" />
+    <MESSAGE value="IOExceptions additions and revisions" />
+    <MESSAGE value="new class Core.java" />
+    <MESSAGE value="new class Password.java" />
+    <MESSAGE value="Use of one scanner instead of two" />
+    <MESSAGE value="pom.xml &amp; jar file" />
+    <MESSAGE value="Rewritten the class logic" />
+    <MESSAGE value="password disabled" />
+    <MESSAGE value="variable renaming" />
+    <MESSAGE value="logger is working as designed" />
+    <MESSAGE value="isFoldersExist();" />
+    <MESSAGE value="Remaking Exceptions" />
+    <MESSAGE value="Info changing" />
+    <MESSAGE value="comments +" />
+    <MESSAGE value="new file is txt" />
+    <MESSAGE value="Exceptions throw to Main" />
+    <MESSAGE value="label of break operator - PROGRAM" />
+    <option name="LAST_COMMIT_MESSAGE" value="label of break operator - PROGRAM" />
   </component>
 </project>

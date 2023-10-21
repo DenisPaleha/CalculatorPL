@@ -1,3 +1,4 @@
+import static mypackage.ConstantLibrary.*;
 import java.math.BigDecimal;
 
 public class Core {
@@ -40,25 +41,25 @@ public class Core {
         } else if (keyHashMap) { // If the string matches an existing key
             operand = coreHashMap.get(operand); // Assign str a value by HashMap key
 
-            if (operand.equals(ConstantLibrary.PLUS)) {
+            if (operand.equals(PLUS)) {
                 BigDecimal value1 = state.pop();
                 BigDecimal value2 = state.pop();
                 BigDecimal value3 = MathFunctions.calculatePlus(value1, value2);
                 state.push(value3);
                 return false;
-            } else if (operand.equals(ConstantLibrary.MINUS)) {
+            } else if (operand.equals(MINUS)) {
                 BigDecimal value1 = state.pop();
                 BigDecimal value2 = state.pop();
                 BigDecimal value3 = MathFunctions.calculateMinus(value1, value2);
                 state.push(value3);
                 return false;
-            } else if (operand.equals(ConstantLibrary.MULTIPLY)) {
+            } else if (operand.equals(MULTIPLY)) {
                 BigDecimal value1 = state.pop();
                 BigDecimal value2 = state.pop();
                 BigDecimal value3 = MathFunctions.calculateMultiply(value1, value2);
                 state.push(value3);
                 return false;
-            } else if (operand.equals(ConstantLibrary.DIVIDE)) {
+            } else if (operand.equals(DIVIDE)) {
                 BigDecimal value1 = state.pop();
                 BigDecimal value2 = state.pop();
                 try {
@@ -68,24 +69,24 @@ public class Core {
                     System.out.println(e.getMessage());                                    ///++++ String!
                 }
                 return false;
-            } else if (operand.equals(ConstantLibrary.SQUARE)) { // Square root function
+            } else if (operand.equals(SQUARE)) { // Square root function
                 BigDecimal value = state.pop();
                 value = MathFunctions.calculateSquare(value);
                 state.push(value);
                 return false;
-            } else if (operand.equals(ConstantLibrary.EXPONENT)) { // Exponentiation function
+            } else if (operand.equals(EXPONENT)) { // Exponentiation function
                 BigDecimal value1 = state.pop();
                 BigDecimal value2 = state.pop();
                 BigDecimal value3 = MathFunctions.calculateExponent(value1, value2);
                 state.push(value3);
                 return false;
-            } else if (operand.equals(ConstantLibrary.PERCENT)) { // Percentage calculation function
+            } else if (operand.equals(PERCENT)) { // Percentage calculation function
                 BigDecimal value1 = state.pop();
                 BigDecimal value2 = state.pop();
                 BigDecimal value3 = MathFunctions.calculatePercentages(value1, value2);
                 state.push(value3);
                 return false;
-            } else if (operand.equals(ConstantLibrary.MEMORY)) { // "M" or "m" command
+            } else if (operand.equals(MEMORY)) { // "M" or "m" command
                 BigDecimal value = state.peek();
                 state.push(value);
                 return false;

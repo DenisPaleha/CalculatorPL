@@ -1,3 +1,4 @@
+import static mypackage.ConstantLibrary.*;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -106,7 +107,7 @@ public class HashMapTest extends TestCase {
         HashMap hashmap = new HashMap(8);
         hashmap.loadMainHashMap();
         String result = hashmap.get("oct"); // Take an arbitrary constant from the list
-        assertEquals(result, ConstantLibrary.TO_OCTAL);
+        assertEquals(result, TO_OCTAL);
     }
 
     /**

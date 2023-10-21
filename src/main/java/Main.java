@@ -1,3 +1,4 @@
+import static mypackage.ConstantLibrary.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -52,20 +53,20 @@ public class Main {
                         if (keyHashMap) { // If the string matches an existing key
                             operand = hashmapMain.get(operand); // Assign str a value by HashMap key
 
-                            if (operand.equals(ConstantLibrary.HELP)) {
+                            if (operand.equals(HELP)) {
                                 if (state.isEnglish()) {
-                                    System.out.println(ConstantLibrary.HELP_TEXT_ENG);
+                                    System.out.println(HELP_TEXT_ENG);
                                 } else {
-                                    System.out.println(ConstantLibrary.HELP_TEXT_RUS);
+                                    System.out.println(HELP_TEXT_RUS);
                                 }
 
-                            } else if (operand.equals(ConstantLibrary.CLEAR)) { // Memory clearing function, "c" command
+                            } else if (operand.equals(CLEAR)) { // Memory clearing function, "c" command
                                 state.clear(); // Clear memory
                                 output = state.getPhrase("memory_cleared");
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.INFO)) { // Screen output function, "info" command
+                            } else if (operand.equals(INFO)) { // Screen output function, "info" command
                                 String info;
                                 if (state.isEnglish()) {
                                     info = state.infoEng();
@@ -75,7 +76,7 @@ public class Main {
                                 logger.logOutput(info);
                                 System.out.println(info);
 
-                            } else if (operand.equals(ConstantLibrary.SWITCH_METHOD)) {  // Data structure switching function Array/List
+                            } else if (operand.equals(SWITCH_METHOD)) {  // Data structure switching function Array/List
                                 boolean storageType = state.isArray();
                                 storageType = !storageType; // Change the current boolean value to the opposite
                                 state.setStorageType(storageType); // Change the stack data structure to the opposite and transfer the content
@@ -87,13 +88,13 @@ public class Main {
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.SAVE)) {  //  "S" command Saves all data to MemoryTwo.txt
+                            } else if (operand.equals(SAVE)) {  //  "S" command Saves all data to MemoryTwo.txt
                                 output = state.getPhrase("data_saved");
                                 logger.logOutput(output);
                                 state.saveState();
 
-                            } else if (operand.equals(ConstantLibrary.TO_ROME)) { // "ToRome" function, converts memory to Roman numeral
-                                System.out.println(ConstantLibrary.HEAD_MESSAGE_ROME_1);
+                            } else if (operand.equals(TO_ROME)) { // "ToRome" function, converts memory to Roman numeral
+                                System.out.println(HEAD_MESSAGE_ROME_1);
                                 double mem = state.memoryResult.doubleValue(); // Convert BigDecimal to double
                                 try {
                                     String result = RomeNumerals.convertDecimalToRome(mem);
@@ -104,70 +105,70 @@ public class Main {
                                 logger.logOutput(output);
                                 System.out.println(output); // Roman numeral
 
-                            } else if (operand.equals(ConstantLibrary.TO_OCTAL)) {
+                            } else if (operand.equals(TO_OCTAL)) {
                                 int num = state.memoryResult.intValue(); // Convert BigDecimal to int with rounding to the nearest integer
                                 String result = OctalNumbers.convertDecimalToOctal(num); // Conversion
                                 output = String.format(state.getPhrase("octal_number_equal"), result);
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.TO_HEX)) {
+                            } else if (operand.equals(TO_HEX)) {
                                 int num = state.memoryResult.intValue(); // Convert BigDecimal to int with rounding to the nearest integer
                                 String result = HexNumbers.convertDecimalToHex(num); // Conversion
                                 output = String.format(state.getPhrase("hexadecimal_number_equal"), result);
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.TO_BIN)) {
+                            } else if (operand.equals(TO_BIN)) {
                                 int num = state.memoryResult.intValue(); // Convert BigDecimal to int with rounding to the nearest integer
                                 String result = BinaryNumbers.convertDecimalToBinary(num); // Conversion
                                 output = String.format(state.getPhrase("binary_number_equal"), result);
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.OUT_DEC)) { // Automatically converts all results to
-                                state.setNumberSystem(ConstantLibrary.OUT_DEC);
+                            } else if (operand.equals(OUT_DEC)) { // Automatically converts all results to
+                                state.setNumberSystem(OUT_DEC);
                                 output = state.getPhrase("decimal_enabled"); // Decimal number system enabled
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.OUT_BIN)) {
-                                state.setNumberSystem(ConstantLibrary.OUT_BIN);
+                            } else if (operand.equals(OUT_BIN)) {
+                                state.setNumberSystem(OUT_BIN);
                                 output = state.getPhrase("binary_enabled"); // Binary number system enabled
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.OUT_OCT)) {
-                                state.setNumberSystem(ConstantLibrary.OUT_OCT);
+                            } else if (operand.equals(OUT_OCT)) {
+                                state.setNumberSystem(OUT_OCT);
                                 output = state.getPhrase("octal_enabled"); // Octal number system enabled
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.OUT_HEX)) {
-                                state.setNumberSystem(ConstantLibrary.OUT_HEX);
+                            } else if (operand.equals(OUT_HEX)) {
+                                state.setNumberSystem(OUT_HEX);
                                 output = state.getPhrase("hexadecimal_enabled"); // Hexadecimal number system enabled
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.OUT_ROM)) {
-                                state.setNumberSystem(ConstantLibrary.OUT_ROM);
+                            } else if (operand.equals(OUT_ROM)) {
+                                state.setNumberSystem(OUT_ROM);
                                 output = state.getPhrase("roman_enabled"); // Roman number system enabled
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.OUT_RUS)) { // Language switch
+                            } else if (operand.equals(OUT_RUS)) { // Language switch
                                 state.setLanguage(false);
                                 output = "Язык: Русский";
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.OUT_ENG)) { // Language switch
+                            } else if (operand.equals(OUT_ENG)) { // Language switch
                                 state.setLanguage(true);
                                 output = "Language: English";
                                 logger.logOutput(output);
                                 System.out.println(output);
 
-                            } else if (operand.equals(ConstantLibrary.EXIT)) { // Exit function "E"
+                            } else if (operand.equals(EXIT)) { // Exit function "E"
                                 state.saveState();
                                 output = state.getPhrase("exiting");
                                 logger.logOutput(output);

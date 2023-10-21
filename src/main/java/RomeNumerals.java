@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import static mypackage.ConstantLibrary.*;
 
 public class RomeNumerals {
 
@@ -10,14 +11,14 @@ public class RomeNumerals {
     public static String convertDecimalToRome(double doubleValue) throws Exception {
 
         // Create arrays of strings for each digit; ones, tens, hundreds, thousands.
-        String[] arrayTen = new String[]{ConstantLibrary.ONE_ROME, ConstantLibrary.TWO_ROME, ConstantLibrary.THREE_ROME, ConstantLibrary.FORE, ConstantLibrary.FIVE_ROME, ConstantLibrary.SIX_ROME, ConstantLibrary.SEVEN_ROME, ConstantLibrary.EIGHT_ROME, ConstantLibrary.NINE_ROME};
-        String[] arrayDozens = new String[]{ConstantLibrary.TEN_ROME, ConstantLibrary.TWENTY, ConstantLibrary.THIRTY, ConstantLibrary.FORTY, ConstantLibrary.FIFTY, ConstantLibrary.SIXTY, ConstantLibrary.SEVENTY, ConstantLibrary.EIGHTY, ConstantLibrary.NINETY};
-        String[] arrayHundreds = new String[]{ConstantLibrary.ONE_HUNDRED, ConstantLibrary.TWO_HUNDRED, ConstantLibrary.THREE_HUNDRED, ConstantLibrary.FORE_HUNDRED, ConstantLibrary.FIVE_HUNDRED, ConstantLibrary.SIX_HUNDRED, ConstantLibrary.SEVEN_HUNDRED, ConstantLibrary.EIGHT_HUNDRED, ConstantLibrary.NINE_HUNDRED};
-        String[] arrayThousands = new String[]{ConstantLibrary.THOUSAND, ConstantLibrary.TWO_THOUSAND, ConstantLibrary.THREE_THOUSAND};
+        String[] arrayTen = new String[]{ONE_ROME, TWO_ROME, THREE_ROME, FORE, FIVE_ROME, SIX_ROME, SEVEN_ROME, EIGHT_ROME, NINE_ROME};
+        String[] arrayDozens = new String[]{TEN_ROME, TWENTY, THIRTY, FORTY, FIFTY, SIXTY, SEVENTY, EIGHTY, NINETY};
+        String[] arrayHundreds = new String[]{ONE_HUNDRED, TWO_HUNDRED, THREE_HUNDRED, FORE_HUNDRED, FIVE_HUNDRED, SIX_HUNDRED, SEVEN_HUNDRED, EIGHT_HUNDRED, NINE_HUNDRED};
+        String[] arrayThousands = new String[]{THOUSAND, TWO_THOUSAND, THREE_THOUSAND};
 
         int value = (int) doubleValue;
-        if (value < 0 || value >= ConstantLibrary.MAX_VALUE) {  // Check the value of the input number
-            throw new Exception(ConstantLibrary.HEAD_MESSAGE_ROME_2);
+        if (value < 0 || value >= MAX_VALUE) {  // Check the value of the input number
+            throw new Exception(HEAD_MESSAGE_ROME_2);
 
         } else if (value == 0) {
             return "Null";
@@ -98,7 +99,7 @@ public class RomeNumerals {
      */
     public static double convertRomeToDecimal(String str) throws Exception {
         // Create arrays of strings for each type of Roman numeral.
-        String[] romeNumerals = new String[]{ConstantLibrary.ONE_ROME, ConstantLibrary.FIVE_ROME, ConstantLibrary.TEN_ROME, ConstantLibrary.FIFTY, ConstantLibrary.ONE_HUNDRED, ConstantLibrary.FIVE_HUNDRED, ConstantLibrary.THOUSAND};
+        String[] romeNumerals = new String[]{ONE_ROME, FIVE_ROME, TEN_ROME, FIFTY, ONE_HUNDRED, FIVE_HUNDRED, THOUSAND};
 
         String[] stringInput = str.split(""); // Convert the string into an array of strings
 
@@ -282,7 +283,7 @@ public class RomeNumerals {
         if (str.equalsIgnoreCase("M") || str.equalsIgnoreCase("C")) {
             return false; // Exclude calls to the Clear and Memory functions
         }
-        String[] arrRomeNumeral = new String[]{ConstantLibrary.ONE_ROME, ConstantLibrary.FIVE_ROME, ConstantLibrary.TEN_ROME, ConstantLibrary.FIFTY, ConstantLibrary.ONE_HUNDRED, ConstantLibrary.FIVE_HUNDRED, ConstantLibrary.THOUSAND};
+        String[] arrRomeNumeral = new String[]{ONE_ROME, FIVE_ROME, TEN_ROME, FIFTY, ONE_HUNDRED, FIVE_HUNDRED, THOUSAND};
         String[] arrStringInput = str.split(""); // Convert the string into an array of strings
 
         int i = 0;

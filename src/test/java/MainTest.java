@@ -1,3 +1,4 @@
+import static mypackage.ConstantLibrary.*;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
@@ -157,43 +158,43 @@ public class MainTest {
                     BigDecimal num = new BigDecimal(str); // Присваиваем значение строки числу BigDecimal
                     state.push(num);
 
-                } else if (str.equals(ConstantLibrary.PLUS)) {  // Сравниваем содержание переменных плюс, минус, умножить, разделить
+                } else if (str.equals(PLUS)) {  // Сравниваем содержание переменных плюс, минус, умножить, разделить
                     BigDecimal value1 = state.pop();
                     BigDecimal value2 = state.pop();
                     BigDecimal value3 = MathFunctions.calculatePlus(value1, value2); // Функция вычисления результата сложения
                     state.push(value3);
 
-                } else if (str.equals(ConstantLibrary.MINUS)) {
+                } else if (str.equals(MINUS)) {
                     BigDecimal value1 = state.pop();
                     BigDecimal value2 = state.pop();
                     BigDecimal value3 = MathFunctions.calculateMinus(value1, value2); // Функция вычисления результата вычитания
                     state.push(value3);
 
-                } else if (str.equals(ConstantLibrary.MULTIPLY)) {
+                } else if (str.equals(MULTIPLY)) {
                     BigDecimal value1 = state.pop();
                     BigDecimal value2 = state.pop();
                     BigDecimal value3 = MathFunctions.calculateMultiply(value1, value2); // Функция вычисления результата умножения
                     state.push(value3);
 
-                } else if (str.equals(ConstantLibrary.DIVIDE)) {
+                } else if (str.equals(DIVIDE)) {
                     BigDecimal value1 = state.pop();
                     BigDecimal value2 = state.pop();
                     BigDecimal value3 = MathFunctions.calculateDivide(value1, value2); // Функция вычисления результата деления
                     state.push(value3);
 
 
-                } else if (str.equals(ConstantLibrary.SQUARE)) { // Функция извлечение корня (переменная)
+                } else if (str.equals(SQUARE)) { // Функция извлечение корня (переменная)
                     BigDecimal value = state.pop();
                     value = MathFunctions.calculateSquare(value);
                     state.push(value);
 
-                } else if (str.equals(ConstantLibrary.EXPONENT)) { // Функция возведение в степень (переменная)
+                } else if (str.equals(EXPONENT)) { // Функция возведение в степень (переменная)
                     BigDecimal value1 = state.pop();
                     BigDecimal value2 = state.pop();
                     BigDecimal value3 = MathFunctions.calculateExponent(value1, value2);
                     state.push(value3);
 
-                } else if (str.equals(ConstantLibrary.PERCENT)) { // Функция подсчета процентов (переменные)
+                } else if (str.equals(PERCENT)) { // Функция подсчета процентов (переменные)
                     BigDecimal value1 = state.pop();
                     BigDecimal value2 = state.pop();
                     BigDecimal value3 = MathFunctions.calculatePercentages(value1, value2);
@@ -245,42 +246,42 @@ public class MainTest {
 
                 } else {
                     str = hashmap.get(str); // Присваиваем str значение по ключу Map
-                    if (str.equals(ConstantLibrary.PLUS)) {  // Сравниваем содержание переменных плюс, минус, умножить, разделить
+                    if (str.equals(PLUS)) {  // Сравниваем содержание переменных плюс, минус, умножить, разделить
                         BigDecimal value1 = state.pop();
                         BigDecimal value2 = state.pop();
                         BigDecimal value3 = MathFunctions.calculatePlus(value1, value2); // Функция вычисления результата сложения
                         state.push(value3);
 
-                    } else if (str.equals(ConstantLibrary.MINUS)) {
+                    } else if (str.equals(MINUS)) {
                         BigDecimal value1 = state.pop();
                         BigDecimal value2 = state.pop();
                         BigDecimal value3 = MathFunctions.calculateMinus(value1, value2); // Функция вычисления результата вычитания
                         state.push(value3);
 
-                    } else if (str.equals(ConstantLibrary.MULTIPLY)) {
+                    } else if (str.equals(MULTIPLY)) {
                         BigDecimal value1 = state.pop();
                         BigDecimal value2 = state.pop();
                         BigDecimal value3 = MathFunctions.calculateMultiply(value1, value2); // Функция вычисления результата умножения
                         state.push(value3);
 
-                    } else if (str.equals(ConstantLibrary.DIVIDE)) {
+                    } else if (str.equals(DIVIDE)) {
                         BigDecimal value1 = state.pop();
                         BigDecimal value2 = state.pop();
                         BigDecimal value3 = MathFunctions.calculateDivide(value1, value2); // Функция вычисления результата деления
                         state.push(value3);
 
-                    } else if (str.equals(ConstantLibrary.SQUARE)) { // Функция извлечение корня (переменная)
+                    } else if (str.equals(SQUARE)) { // Функция извлечение корня (переменная)
                         BigDecimal value = state.pop();
                         value = MathFunctions.calculateSquare(value);
                         state.push(value);
 
-                    } else if (str.equals(ConstantLibrary.EXPONENT)) { // Функция возведение в степень (переменная)
+                    } else if (str.equals(EXPONENT)) { // Функция возведение в степень (переменная)
                         BigDecimal value1 = state.pop();
                         BigDecimal value2 = state.pop();
                         BigDecimal value3 = MathFunctions.calculateExponent(value1, value2);
                         state.push(value3);
 
-                    } else if (str.equals(ConstantLibrary.PERCENT)) { // Функция подсчета процентов (переменные)
+                    } else if (str.equals(PERCENT)) { // Функция подсчета процентов (переменные)
                         BigDecimal value1 = state.pop();
                         BigDecimal value2 = state.pop();
                         BigDecimal value3 = MathFunctions.calculatePercentages(value1, value2);

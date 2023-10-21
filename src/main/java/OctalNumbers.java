@@ -1,5 +1,5 @@
 import java.math.BigDecimal;
-
+import static mypackage.ConstantLibrary.*;
 public class OctalNumbers {
 
     /**
@@ -39,7 +39,7 @@ public class OctalNumbers {
      */
     public static Boolean isOctalCorrect(String str) { // input number without the prefix
         String[] octalNums = str.split(""); // Convert the string to an array of strings
-        String[] validValues = new String[]{ConstantLibrary.ZERO, ConstantLibrary.ONE, ConstantLibrary.TWO, ConstantLibrary.THREE, ConstantLibrary.FOUR, ConstantLibrary.FIVE, ConstantLibrary.SIX, ConstantLibrary.SEVEN};
+        String[] validValues = new String[]{ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN};
         int i = 0;
         while (i < octalNums.length) { // Check all the strings in the octalNums array
             String x = octalNums[i]; // x = a string from the octalNums array
@@ -72,7 +72,7 @@ public class OctalNumbers {
             result = input % 8 + "" + result;
             input = input / 8;
         }
-        result = ConstantLibrary.PREFIX_8 + result; // Add the prefix
+        result = PREFIX_8 + result; // Add the prefix
         return result;
     }
 }
