@@ -1,7 +1,9 @@
-import java.math.BigDecimal;
-import static mypackage.ConstantLibrary.*;
+package numbers;
 
-public class HexNumbers {
+import java.math.BigDecimal;
+import static constants.ConstantLibrary.*;
+
+public final class HexNumbers {
 
     /**
      * Function checks if the entered string is a hexadecimal (base 16) number. Use the 0x prefix

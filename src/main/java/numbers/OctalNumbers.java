@@ -1,6 +1,8 @@
+package numbers;
+
 import java.math.BigDecimal;
-import static mypackage.ConstantLibrary.*;
-public class OctalNumbers {
+import static constants.ConstantLibrary.*;
+public final class OctalNumbers {
 
     /**
      * Function checks if the input string is an octal (base 8) number. Use the prefix 0o.

@@ -1,4 +1,9 @@
-import static mypackage.ConstantLibrary.*;
+import numbers.BinaryNumbers;
+import numbers.HexNumbers;
+import numbers.OctalNumbers;
+import numbers.RomeNumerals;
+
+import static constants.ConstantLibrary.*;
 import java.math.BigDecimal;
 
 public class Core {

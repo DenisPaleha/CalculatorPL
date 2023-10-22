@@ -1,3 +1,6 @@
+import stack.AbstractStack;
+import stack.StackArr;
+
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 
@@ -16,11 +19,11 @@ public class StackArrTest extends TestCase {
     public void testPush() {
         StackArr stackArr = new StackArr();
         stackArr.push(BigDecimal.valueOf(12));
-        BigDecimal result = stackArr.nums[0];
+        BigDecimal result = stackArr.getByIndex(0);
         String test = result.toString();
         assertEquals("12", test);
 
-        int test2 = stackArr.freeIndex;
+        int test2 = stackArr.getFreeIndex();
         assertEquals(1, test2);
 
         stackArr.push(BigDecimal.valueOf(12));
@@ -33,7 +36,7 @@ public class StackArrTest extends TestCase {
         stackArr.push(BigDecimal.valueOf(12));
         stackArr.push(BigDecimal.valueOf(12));
 
-        test2 = stackArr.nums.length;
+        test2 = stackArr.getNumsLength();
         assertEquals(20, test2);
     }
 
@@ -49,7 +52,7 @@ public class StackArrTest extends TestCase {
         test = result.toString();
         assertEquals("12", test);
 
-        result = stackArr.nums[stackArr.freeIndex - 1]; // Проверяем что ничего не пропало
+        result = stackArr.getByIndex(stackArr.getFreeIndex() - 1); // Проверяем что ничего не пропало
         test = result.toString();
         assertEquals("12", test);
     }

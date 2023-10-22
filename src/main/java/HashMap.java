@@ -1,7 +1,7 @@
 import java.util.Objects;
-import static mypackage.ConstantLibrary.*;
+import static constants.ConstantLibrary.*;
 
-public class HashMap {
+public final class HashMap {
 
     private int capacity;
     private String[][] keys;

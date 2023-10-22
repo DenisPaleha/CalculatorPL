@@ -1,5 +1,6 @@
-import static mypackage.ConstantLibrary.*;
+import static constants.ConstantLibrary.*;
 import junit.framework.TestCase;
+import numbers.BinaryNumbers;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

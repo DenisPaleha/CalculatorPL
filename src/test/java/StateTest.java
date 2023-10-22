@@ -3,8 +3,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Locale;
-import java.util.Scanner;
 
 public class StateTest extends TestCase {
 

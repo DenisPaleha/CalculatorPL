@@ -1,3 +1,5 @@
+package stack;
+
 import java.math.BigDecimal;
 
 public abstract class AbstractStack {

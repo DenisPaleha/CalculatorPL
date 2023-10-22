@@ -1,7 +1,10 @@
+package stack;
+
+import list.LinkedList;
 import java.math.BigDecimal;
 
 public class StackList extends AbstractStack {
-    LinkedList list = new LinkedList();
+    public LinkedList list = new LinkedList();
 
     public boolean isEmpty() {
         return this.list.isEmpty();

@@ -1,7 +1,9 @@
-import java.math.BigDecimal;
-import static mypackage.ConstantLibrary.*;
+package numbers;
 
-public class BinaryNumbers {
+import java.math.BigDecimal;
+import static constants.ConstantLibrary.*;
+
+public final class BinaryNumbers {
 
     /**
      * Function checks if a string contains a binary number (2), use the prefix 0b (zero + b)

@@ -1,5 +1,5 @@
-package mypackage;
-public class ConstantLibrary {
+package constants;
+public final class ConstantLibrary {
     // Constant library, for the Main class
     public static final String EXIT = "E";
     public static final String PLUS = "+";
@@ -52,7 +52,7 @@ public class ConstantLibrary {
     public static final String FOURTEEN = "E";
     public static final String FIFTEEN = "F";
 
-    // ----------- mypackage.RomeNumerals -------------
+    // ----------- mypackage.numbers.RomeNumerals -------------
 
     public static final String HEAD_MESSAGE_ROME_1 = "I = 1; V = 5; X = 10; L = 50; C = 100; D = 500; M = 1000.";
     public static final String HEAD_MESSAGE_ROME_2 = "Conversion is correct only for numbers from 0 to 3999.";

@@ -1,4 +1,10 @@
-import static mypackage.ConstantLibrary.*;
+import static constants.ConstantLibrary.*;
+
+import numbers.BinaryNumbers;
+import numbers.HexNumbers;
+import numbers.OctalNumbers;
+import numbers.RomeNumerals;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
@@ -11,8 +17,6 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class MainTest {
-
-//    Scanner sc = new Scanner(System.in).useLocale(Locale.ENGLISH);
 
     /**
      * Проверяем существует ли документ с сохраненными данными

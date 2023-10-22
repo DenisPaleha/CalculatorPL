@@ -1,3 +1,4 @@
+package list;
 import java.math.BigDecimal;
 
 public class LinkedList {

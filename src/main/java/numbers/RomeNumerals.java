@@ -1,7 +1,9 @@
-import java.math.BigDecimal;
-import static mypackage.ConstantLibrary.*;
+package numbers;
 
-public class RomeNumerals {
+import java.math.BigDecimal;
+import static constants.ConstantLibrary.*;
+
+public final class RomeNumerals {
 
     // The library of Roman numeral strings is located in the ConstantLibrary class
 

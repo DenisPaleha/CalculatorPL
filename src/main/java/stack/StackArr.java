@@ -1,8 +1,10 @@
+package stack;
+
 import java.math.BigDecimal;
 
 public class StackArr extends AbstractStack {
-    int freeIndex = 0;  // Array counter
-    BigDecimal[] nums = new BigDecimal[10]; // BigDecimal array
+    private int freeIndex = 0;  // Array counter
+    private BigDecimal[] nums = new BigDecimal[10]; // BigDecimal array
 
     /**
      * Returns true if the array stack is empty
@@ -70,6 +72,18 @@ public class StackArr extends AbstractStack {
             resultInfo += "Содержимое: " + data + " Индекс массива: " + freeIndex + " Длина массива: " + nums.length;
         }
         return resultInfo;
+    }
+
+    public int getFreeIndex(){ //Need for test only
+        return this.freeIndex;
+    }
+
+    public int getNumsLength(){ //Need for test only
+        return nums.length;
+    }
+
+    public BigDecimal getByIndex(int freeIndex){
+        return nums[freeIndex];
     }
 
 }

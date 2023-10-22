@@ -1,4 +1,4 @@
-import static mypackage.ConstantLibrary.*;
+import static constants.ConstantLibrary.*;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
