@@ -1,5 +1,7 @@
 import static constants.ConstantLibrary.*;
 
+import constants.HashMap;
+import math.MathFunctions;
 import numbers.BinaryNumbers;
 import numbers.HexNumbers;
 import numbers.OctalNumbers;
@@ -136,7 +138,7 @@ public class MainTest {
     }
 
     /**
-     * Проверяем работу математических операций Этот тест не учитывает ключи HashMap!
+     * Проверяем работу математических операций Этот тест не учитывает ключи constants.HashMap!
      * Main.checkDouble(str); - Теперь эта функция в классе Core
      */
     @Test

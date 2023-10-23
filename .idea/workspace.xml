@@ -4,32 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="Creating new package - package mypackage;">
+    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="Creating new packages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AbstractStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/stack/AbstractStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BinaryNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/numbers/BinaryNumbers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HashMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HexNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/numbers/HexNumbers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Iterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/list/Iterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/list/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constants/HashMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LocaleStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/languages/LocaleStrings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logger/Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/list/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/OctalNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/numbers/OctalNumbers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RomeNumerals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/numbers/RomeNumerals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/StackArr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/stack/StackArr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/StackList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/stack/StackList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MathFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/math/MathFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mypackage/ConstantLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constants/ConstantLibrary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BinaryNumbersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BinaryNumbersTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logger/Writer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/HashMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HashMapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/HexNumbersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HexNumbersTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinkedListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/OctalNumbersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OctalNumbersTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StackArrTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StackArrTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StackListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StackListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StateTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,13 +144,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696176198628</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Maven">
-      <created>1696188847413</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1696188847413</updated>
     </task>
     <task id="LOCAL-00003" summary="Maven">
       <created>1696188974999</created>
@@ -502,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697882919680</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Creating new packages">
+      <created>1698004962259</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1698004962259</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -518,7 +504,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ tripMeter (invisible counter)" />
     <MESSAGE value="migration to jdk 17" />
     <MESSAGE value="reconfiguration pom.xml" />
     <MESSAGE value="Exceptions IO" />
@@ -543,6 +528,7 @@
     <MESSAGE value="label of break operator - PROGRAM" />
     <MESSAGE value="import static mypackage.ConstantLibrary.*;" />
     <MESSAGE value="Creating new package - package mypackage;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating new package - package mypackage;" />
+    <MESSAGE value="Creating new packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating new packages" />
   </component>
 </project>

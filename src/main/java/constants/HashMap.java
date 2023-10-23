@@ -1,3 +1,5 @@
+package constants;
+
 import java.util.Objects;
 import static constants.ConstantLibrary.*;
 
@@ -208,11 +210,14 @@ public final class HashMap {
         put("outoct", OUT_OCT);
         put("outhex", OUT_HEX);
         put("outrom", OUT_ROM);
+        put("outrome", OUT_ROM);
 
         put("outrus", OUT_RUS);
         put("rus", OUT_RUS);
+        put("рус", OUT_RUS);
         put("outeng",OUT_ENG);
         put("eng",OUT_ENG);
+        put("инг",OUT_ENG);
     }
 
     /**

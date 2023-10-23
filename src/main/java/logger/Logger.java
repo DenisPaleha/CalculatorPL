@@ -1,3 +1,5 @@
+package logger;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
@@ -6,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Logger {
+public final class Logger {
     private final String loggerPath = "LoggerFiles";
     private final String tempPath = "LoggerFiles/TempLogs";
     private File outputFile; // Creating File, combining the file path and file name
@@ -127,14 +129,14 @@ public class Logger {
                 Files.copy(file, targetFile, StandardCopyOption.REPLACE_EXISTING);// Copy the file to the target directory
             }
 
-            CopyFilesTempAndClean(); // Move files from the Temp folder back to the Logger folder when it is full
+            CopyFilesTempAndClean(); // Move files from the Temp folder back to the logger.Logger folder when it is full
         } catch (IOException e) {
             throw new IOException("Can't copy files from " + loggerPath + " to " + tempPath);
         }
     }
 
     /**
-     * The function copies files from the Temp folder back to the Logger folder if there are more than X files there
+     * The function copies files from the Temp folder back to the logger.Logger folder if there are more than X files there
      */
     public void CopyFilesTempAndClean() throws Exception {
         Path sourceDirectory = Paths.get(tempPath);

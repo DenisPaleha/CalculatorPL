@@ -1,3 +1,5 @@
+package languages;
+
 import java.io.*;
 import java.util.Properties;
 

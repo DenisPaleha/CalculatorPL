@@ -1,3 +1,5 @@
+import constants.HashMap;
+import math.MathFunctions;
 import numbers.BinaryNumbers;
 import numbers.HexNumbers;
 import numbers.OctalNumbers;
@@ -21,7 +23,7 @@ public class Core {
         boolean isOctal = OctalNumbers.isOctalNumber(operand); // Check the content of the octal number string
         boolean isHex = HexNumbers.isHexNumber(operand); // Check the content of the hexadecimal number string
         boolean isBinary = BinaryNumbers.isBinaryNumber(operand); // Check the content of the binary number string
-        boolean keyHashMap = coreHashMap.hasKey(operand); // Check if str is a HashMap key
+        boolean keyHashMap = coreHashMap.hasKey(operand); // Check if str is a constants.HashMap key
 
         if (isDecimal) {    // Put the string in a BigDecimal and add it to the stack
             BigDecimal num = new BigDecimal(operand); // Assign the value of the string to a BigDecimal number
@@ -44,7 +46,7 @@ public class Core {
             state.push(binaryResult);
             return false;
         } else if (keyHashMap) { // If the string matches an existing key
-            operand = coreHashMap.get(operand); // Assign str a value by HashMap key
+            operand = coreHashMap.get(operand); // Assign str a value by constants.HashMap key
 
             if (operand.equals(PLUS)) {
                 BigDecimal value1 = state.pop();
