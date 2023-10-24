@@ -13,7 +13,7 @@ public final class BinaryNumbers {
     /**
      * Function checks if a number contains any unsupported digits (other than 1-2)
      */
-    public static Boolean isBinaryCorrect(String str) { // Input the number (including the prefix)
+    private static Boolean isBinaryCorrect(String str) { // Input the number (including the prefix)
         String[] binaryNums = str.split(""); // Convert the string into an array of strings
         String[] validValues = new String[]{ZERO, ONE};
         int i = 0;
@@ -39,7 +39,7 @@ public final class BinaryNumbers {
     /**
      * Function takes a binary prefix string (0b) and returns a BigDecimal with the decimal result
      */
-    public static String convertBinaryToDecimal(String str) {
+    private static String convertBinaryToDecimal(String str) {
         String[] binaryNums = str.split("");
         double result = 0;
         for (int i = 0; i < binaryNums.length; i++) {

@@ -12,7 +12,7 @@ public final class OctalNumbers {
     /**
      * Function takes an octal number string without the prefix (0o) and returns a BigDecimal.
      */
-    public static BigDecimal convertOctalToDecimal(String str) {
+    private static BigDecimal convertOctalToDecimal(String str) {
         String[] octalNums = str.split("");
         double result = 0;
         for (int i = 0; i < octalNums.length; i++) {
@@ -39,7 +39,7 @@ public final class OctalNumbers {
     /**
      * Function checks if the number contains unsupported digits (8)
      */
-    public static Boolean isOctalCorrect(String str) { // input number without the prefix
+    private static Boolean isOctalCorrect(String str) { // input number without the prefix
         String[] octalNums = str.split(""); // Convert the string to an array of strings
         String[] validValues = new String[]{ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN};
         int i = 0;

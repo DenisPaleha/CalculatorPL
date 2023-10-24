@@ -16,16 +16,16 @@ public class OctalNumbersTest extends TestCase {
         assertFalse(octalFalse);
     }
 
-    /**
-     * Проверяем конвертацию из строки восьмеричного числа в BidDecimal десятичного
-     */
-    @Test
-    public void testConvertOctalToDecimal() {
-        String test = "60"; // Строка без префикса "0o"
-        BigDecimal actualOct = OctalNumbers.convertOctalToDecimal(test);
-        String result = actualOct.toString();
-        assertEquals("48.0", result);
-    }
+//    /**
+//     * Проверяем конвертацию из строки восьмеричного числа в BidDecimal десятичного
+//     */
+//    @Test
+//    public void testConvertOctalToDecimal() { // Need public
+//        String test = "60"; // Строка без префикса "0o"
+//        BigDecimal actualOct = OctalNumbers.convertOctalToDecimal(test);
+//        String result = actualOct.toString();
+//        assertEquals("48.0", result);
+//    }
 
     /**
      * Функция получает на вход строку проверяет ее возможность и возвращает BigDecimal для вставки в массив или список
@@ -43,19 +43,19 @@ public class OctalNumbersTest extends TestCase {
         assertEquals("0.0", result);
     }
 
-    /**
-     * Функция проверяет, содержит ли строка недопустимые значения (не учитывая Префикс!)
-     */
-    @Test
-    public void testIsOctalCorrect() {
-        String test = "608";
-        boolean result = OctalNumbers.isOctalCorrect(test);
-        assertFalse(result);
-
-        test = "675";
-        result = OctalNumbers.isOctalCorrect(test);
-        assertTrue(result);
-    }
+//    /**
+//     * Функция проверяет, содержит ли строка недопустимые значения (не учитывая Префикс!)
+//     */
+//    @Test
+//    public void testIsOctalCorrect() { // Need public
+//        String test = "608";
+//        boolean result = OctalNumbers.isOctalCorrect(test);
+//        assertFalse(result);
+//
+//        test = "675";
+//        result = OctalNumbers.isOctalCorrect(test);
+//        assertTrue(result);
+//    }
 
     /**
      * Функция проверяет правильность конвертации десятичных чисел в восьмеричные

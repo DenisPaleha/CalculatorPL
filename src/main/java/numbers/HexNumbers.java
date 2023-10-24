@@ -13,7 +13,7 @@ public final class HexNumbers {
     /**
      * Function takes a BigDecimal without the hexadecimal (base 16) prefix and returns a string with the decimal result
      */
-    public static BigDecimal convertHexToDecimal(String str) {
+    private static BigDecimal convertHexToDecimal(String str) {
         String[] hexNums = str.split(""); // Convert the string into an array of strings
 
         for (int i = 0; i < hexNums.length; i++) { // Replace alphabetic characters with their decimal equivalents
@@ -54,7 +54,7 @@ public final class HexNumbers {
     /**
      * Function checks if the number contains any unsupported characters (base 16)
      */
-    public static Boolean isHexCorrect(String str) { // The string with the number already without the prefix
+    private static Boolean isHexCorrect(String str) { // The string with the number already without the prefix
         String[] hexNums = str.split(""); // Convert the string into an array of strings
         String[] validValues = new String[]{ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN};
         int i = 0;
