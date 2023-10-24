@@ -44,7 +44,7 @@ public final class RomeNumerals {
     /**
      * Returns a string with the first (rightmost) Roman numeral
      */
-    public static String fineNumber1(String[] arrayTen, int[] nums) {
+    private static String fineNumber1(String[] arrayTen, int[] nums) {
         int i = nums[nums.length - 1]; // Digit place of the input number
         if (nums[nums.length - 1] == 0) {
             return "";
@@ -55,7 +55,7 @@ public final class RomeNumerals {
     /**
      * Returns a string with the second Roman numeral
      */
-    public static String fineNumber2(String[] arrayDozens, int[] nums) {
+    private static String fineNumber2(String[] arrayDozens, int[] nums) {
         String result = "";
         if (nums.length < 2) {
             return result;
@@ -71,7 +71,7 @@ public final class RomeNumerals {
     /**
      * Returns a string with the third Roman numeral
      */
-    public static String fineNumber3(String[] arrayHundreds, int[] nums) {
+    private static String fineNumber3(String[] arrayHundreds, int[] nums) {
         String result = "";
         if (nums.length < 3) {
             return result;
@@ -86,7 +86,7 @@ public final class RomeNumerals {
     /**
      * Returns a string with the fourth Roman numeral
      */
-    public static String fineNumber4(String[] arrayThousands, int[] nums) {
+    private static String fineNumber4(String[] arrayThousands, int[] nums) {
         String result = "";
         if (nums.length < 4) {
             return result;
@@ -99,7 +99,7 @@ public final class RomeNumerals {
     /**
      * Function accepts a Roman numeral string and returns a BigDecimal
      */
-    public static double convertRomeToDecimal(String str) throws Exception {
+    private static double convertRomeToDecimal(String str) throws Exception {
         // Create arrays of strings for each type of Roman numeral.
         String[] romeNumerals = new String[]{ONE_ROME, FIVE_ROME, TEN_ROME, FIFTY, ONE_HUNDRED, FIVE_HUNDRED, THOUSAND};
 
@@ -135,7 +135,7 @@ public final class RomeNumerals {
      * I cannot precede L, C, D, M
      * X cannot precede D, M
      */
-    public static void permitsForSubtraction(int[] inputInt) throws Exception {
+    private static void permitsForSubtraction(int[] inputInt) throws Exception {
         for (int i = 0; i < inputInt.length - 1; i++) { // "inputInt.length - 1" because we compare with the next
             int x1 = 1;
             if (x1 == inputInt[i] && (inputInt[i + 1] == 50 || inputInt[i + 1] == 100 || inputInt[i + 1] == 500 || inputInt[i + 1] == 1000)) {
@@ -153,7 +153,7 @@ public final class RomeNumerals {
     /**
      * Method checks if two identical smaller numerals are followed by a larger one (e.g., IIX)
      */
-    public static void twoSmallerInRow(int[] inputInt) throws Exception {
+    private static void twoSmallerInRow(int[] inputInt) throws Exception {
         for (int x1 = 1; x1 < 1001; x1 = x1 * 10) {
             for (int i = 0; i < inputInt.length - 2; i++) { // "inputInt.length - 2" because we compare the next two numbers
                 if (x1 == inputInt[i] && x1 == inputInt[i + 1] && x1 < inputInt[i + 2]) {
@@ -166,7 +166,7 @@ public final class RomeNumerals {
     /**
      * Method checks if numerals 1, 10, 100, 1000 are repeated more than three times in a row (e.g., "IIII")
      */
-    public static void moreThanThreeInRow(int[] inputInt) throws Exception {
+    private static void moreThanThreeInRow(int[] inputInt) throws Exception {
         if (inputInt.length > 3) {
             for (int x1 = 1; x1 < 10000; x1 = x1 * 10) {
                 int i = 0;
@@ -183,7 +183,7 @@ public final class RomeNumerals {
     /**
      * Method checks if numerals 5, 50, and 500 are subtracted (e.g., VX)
      */
-    public static void subtractionCheck(int[] inputInt) throws Exception {
+    private static void subtractionCheck(int[] inputInt) throws Exception {
         for (int x1 = 5; x1 < 5000; x1 = x1 * 10) {
             for (int i = 0; i < inputInt.length; i++) {
                 if (x1 == inputInt[i]) {
@@ -200,7 +200,7 @@ public final class RomeNumerals {
     /**
      * Method checks if numerals 5, 50, 500 are repeated (each can only appear once in the number)
      */
-    public static void twoNumberCheck(int[] inputInt) throws Exception {
+    private static void twoNumberCheck(int[] inputInt) throws Exception {
         for (int x1 = 5; x1 < 5000; x1 = x1 * 10) {
             int x = 0;
             int i = 0;
@@ -219,7 +219,7 @@ public final class RomeNumerals {
     /**
      * Method checks if the string contains invalid characters
      */
-    public static void checkingAllowedCharacters(String[] RomaNumerals, String[] arrStringInput) throws Exception {
+    private static void checkingAllowedCharacters(String[] RomaNumerals, String[] arrStringInput) throws Exception {
         for (String s : arrStringInput) {
             String x = s + "";
             int j = 0;
@@ -240,7 +240,7 @@ public final class RomeNumerals {
     /**
      * Function assigns a number based on the index in the string array
      */
-    public static int valueOfIndex(int i) {
+    private static int valueOfIndex(int i) {
         int result = 0;
         if (i == 0) {
             result = 1;
@@ -263,7 +263,7 @@ public final class RomeNumerals {
     /**
      * Method performs final calculations. The result is the first number in the array
      */
-    public static double resultNum(int[] arrInputInt) {
+    private static double resultNum(int[] arrInputInt) {
         for (int i = 1; i < arrInputInt.length; i++) {
             int j = i + 1;
             if ((arrInputInt[arrInputInt.length - i] > arrInputInt[arrInputInt.length - j])) {
