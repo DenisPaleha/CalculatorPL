@@ -201,9 +201,7 @@ public class State {
     /**
      * Function to switch the variable 'numberSystem' being used.
      */
-    public void setNumberSystem(String newNumberSystem) {
-        this.numberSystem = newNumberSystem;
-    }
+    public void setNumberSystem(String newNumberSystem) { this.numberSystem = newNumberSystem; }
 
     public void push(BigDecimal value) {
         stack.push(value);

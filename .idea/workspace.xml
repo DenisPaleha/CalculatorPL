@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="Creating new packages">
+    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="change public access to private">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constants/HashMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LocaleStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/languages/LocaleStrings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logger/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MathFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/math/MathFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logger/Writer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/HashMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HashMapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/stack/StackList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/stack/StackList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,16 +85,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Runner" />
+    <configuration name="BinaryNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CalculatorPL" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BinaryNumbersTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoggerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CalculatorPL" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LoggerTest" />
+      <option name="MAIN_CLASS_NAME" value="HexNumbersTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -130,9 +125,9 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.MainTest" />
+        <item itemvalue="JUnit.HexNumbersTest" />
+        <item itemvalue="JUnit.BinaryNumbersTest" />
         <item itemvalue="JUnit.StateTest" />
-        <item itemvalue="Application.Runner" />
-        <item itemvalue="JUnit.LoggerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -144,27 +139,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696176198628</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Maven">
-      <created>1696188974999</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1696188974999</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Maven">
-      <created>1696189093052</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1696189093052</updated>
-    </task>
-    <task id="LOCAL-00005" summary="added README.md file">
-      <created>1696228884672</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1696228884672</updated>
     </task>
     <task id="LOCAL-00006" summary="adding txt files to gitignore">
       <created>1696230521363</created>
@@ -488,7 +462,28 @@
       <option name="project" value="LOCAL" />
       <updated>1698004962259</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Creating new packages">
+      <created>1698054052734</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1698054052734</updated>
+    </task>
+    <task id="LOCAL-00053" summary="change public access to private">
+      <created>1698141790708</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1698141790709</updated>
+    </task>
+    <task id="LOCAL-00054" summary="change public access to private">
+      <created>1698142545097</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1698142545097</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -504,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="migration to jdk 17" />
     <MESSAGE value="reconfiguration pom.xml" />
     <MESSAGE value="Exceptions IO" />
     <MESSAGE value="ignore logger files" />
@@ -529,6 +523,7 @@
     <MESSAGE value="import static mypackage.ConstantLibrary.*;" />
     <MESSAGE value="Creating new package - package mypackage;" />
     <MESSAGE value="Creating new packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating new packages" />
+    <MESSAGE value="change public access to private" />
+    <option name="LAST_COMMIT_MESSAGE" value="change public access to private" />
   </component>
 </project>

@@ -37,7 +37,7 @@ public class StackList extends AbstractStack {
         return resultInfo;
     }
 
-    public String infoRus() {
+     public String infoRus() {
         String resultInfo = "Используется структура данных связный список.\n";
         if (isEmpty()) {
             resultInfo += "Содержимое: Null";
