@@ -56,7 +56,13 @@ public class Main {
                         String operand = lineScanner.next(); // Split the incomingData string with input data into parts in order
                         operand = operand.toLowerCase(); // Convert everything to lowercase
                         boolean coreNotUsed; // Method core.calculator(str) trigger switch
+                        try {
                         coreNotUsed = core.calculator(operand);
+                        } catch (Exception wrongNumber){
+                            coreNotUsed = false;
+                            logger.logOutput(wrongNumber.getMessage());
+                            System.out.println(wrongNumber.getMessage());
+                        }
 
                         boolean keyHashMap = hashmapMain.hasKey(operand); // Check if str is a constants.HashMap key
                         if (keyHashMap) { // If the string matches an existing key
@@ -206,7 +212,7 @@ public class Main {
                     String result;
                     try {
                         result = state.universalConverter(out);
-                    } catch (Exception e) {
+                    } catch (Exception wrongNumber) {
                         result = out.toString();
                     }
                     output = String.format(state.getPhrase("result"), result);

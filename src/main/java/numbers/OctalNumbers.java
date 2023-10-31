@@ -25,15 +25,14 @@ public final class OctalNumbers {
     /**
      * Function takes a string with the prefix, checks its validity, and returns a BigDecimal.
      */
-    public static BigDecimal convertOctalToPush(String str) {
+    public static BigDecimal convertOctalToPush(String str) throws Exception {
         str = str.substring(2); // Remove the prefix
         Boolean isCorrect = isOctalCorrect(str);
         if (isCorrect) {
             return convertOctalToDecimal(str);
         } else {
-            System.out.println("Octal number " + str + " contains invalid characters.");
+            throw new Exception ("Octal number " + str + " contains invalid characters.");
         }
-        return BigDecimal.valueOf(0.0);
     }
 
     /**

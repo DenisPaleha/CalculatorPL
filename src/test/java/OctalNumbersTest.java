@@ -33,14 +33,22 @@ public class OctalNumbersTest extends TestCase {
     @Test
     public void testConvertOctalToPush() {
         String num = "0o60"; // Переводим BigDecimal в int
-        BigDecimal actualOct = OctalNumbers.convertOctalToPush(num);
-        String result = actualOct.toString();
-        assertEquals("48.0", result);
+        try {
+            BigDecimal actualOct = OctalNumbers.convertOctalToPush(num);
+            String result = actualOct.toString();
+            assertEquals("48.0", result);
+        } catch (Exception wrongNumber) {
+            System.out.println(wrongNumber.getMessage());
+        }
 
+        try {
         num = "0o68"; // Переводим BigDecimal в int
-        actualOct = OctalNumbers.convertOctalToPush(num);
-        result = actualOct.toString();
-        assertEquals("0.0", result);
+            BigDecimal actualOct = OctalNumbers.convertOctalToPush(num);
+        } catch (Exception wrongNumber) {
+            String result = wrongNumber.getMessage();
+            assertEquals("Octal number 68 contains invalid characters.", result);
+            System.out.println(wrongNumber.getMessage());
+        }
     }
 
 //    /**

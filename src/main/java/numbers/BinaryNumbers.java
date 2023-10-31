@@ -50,15 +50,14 @@ public final class BinaryNumbers {
     }
 
     /** Function takes an input string, checks its validity, and returns a BigDecimal for pushing onto the stack */
-    public static BigDecimal binaryToPush(String str) {
+    public static BigDecimal binaryToPush(String str) throws Exception {
         str = str.substring(2); // Remove the prefix
         Boolean isCorrect = isBinaryCorrect(str); // Check validity
         if (isCorrect) {
             return new BigDecimal(convertBinaryToDecimal(str));
         } else {
-            System.out.println("Write error: Binary number " + str + " contains invalid characters.");
+            throw new Exception("Write error: Binary number " + str + " contains invalid characters.");
         }
-        return BigDecimal.valueOf(0.0);
     }
 
     /** Function for converting decimal numbers to binary */

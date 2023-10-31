@@ -1,6 +1,7 @@
 package numbers;
 
 import java.math.BigDecimal;
+
 import static constants.ConstantLibrary.*;
 
 public final class RomeNumerals {
@@ -308,16 +309,10 @@ public final class RomeNumerals {
     /**
      * Function accepts a string and returns a BigDecimal for insertion into an array or list
      */
-    public static BigDecimal convertRomeToPush(String str) /* throws Exception */ {
+    public static BigDecimal convertRomeToPush(String str) throws Exception {
         BigDecimal romeResult;
-        try {
-            double result = RomeNumerals.convertRomeToDecimal(str); // Convert to a floating-point number
-            romeResult = BigDecimal.valueOf(result); // Create a BigDecimal with the numeric value
-            return romeResult;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            romeResult = BigDecimal.valueOf(0.0);
-        }
+        double result = RomeNumerals.convertRomeToDecimal(str); // Convert to a floating-point number
+        romeResult = BigDecimal.valueOf(result); // Create a BigDecimal with the numeric value
         return romeResult;
     }
 }

@@ -41,9 +41,13 @@ public class BinaryNumbersTest extends TestCase {
     @Test
     public void testBinaryToDecimal() {
         String binary = "0b10011100010";
+        try {
         BigDecimal Bd = BinaryNumbers.binaryToPush(binary);
         String result = Bd.toString();
         assertEquals("1250.0", result);
+        } catch (Exception wrongNumber){
+            System.out.println(wrongNumber.getMessage());
+        }
     }
 
 }

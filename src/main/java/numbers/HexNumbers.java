@@ -1,6 +1,8 @@
 package numbers;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+
 import static constants.ConstantLibrary.*;
 
 public final class HexNumbers {
@@ -8,7 +10,9 @@ public final class HexNumbers {
     /**
      * Function checks if the entered string is a hexadecimal (base 16) number. Use the 0x prefix
      */
-    public static Boolean isHexNumber(String str){return str.startsWith("0x");}
+    public static Boolean isHexNumber(String str) {
+        return str.startsWith("0x");
+    }
 
     /**
      * Function takes a BigDecimal without the hexadecimal (base 16) prefix and returns a string with the decimal result
@@ -39,16 +43,17 @@ public final class HexNumbers {
         return BigDecimal.valueOf(result);
     }
 
-    /** Function takes a string as input, checks its validity, and returns a BigDecimal */
-    public static BigDecimal hexNumbersToPush(String str) {
+    /**
+     * Function takes a string as input, checks its validity, and returns a BigDecimal
+     */
+    public static BigDecimal hexNumbersToPush(String str) throws Exception {
         str = str.substring(2); // Remove the prefix
         Boolean isCorrect = HexNumbers.isHexCorrect(str);
         if (isCorrect) {
             return convertHexToDecimal(str);
         } else {
-            System.out.println("Write error: Hexadecimal number " + str + " contains invalid characters.");
+            throw new Exception("Write error: Hexadecimal number " + str + " contains invalid characters.");
         }
-        return BigDecimal.valueOf(0.0);
     }
 
     /**
@@ -77,10 +82,12 @@ public final class HexNumbers {
         return true;
     }
 
-    /** Function converts decimal numbers to hexadecimal */
+    /**
+     * Function converts decimal numbers to hexadecimal
+     */
 
     public static String convertDecimalToHex(int input) {
-        if (input < 0){ // If the number is negative, make it positive
+        if (input < 0) { // If the number is negative, make it positive
             input = input * -1;
         }
         String result = "";

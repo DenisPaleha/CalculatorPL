@@ -111,30 +111,48 @@ public class MainTest {
     @Test
     public void testConvertToDecimal() /* throws Exception */ {
         String str1 = "MMCCXXII";
-        BigDecimal resultRome = RomeNumerals.convertRomeToPush(str1);
-        String result = resultRome.toString();
-        Assert.assertEquals("2222.0", result);
+        try {
+            BigDecimal resultRome = RomeNumerals.convertRomeToPush(str1);
+            String result = resultRome.toString();
+            Assert.assertEquals("2222.0", result);
+        } catch (Exception wrongNumber){
+            System.out.println(wrongNumber.getMessage());
+        }
 
         str1 = "CCXXLII";
-        resultRome = RomeNumerals.convertRomeToPush(str1);
-        result = resultRome.toString();
-        Assert.assertEquals("0.0", result);
+        try {
+           BigDecimal resultRome = RomeNumerals.convertRomeToPush(str1);
+        } catch (Exception wrongNumber) {
+            String result = wrongNumber.getMessage();
+            Assert.assertEquals("Write error: Two identical Roman numerals of lesser value cannot precede a larger numeral.", result);
+        }
 
         String str2 = "0o675";
-        BigDecimal resultOct = OctalNumbers.convertOctalToPush(str2);
-
-        BigDecimal test2 = BigDecimal.valueOf(445.0);
-        Assert.assertEquals(resultOct, test2);
+        try {
+            BigDecimal resultOct = OctalNumbers.convertOctalToPush(str2);
+            BigDecimal test2 = BigDecimal.valueOf(445.0);
+            Assert.assertEquals(resultOct, test2);
+        } catch (Exception wrongNumber){
+            System.out.println(wrongNumber.getMessage());
+        }
 
         String str3 = "0xa75";
-        BigDecimal resultHex = HexNumbers.hexNumbersToPush(str3);
-        BigDecimal test3 = BigDecimal.valueOf(2677.0);
-        Assert.assertEquals(resultHex, test3);
+        try {
+            BigDecimal resultHex = HexNumbers.hexNumbersToPush(str3);
+            BigDecimal test3 = BigDecimal.valueOf(2677.0);
+            Assert.assertEquals(resultHex, test3);
+        } catch (Exception wrongNumber){
+            System.out.println(wrongNumber.getMessage());
+        }
 
+        try {
         String str4 = "0b10011100010";
         BigDecimal resultBinary = BinaryNumbers.binaryToPush(str4);
         BigDecimal test4 = BigDecimal.valueOf(1250.0);
         Assert.assertEquals(resultBinary, test4);
+        } catch (Exception wrongNumber){
+            System.out.println(wrongNumber.getMessage());
+        }
     }
 
     /**

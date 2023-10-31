@@ -188,8 +188,8 @@ public class State {
             case OUT_ROM -> {
                 try {
                     result = RomeNumerals.convertDecimalToRome(num); // Convert to Roman numerals
-                } catch (Exception e) {
-                    System.out.println(e.getMessage()); // In case of an error, display the message.
+                } catch (Exception numberConversionErrors) {
+                    System.out.println(numberConversionErrors.getMessage()); // In case of an error, display the message.
                     result = out.toString(); // Return the original value
                 }
             }

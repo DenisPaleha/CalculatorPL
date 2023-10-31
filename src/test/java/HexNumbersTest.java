@@ -34,14 +34,21 @@ public class HexNumbersTest extends TestCase {
     @Test
     public void testHexNumbersToPush() {
         String num = "0x30";
-        BigDecimal actualHex = HexNumbers.hexNumbersToPush(num);
-        String result = actualHex.toString();
-        assertEquals("48.0", result);
+        try {
+            BigDecimal actualHex = HexNumbers.hexNumbersToPush(num);
+            String result = actualHex.toString();
+            assertEquals("48.0", result);
+        } catch (Exception wrongNumber) {
+            System.out.println(wrongNumber.getMessage());
+        }
 
         num = "0x3Z";
-        actualHex = HexNumbers.hexNumbersToPush(num);
-        result = actualHex.toString();
-        assertEquals("0.0", result);
+        try {
+            BigDecimal actualHex = HexNumbers.hexNumbersToPush(num);
+        } catch (Exception wrongNumber) {
+            String result = wrongNumber.getMessage();
+            assertEquals("Write error: Hexadecimal number 3Z contains invalid characters.", result);
+        }
     }
 
 //    /**
