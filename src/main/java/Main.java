@@ -40,7 +40,8 @@ public class Main {
                 try {
                     logger.logInput(line); // Copy all input data to the logger
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());                                                         //  +++
+                    logger.logOutput(e.getMessage());
+                    System.out.println(e.getMessage());
                 }
 
                 String output; // Declare output string
@@ -106,6 +107,7 @@ public class Main {
                                 output = state.getPhrase("data_saved");
                                 logger.logOutput(output);
                                 state.saveState();
+                                System.out.println(output);
 
                             } else if (operand.equals(TO_ROME)) { // "ToRome" function, converts memory to Roman numeral
                                 System.out.println(HEAD_MESSAGE_ROME_1);
@@ -190,6 +192,7 @@ public class Main {
                                 try {
                                     logger.CopyFilesFromLoggerToTemp();
                                 } catch (IOException e) {
+                                    logger.logOutput(e.getMessage());
                                     System.out.println(e.getMessage());
                                 }
 

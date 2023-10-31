@@ -74,15 +74,15 @@ public class StackArr extends AbstractStack {
         return resultInfo;
     }
 
-    public int getFreeIndex(){ //Need for test only
+    public int getFreeIndex() { //Need for test only
         return this.freeIndex;
     }
 
-    public int getNumsLength(){ //Need for test only
+    public int getNumsLength() { //Need for test only
         return nums.length;
     }
 
-    public BigDecimal getByIndex(int freeIndex){
+    public BigDecimal getByIndex(int freeIndex) {
         return nums[freeIndex];
     }
 

@@ -40,8 +40,10 @@ public final class Logger {
      */
     public void isFileExist() throws Exception {
         if (!Files.exists(this.outputFile.toPath())) {
+            isFoldersExist(); // Checking if folders exist first
             String fileTxtName = generateFileName();
             this.outputFile = new File(this.loggerPath, fileTxtName);
+            writeFileToDir(this.outputFile, "New document \n"); // Write new file to dir
             if (!Files.exists(this.outputFile.toPath())) {
                 throw new Exception("Can't create the log to file " + outputFile);
             }
@@ -56,18 +58,9 @@ public final class Logger {
         Path targetDirectory = Paths.get(loggerPath);
 
         // Check if the specified directories exist
-        if (!Files.exists(sourceDirectory) || !Files.isDirectory(sourceDirectory)) {
+        if (!Files.isDirectory(targetDirectory) || !Files.isDirectory(sourceDirectory)) {
             createNewDir(this.loggerPath);
-            if (!Files.exists(sourceDirectory) || !Files.isDirectory(sourceDirectory)) {
-                throw new IOException("Can't create a folder " + this.loggerPath);
-            }
-        }
-
-        if (!Files.exists(targetDirectory) || !Files.isDirectory(targetDirectory)) {
             createNewDir(this.tempPath);
-            if (!Files.exists(targetDirectory) || !Files.isDirectory(targetDirectory)) {
-                throw new IOException("Can't create a folder " + this.tempPath);
-            }
         }
     }
 
@@ -100,19 +93,19 @@ public final class Logger {
         writeFileToDir(this.outputFile, logOutput); // Append the string to the document.
     }
 
-    public void createNewDir(String folderPath) { // "LoggerFiles/TempLogs"
+    public void createNewDir(String folderPath) throws IOException { // "LoggerFiles/TempLogs"
         Path newDirPath = Paths.get(folderPath); // Create Path of new Directory
         if (!Files.exists(newDirPath)) { // If the directory has not been created yet (at the first startup)
             try {
                 Files.createDirectory(newDirPath); // Create new directory
             } catch (IOException e) {
-                System.out.println("Can't create a folder " + folderPath);
+                throw new IOException("Can't create a folder " + this.loggerPath);
             }
         }
     }
 
     /**
-     * Функция копирует файлы из папки логер в папку темп если в ней более 3 файлов
+     * The function copies files from "Logger" folder to "Temp" folder if it contains more than 3 files
      */
     public void CopyFilesFromLoggerToTemp() throws Exception {
         Path sourceDirectory = Paths.get(loggerPath);

@@ -6,6 +6,7 @@ import numbers.OctalNumbers;
 import numbers.RomeNumerals;
 
 import static constants.ConstantLibrary.*;
+
 import java.math.BigDecimal;
 
 public class Core {
@@ -17,7 +18,7 @@ public class Core {
         this.state = state;
     }
 
-    public boolean calculator (String operand) throws Exception {
+    public boolean calculator(String operand) throws Exception {
         boolean isDecimal = isDouble(operand);
         boolean isRome = RomeNumerals.isRome(operand); // Check the content of the Roman numeral string
         boolean isOctal = OctalNumbers.isOctalNumber(operand); // Check the content of the octal number string
@@ -34,8 +35,8 @@ public class Core {
             state.push(romeResult); // Add the obtained number to the stack.
             return false;
         } else if (isOctal) {  // Пробрасываем все исключения наверх!!!
-                BigDecimal octalResult = OctalNumbers.convertOctalToPush(operand);
-                state.push(octalResult);
+            BigDecimal octalResult = OctalNumbers.convertOctalToPush(operand);
+            state.push(octalResult);
             return false;
         } else if (isHex) {
             BigDecimal hexResult = HexNumbers.hexNumbersToPush(operand);
@@ -69,12 +70,9 @@ public class Core {
             } else if (operand.equals(DIVIDE)) {
                 BigDecimal value1 = state.pop();
                 BigDecimal value2 = state.pop();
-                try {
-                    BigDecimal value3 = MathFunctions.calculateDivide(value1, value2);
-                    state.push(value3);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());                                    ///++++ String!
-                }
+                BigDecimal value3 = MathFunctions.calculateDivide(value1, value2);
+                state.push(value3);
+
                 return false;
             } else if (operand.equals(SQUARE)) { // Square root function
                 BigDecimal value = state.pop();

@@ -48,17 +48,17 @@ public class LinkedList {
     /** Function deletes the last node in the list */
     public void deleteLast() {
         Node node = this.head;
-        if (isEmpty()) { // If the list is empty
-            System.out.println("The list is empty, there's nothing to delete from it.");
-        } else if (node.next == null) {
-            deleteFirst();
-        } else {
-            Node previousNode;
-            while (node.next != null) {
-                previousNode = node;
-                node = node.next;
-                if (node.next == null) {
-                    previousNode.next = null;
+        if (!isEmpty()) {
+            if (node.next == null) {
+                deleteFirst();
+            } else {
+                Node previousNode;
+                while (node.next != null) {
+                    previousNode = node;
+                    node = node.next;
+                    if (node.next == null) {
+                        previousNode.next = null;
+                    }
                 }
             }
         }
@@ -67,17 +67,17 @@ public class LinkedList {
     /** Function deletes data from the list */
     public void deleteData(BigDecimal data) {
         Node node = this.head;
-        if (isEmpty()) { // If the list is empty
-            System.out.println("The list is empty, there's nothing to delete from it.");
-        } else if (node.data.equals(data)) {
-            deleteFirst();
-        } else {
-            Node previousNode;
-            while (node.next != null) {
-                previousNode = node;
-                node = node.next;
-                if (node.data.equals(data)) {
-                    previousNode.next = node.next;
+        if (!isEmpty()) {
+            if (node.data.equals(data)) {
+                deleteFirst();
+            } else {
+                Node previousNode;
+                while (node.next != null) {
+                    previousNode = node;
+                    node = node.next;
+                    if (node.data.equals(data)) {
+                        previousNode.next = node.next;
+                    }
                 }
             }
         }
@@ -134,8 +134,6 @@ public class LinkedList {
         }
         return firstItem.data;
     }
-
-    public Node getHead(){return this.head;}
 
     public Iterator iterator() {
         return new Iterator(this);

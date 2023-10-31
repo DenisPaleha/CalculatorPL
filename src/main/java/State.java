@@ -134,7 +134,6 @@ public class State {
         } catch (IOException e) {
             throw new IOException("Can't safe memory to the " + this.fileTxtName);
         }
-        System.out.println("Data saved...");
         return allMemoryTest;
     }
 
@@ -176,7 +175,7 @@ public class State {
     /**
      * Function to switch the display of BigDecimal results to another number system.
      */
-    public String universalConverter(BigDecimal out) {
+    public String universalConverter(BigDecimal out) throws Exception {
         int num = out.intValue(); // Convert to int with rounding to the nearest integer
         String result;
         switch (numberSystem) {

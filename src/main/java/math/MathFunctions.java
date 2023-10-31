@@ -71,7 +71,7 @@ public class MathFunctions {
         }
         if (value.compareTo(BigDecimal.valueOf(1)) < 0) {
             if (value.compareTo(BigDecimal.valueOf(0.005)) < 0) {
-                System.out.println("Square roots of numbers less than 0.005 are approximated.");
+                System.out.println("Square roots of numbers less than 0.005 are approximated.");     // +++ String!!!
             }
             while (true) {
                 p1 = p1.add(BigDecimal.valueOf(0.01)); // Add one hundredth to it until:
@@ -117,10 +117,9 @@ public class MathFunctions {
     /**
      * Function for calculating percentages "%"
      */
-    public static BigDecimal calculatePercentages(BigDecimal value1, BigDecimal value2) {
+    public static BigDecimal calculatePercentages(BigDecimal value1, BigDecimal value2) throws Exception {
         if ((value1.compareTo(BigDecimal.valueOf(0)) == 0) || value2.compareTo(BigDecimal.valueOf(0)) == 0) {
-            System.out.println("An example of correct input of numbers: '12 12 %'.");
-            return new BigDecimal(0);
+            throw new Exception("An example of correct input of numbers: '12 12 %'.");
         }
         value2 = value2.divide(BigDecimal.valueOf(100).setScale(10, RoundingMode.HALF_UP));
         return value2.multiply(value1).setScale(10, RoundingMode.HALF_UP);
