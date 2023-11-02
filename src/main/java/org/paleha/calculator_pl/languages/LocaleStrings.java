@@ -1,4 +1,4 @@
-package languages;
+package org.paleha.calculator_pl.languages;
 
 import java.io.*;
 import java.util.Properties;

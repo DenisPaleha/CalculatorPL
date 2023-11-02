@@ -1,6 +1,6 @@
-package stack;
+package org.paleha.calculator_pl.stack;
 
-import list.LinkedList;
+import org.paleha.calculator_pl.list.LinkedList;
 import java.math.BigDecimal;
 
 public class StackList extends AbstractStack {

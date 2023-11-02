@@ -1,5 +1,5 @@
-import stack.AbstractStack;
-import stack.StackArr;
+import org.paleha.calculator_pl.stack.AbstractStack;
+import org.paleha.calculator_pl.stack.StackArr;
 
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;

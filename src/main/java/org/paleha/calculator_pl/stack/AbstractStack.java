@@ -1,4 +1,4 @@
-package stack;
+package org.paleha.calculator_pl.stack;
 
 import java.math.BigDecimal;
 

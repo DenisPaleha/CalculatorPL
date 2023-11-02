@@ -1,7 +1,6 @@
-package constants;
+package org.paleha.calculator_pl.constanse;
 
 import java.util.Objects;
-import static constants.ConstantLibrary.*;
 
 public final class HashMap {
 
@@ -163,61 +162,61 @@ public final class HashMap {
      */
 
     public void loadMainHashMap() {
-        put("e", EXIT);
-        put("exit", EXIT);
-        put("выход", EXIT);
+        put("e", ConstantLibrary.EXIT);
+        put("exit", ConstantLibrary.EXIT);
+        put("выход", ConstantLibrary.EXIT);
 
-        put("m", MEMORY);
-        put("м", MEMORY); // рус.
-        put("п", MEMORY);
+        put("m", ConstantLibrary.MEMORY);
+        put("м", ConstantLibrary.MEMORY); // рус.
+        put("п", ConstantLibrary.MEMORY);
 
-        put("c", CLEAR);
-        put("с", CLEAR); // рус.
+        put("c", ConstantLibrary.CLEAR);
+        put("с", ConstantLibrary.CLEAR); // рус.
 
-        put("h", HELP);
-        put("help", HELP);
-        put("справка", HELP);
-        put("помощь", HELP);
+        put("h", ConstantLibrary.HELP);
+        put("help", ConstantLibrary.HELP);
+        put("справка", ConstantLibrary.HELP);
+        put("помощь", ConstantLibrary.HELP);
 
-        put("info", INFO);
-        put("инфо", INFO);
+        put("info", ConstantLibrary.INFO);
+        put("инфо", ConstantLibrary.INFO);
 
-        put("sm", SWITCH_METHOD);
-        put("переключить", SWITCH_METHOD);
+        put("sm", ConstantLibrary.SWITCH_METHOD);
+        put("переключить", ConstantLibrary.SWITCH_METHOD);
 
-        put("s", SAVE);
-        put("save", SAVE);
-        put("сохранить", SAVE);
+        put("s", ConstantLibrary.SAVE);
+        put("save", ConstantLibrary.SAVE);
+        put("сохранить", ConstantLibrary.SAVE);
 
-        put("torom", TO_ROME);
-        put("torome", TO_ROME);
-        put("римские", TO_ROME);
-        put("рим", TO_ROME);
+        put("torom", ConstantLibrary.TO_ROME);
+        put("torome", ConstantLibrary.TO_ROME);
+        put("римские", ConstantLibrary.TO_ROME);
+        put("рим", ConstantLibrary.TO_ROME);
 
-        put("tooct", TO_OCTAL);
-        put("oct", TO_OCTAL);
-        put("tooctal", TO_OCTAL);
+        put("tooct", ConstantLibrary.TO_OCTAL);
+        put("oct", ConstantLibrary.TO_OCTAL);
+        put("tooctal", ConstantLibrary.TO_OCTAL);
 
-        put("tohex", TO_HEX);
-        put("hex", TO_HEX);
+        put("tohex", ConstantLibrary.TO_HEX);
+        put("hex", ConstantLibrary.TO_HEX);
 
-        put("tobin", TO_BIN);
-        put("binary", TO_BIN);
-        put("tobinary", TO_BIN);
+        put("tobin", ConstantLibrary.TO_BIN);
+        put("binary", ConstantLibrary.TO_BIN);
+        put("tobinary", ConstantLibrary.TO_BIN);
 
-        put("outdec", OUT_DEC);
-        put("outbin", OUT_BIN);
-        put("outoct", OUT_OCT);
-        put("outhex", OUT_HEX);
-        put("outrom", OUT_ROM);
-        put("outrome", OUT_ROM);
+        put("outdec", ConstantLibrary.OUT_DEC);
+        put("outbin", ConstantLibrary.OUT_BIN);
+        put("outoct", ConstantLibrary.OUT_OCT);
+        put("outhex", ConstantLibrary.OUT_HEX);
+        put("outrom", ConstantLibrary.OUT_ROM);
+        put("outrome", ConstantLibrary.OUT_ROM);
 
-        put("outrus", OUT_RUS);
-        put("rus", OUT_RUS);
-        put("рус", OUT_RUS);
-        put("outeng",OUT_ENG);
-        put("eng",OUT_ENG);
-        put("инг",OUT_ENG);
+        put("outrus", ConstantLibrary.OUT_RUS);
+        put("rus", ConstantLibrary.OUT_RUS);
+        put("рус", ConstantLibrary.OUT_RUS);
+        put("outeng", ConstantLibrary.OUT_ENG);
+        put("eng", ConstantLibrary.OUT_ENG);
+        put("инг", ConstantLibrary.OUT_ENG);
     }
 
     /**
@@ -225,39 +224,39 @@ public final class HashMap {
      */
 
     public void loadCoreHashMap() {
-        put("+", PLUS);
-        put("plus", PLUS);
-        put("плюс", PLUS);
+        put("+", ConstantLibrary.PLUS);
+        put("plus", ConstantLibrary.PLUS);
+        put("плюс", ConstantLibrary.PLUS);
 
-        put("-", MINUS);
-        put("minus", MINUS);
-        put("минус", MINUS);
+        put("-", ConstantLibrary.MINUS);
+        put("minus", ConstantLibrary.MINUS);
+        put("минус", ConstantLibrary.MINUS);
 
-        put("*", MULTIPLY);
-        put("multiply", MULTIPLY);
-        put("умножить", MULTIPLY);
+        put("*", ConstantLibrary.MULTIPLY);
+        put("multiply", ConstantLibrary.MULTIPLY);
+        put("умножить", ConstantLibrary.MULTIPLY);
 
-        put("/", DIVIDE);
-        put(":", DIVIDE);
-        put("divide", DIVIDE);
-        put("разделить", DIVIDE);
-        put("поделить", DIVIDE);
-        put("делить", DIVIDE);
+        put("/", ConstantLibrary.DIVIDE);
+        put(":", ConstantLibrary.DIVIDE);
+        put("divide", ConstantLibrary.DIVIDE);
+        put("разделить", ConstantLibrary.DIVIDE);
+        put("поделить", ConstantLibrary.DIVIDE);
+        put("делить", ConstantLibrary.DIVIDE);
 
-        put("st", EXPONENT);
-        put("exponent", EXPONENT);
-        put("ст", EXPONENT);
-        put("степень", EXPONENT);
+        put("st", ConstantLibrary.EXPONENT);
+        put("exponent", ConstantLibrary.EXPONENT);
+        put("ст", ConstantLibrary.EXPONENT);
+        put("степень", ConstantLibrary.EXPONENT);
 
-        put("root", SQUARE);
-        put("square", SQUARE);
-        put("sq", SQUARE);
-        put("корень", SQUARE);
+        put("root", ConstantLibrary.SQUARE);
+        put("square", ConstantLibrary.SQUARE);
+        put("sq", ConstantLibrary.SQUARE);
+        put("корень", ConstantLibrary.SQUARE);
 
-        put("%", PERCENT);
-        put("percent", PERCENT);
-        put("процент", PERCENT);
-        put("проценты", PERCENT);
+        put("%", ConstantLibrary.PERCENT);
+        put("percent", ConstantLibrary.PERCENT);
+        put("процент", ConstantLibrary.PERCENT);
+        put("проценты", ConstantLibrary.PERCENT);
 
     }
 }

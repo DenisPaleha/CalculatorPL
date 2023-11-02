@@ -1,4 +1,4 @@
-package constants;
+package org.paleha.calculator_pl.constanse;
 public final class ConstantLibrary {
     // Constant library, for the Main class
     public static final String EXIT = "E";

@@ -1,15 +1,15 @@
-import languages.LocaleStrings;
-import logger.Writer;
-import stack.AbstractStack;
-import stack.StackArr;
-import stack.StackList;
+import org.paleha.calculator_pl.languages.LocaleStrings;
+import org.paleha.calculator_pl.logger.Writer;
+import org.paleha.calculator_pl.stack.AbstractStack;
+import org.paleha.calculator_pl.stack.StackArr;
+import org.paleha.calculator_pl.stack.StackList;
 
-import numbers.BinaryNumbers;
-import numbers.HexNumbers;
-import numbers.OctalNumbers;
-import numbers.RomeNumerals;
+import org.paleha.calculator_pl.numbers.BinaryNumbers;
+import org.paleha.calculator_pl.numbers.HexNumbers;
+import org.paleha.calculator_pl.numbers.OctalNumbers;
+import org.paleha.calculator_pl.numbers.RomeNumerals;
 
-import static constants.ConstantLibrary.*;
+import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 import java.io.IOException;
 import java.math.BigDecimal;

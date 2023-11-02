@@ -1,6 +1,6 @@
-import static constants.ConstantLibrary.*;
+import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 import junit.framework.TestCase;
-import numbers.BinaryNumbers;
+import org.paleha.calculator_pl.numbers.BinaryNumbers;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

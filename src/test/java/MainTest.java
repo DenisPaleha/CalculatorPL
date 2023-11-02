@@ -1,11 +1,11 @@
-import static constants.ConstantLibrary.*;
+import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 import constants.HashMap;
-import math.MathFunctions;
-import numbers.BinaryNumbers;
-import numbers.HexNumbers;
-import numbers.OctalNumbers;
-import numbers.RomeNumerals;
+import org.paleha.calculator_pl.math.MathFunctions;
+import org.paleha.calculator_pl.numbers.BinaryNumbers;
+import org.paleha.calculator_pl.numbers.HexNumbers;
+import org.paleha.calculator_pl.numbers.OctalNumbers;
+import org.paleha.calculator_pl.numbers.RomeNumerals;
 
 import org.junit.Assert;
 import org.junit.Test;

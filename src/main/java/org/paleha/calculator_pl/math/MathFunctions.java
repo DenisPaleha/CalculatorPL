@@ -1,4 +1,4 @@
-package math;
+package org.paleha.calculator_pl.math;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

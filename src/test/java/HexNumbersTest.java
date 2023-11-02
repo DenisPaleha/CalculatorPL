@@ -1,5 +1,5 @@
 import junit.framework.TestCase;
-import numbers.HexNumbers;
+import org.paleha.calculator_pl.numbers.HexNumbers;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 

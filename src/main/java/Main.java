@@ -1,12 +1,12 @@
-import static constants.ConstantLibrary.*;
+import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
-import constants.HashMap;
+import org.paleha.calculator_pl.constanse.HashMap;
 
-import logger.Logger;
-import numbers.BinaryNumbers;
-import numbers.HexNumbers;
-import numbers.OctalNumbers;
-import numbers.RomeNumerals;
+import org.paleha.calculator_pl.logger.Logger;
+import org.paleha.calculator_pl.numbers.BinaryNumbers;
+import org.paleha.calculator_pl.numbers.HexNumbers;
+import org.paleha.calculator_pl.numbers.OctalNumbers;
+import org.paleha.calculator_pl.numbers.RomeNumerals;
 
 import java.io.IOException;
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package logger;
+package org.paleha.calculator_pl.logger;
 
 import java.io.FileWriter;
 import java.io.IOException;

@@ -1,5 +1,5 @@
-import list.LinkedList;
-import list.Iterator;
+import org.paleha.calculator_pl.list.LinkedList;
+import org.paleha.calculator_pl.list.Iterator;
 
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,8 @@
-package numbers;
+package org.paleha.calculator_pl.numbers;
 
 import java.math.BigDecimal;
 
-import static constants.ConstantLibrary.*;
+import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 public final class RomeNumerals {
 

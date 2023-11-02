@@ -1,4 +1,4 @@
-package list;
+package org.paleha.calculator_pl.list;
 import java.math.BigDecimal;
 
 public class LinkedList {

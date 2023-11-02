@@ -1,4 +1,4 @@
-import static constants.ConstantLibrary.*;
+import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 import constants.HashMap;
 import junit.framework.TestCase;
