@@ -1,6 +1,6 @@
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
-import constants.HashMap;
+import org.paleha.calculator_pl.constanse.HashMap;
 import org.paleha.calculator_pl.math.MathFunctions;
 import org.paleha.calculator_pl.numbers.BinaryNumbers;
 import org.paleha.calculator_pl.numbers.HexNumbers;

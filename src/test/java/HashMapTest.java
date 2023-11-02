@@ -1,6 +1,6 @@
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
-import constants.HashMap;
+import org.paleha.calculator_pl.constanse.HashMap;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
