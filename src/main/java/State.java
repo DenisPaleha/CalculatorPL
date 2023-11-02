@@ -184,14 +184,8 @@ public class State {
             case OUT_BIN -> result = BinaryNumbers.convertDecimalToBinary(num); // Convert to binary
             case OUT_OCT -> result = OctalNumbers.convertDecimalToOctal(num); // Convert to octal
             case OUT_HEX -> result = HexNumbers.convertDecimalToHex(num); // Convert to hexadecimal
-            case OUT_ROM -> {
-                try {
-                    result = RomeNumerals.convertDecimalToRome(num); // Convert to Roman numerals
-                } catch (Exception numberConversionErrors) {
-                    System.out.println(numberConversionErrors.getMessage()); // In case of an error, display the message.
-                    result = out.toString(); // Return the original value
-                }
-            }
+            case OUT_ROM -> result = RomeNumerals.convertDecimalToRome(num); // Convert to Roman numerals
+
             default -> result = "Unknown numeral system.";
         }
         return result;

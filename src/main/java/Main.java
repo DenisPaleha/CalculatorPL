@@ -217,6 +217,7 @@ public class Main {
                         result = state.universalConverter(out);
                     } catch (Exception wrongNumber) {
                         result = out.toString();
+                        result  += " " + wrongNumber.getMessage();
                     }
                     output = String.format(state.getPhrase("result"), result);
                     logger.logOutput(output); // Result
