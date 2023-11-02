@@ -1,7 +1,7 @@
 package org.paleha.calculator_pl.numbers;
 
+import org.paleha.calculator_pl.exception.ConversionException;
 import java.math.BigDecimal;
-
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 public final class HexNumbers {
@@ -45,13 +45,13 @@ public final class HexNumbers {
     /**
      * Function takes a string as input, checks its validity, and returns a BigDecimal
      */
-    public static BigDecimal hexNumbersToPush(String str) throws Exception {
+    public static BigDecimal hexNumbersToPush(String str) throws ConversionException {
         str = str.substring(2); // Remove the prefix
         Boolean isCorrect = HexNumbers.isHexCorrect(str);
         if (isCorrect) {
             return convertHexToDecimal(str);
         } else {
-            throw new Exception("Write error: Hexadecimal number " + str + " contains invalid characters.");
+            throw new ConversionException("Write error: Hexadecimal number " + str + " contains invalid characters.");
         }
     }
 

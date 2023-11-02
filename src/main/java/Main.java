@@ -2,6 +2,8 @@ import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 import org.paleha.calculator_pl.constanse.HashMap;
 
+import org.paleha.calculator_pl.exception.ConversionException;
+import org.paleha.calculator_pl.exception.OutOfRangeException;
 import org.paleha.calculator_pl.logger.Logger;
 import org.paleha.calculator_pl.numbers.BinaryNumbers;
 import org.paleha.calculator_pl.numbers.HexNumbers;
@@ -39,7 +41,7 @@ public class Main {
 
                 try {
                     logger.logInput(line); // Copy all input data to the logger
-                } catch (Exception e) {
+                } catch (IOException e) {
                     logger.logOutput(e.getMessage());
                     System.out.println(e.getMessage());
                 }
@@ -59,7 +61,7 @@ public class Main {
                         boolean coreNotUsed; // Method core.calculator(str) trigger switch
                         try {
                         coreNotUsed = core.calculator(operand);
-                        } catch (Exception wrongNumber){
+                        } catch (ConversionException wrongNumber){
                             coreNotUsed = false;
                             logger.logOutput(wrongNumber.getMessage());
                             System.out.println(wrongNumber.getMessage());
@@ -115,7 +117,7 @@ public class Main {
                                 try {
                                     String result = RomeNumerals.convertDecimalToRome(mem);
                                     output = String.format(state.getPhrase("roman_number_equal"), result);
-                                } catch (Exception e) {
+                                } catch (OutOfRangeException e) {
                                     output = e.getMessage();
                                 }
                                 logger.logOutput(output);
@@ -215,9 +217,9 @@ public class Main {
                     String result;
                     try {
                         result = state.universalConverter(out);
-                    } catch (Exception wrongNumber) {
+                    } catch (OutOfRangeException e) {
                         result = out.toString();
-                        result  += " " + wrongNumber.getMessage();
+                        result  += " " + e.getMessage();
                     }
                     output = String.format(state.getPhrase("result"), result);
                     logger.logOutput(output); // Result

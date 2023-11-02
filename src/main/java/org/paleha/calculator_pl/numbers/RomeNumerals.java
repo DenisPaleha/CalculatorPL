@@ -1,5 +1,8 @@
 package org.paleha.calculator_pl.numbers;
 
+import org.paleha.calculator_pl.exception.ConversionException;
+import org.paleha.calculator_pl.exception.OutOfRangeException;
+
 import java.math.BigDecimal;
 
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
@@ -21,7 +24,7 @@ public final class RomeNumerals {
 
         int value = (int) doubleValue;
         if (value < 0 || value >= MAX_VALUE) {  // Check the value of the input number
-            throw new Exception(HEAD_MESSAGE_ROME_2);
+            throw new OutOfRangeException(HEAD_MESSAGE_ROME_2);
 
         } else if (value == 0) {
             return "Null";
@@ -100,7 +103,7 @@ public final class RomeNumerals {
     /**
      * Function accepts a Roman numeral string and returns a BigDecimal
      */
-    private static double convertRomeToDecimal(String str) throws Exception {
+    private static double convertRomeToDecimal(String str) throws ConversionException {
         // Create arrays of strings for each type of Roman numeral.
         String[] romeNumerals = new String[]{ONE_ROME, FIVE_ROME, TEN_ROME, FIFTY, ONE_HUNDRED, FIVE_HUNDRED, THOUSAND};
 
@@ -136,17 +139,17 @@ public final class RomeNumerals {
      * I cannot precede L, C, D, M
      * X cannot precede D, M
      */
-    private static void permitsForSubtraction(int[] inputInt) throws Exception {
+    private static void permitsForSubtraction(int[] inputInt) throws ConversionException {
         for (int i = 0; i < inputInt.length - 1; i++) { // "inputInt.length - 1" because we compare with the next
             int x1 = 1;
             if (x1 == inputInt[i] && (inputInt[i + 1] == 50 || inputInt[i + 1] == 100 || inputInt[i + 1] == 500 || inputInt[i + 1] == 1000)) {
-                throw new Exception("Write error: I cannot precede L, C, D, M.");
+                throw new ConversionException("Write error: I cannot precede L, C, D, M.");
             }
         }
         for (int i = 0; i < inputInt.length - 1; i++) { // "inputInt.length - 1" because we compare with the next
             int x1 = 10;
             if (x1 == inputInt[i] && (inputInt[i + 1] == 500 || inputInt[i + 1] == 1000)) {
-                throw new Exception("Write error: X cannot precede D, M.");
+                throw new ConversionException("Write error: X cannot precede D, M.");
             }
         }
     }
@@ -154,11 +157,11 @@ public final class RomeNumerals {
     /**
      * Method checks if two identical smaller numerals are followed by a larger one (e.g., IIX)
      */
-    private static void twoSmallerInRow(int[] inputInt) throws Exception {
+    private static void twoSmallerInRow(int[] inputInt) throws ConversionException {
         for (int x1 = 1; x1 < 1001; x1 = x1 * 10) {
             for (int i = 0; i < inputInt.length - 2; i++) { // "inputInt.length - 2" because we compare the next two numbers
                 if (x1 == inputInt[i] && x1 == inputInt[i + 1] && x1 < inputInt[i + 2]) {
-                    throw new Exception("Write error: Two identical Roman numerals of lesser value cannot precede a larger numeral.");
+                    throw new ConversionException("Write error: Two identical Roman numerals of lesser value cannot precede a larger numeral.");
                 }
             }
         }
@@ -167,13 +170,13 @@ public final class RomeNumerals {
     /**
      * Method checks if numerals 1, 10, 100, 1000 are repeated more than three times in a row (e.g., "IIII")
      */
-    private static void moreThanThreeInRow(int[] inputInt) throws Exception {
+    private static void moreThanThreeInRow(int[] inputInt) throws ConversionException {
         if (inputInt.length > 3) {
             for (int x1 = 1; x1 < 10000; x1 = x1 * 10) {
                 int i = 0;
                 while (i < inputInt.length - 3) {
                     if (x1 == inputInt[i] && x1 == inputInt[i + 1] && x1 == inputInt[i + 2] && x1 == inputInt[i + 3]) {
-                        throw new Exception("Write error: Roman numerals 1, 10, 100, 1000 cannot repeat more than three times consecutively.");
+                        throw new ConversionException("Write error: Roman numerals 1, 10, 100, 1000 cannot repeat more than three times consecutively.");
                     }
                     i++;
                 }
@@ -184,13 +187,13 @@ public final class RomeNumerals {
     /**
      * Method checks if numerals 5, 50, and 500 are subtracted (e.g., VX)
      */
-    private static void subtractionCheck(int[] inputInt) throws Exception {
+    private static void subtractionCheck(int[] inputInt) throws ConversionException {
         for (int x1 = 5; x1 < 5000; x1 = x1 * 10) {
             for (int i = 0; i < inputInt.length; i++) {
                 if (x1 == inputInt[i]) {
                     for (int j = i; j < inputInt.length; j++) {
                         if (x1 < inputInt[j]) {
-                            throw new Exception("Write error: Roman numerals V, L, and D cannot precede larger numerals.");
+                            throw new ConversionException("Write error: Roman numerals V, L, and D cannot precede larger numerals.");
                         }
                     }
                 }
@@ -201,7 +204,7 @@ public final class RomeNumerals {
     /**
      * Method checks if numerals 5, 50, 500 are repeated (each can only appear once in the number)
      */
-    private static void twoNumberCheck(int[] inputInt) throws Exception {
+    private static void twoNumberCheck(int[] inputInt) throws ConversionException {
         for (int x1 = 5; x1 < 5000; x1 = x1 * 10) {
             int x = 0;
             int i = 0;
@@ -209,7 +212,7 @@ public final class RomeNumerals {
                 if (x1 == inputInt[i]) {
                     x = x + 1;
                     if (x == 2) {
-                        throw new Exception("Write error: Roman numerals V, L, and D cannot be repeated.");
+                        throw new ConversionException("Write error: Roman numerals V, L, and D cannot be repeated.");
                     }
                 }
                 i++;
@@ -220,7 +223,7 @@ public final class RomeNumerals {
     /**
      * Method checks if the string contains invalid characters
      */
-    private static void checkingAllowedCharacters(String[] RomaNumerals, String[] arrStringInput) throws Exception {
+    private static void checkingAllowedCharacters(String[] RomaNumerals, String[] arrStringInput) throws ConversionException {
         for (String s : arrStringInput) {
             String x = s + "";
             int j = 0;
@@ -231,7 +234,7 @@ public final class RomeNumerals {
                 } else {
                     j++;
                     if (j == RomaNumerals.length) {
-                        throw new Exception("Write error: A Roman numeral can only contain the letters I, V, X, L, C, D, M.");
+                        throw new ConversionException("Write error: A Roman numeral can only contain the letters I, V, X, L, C, D, M.");
                     }
                 }
             }

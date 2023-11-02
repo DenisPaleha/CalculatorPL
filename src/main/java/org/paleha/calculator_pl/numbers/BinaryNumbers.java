@@ -1,5 +1,6 @@
 package org.paleha.calculator_pl.numbers;
 
+import org.paleha.calculator_pl.exception.ConversionException;
 import java.math.BigDecimal;
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
@@ -50,13 +51,13 @@ public final class BinaryNumbers {
     }
 
     /** Function takes an input string, checks its validity, and returns a BigDecimal for pushing onto the stack */
-    public static BigDecimal binaryToPush(String str) throws Exception {
+    public static BigDecimal binaryToPush(String str) throws ConversionException {
         str = str.substring(2); // Remove the prefix
         Boolean isCorrect = isBinaryCorrect(str); // Check validity
         if (isCorrect) {
             return new BigDecimal(convertBinaryToDecimal(str));
         } else {
-            throw new Exception("Write error: Binary number " + str + " contains invalid characters.");
+            throw new ConversionException("Write error: Binary number " + str + " contains invalid characters.");
         }
     }
 

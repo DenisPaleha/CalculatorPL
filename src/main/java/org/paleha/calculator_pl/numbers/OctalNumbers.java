@@ -1,5 +1,6 @@
 package org.paleha.calculator_pl.numbers;
 
+import org.paleha.calculator_pl.exception.ConversionException;
 import java.math.BigDecimal;
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 public final class OctalNumbers {
@@ -25,13 +26,13 @@ public final class OctalNumbers {
     /**
      * Function takes a string with the prefix, checks its validity, and returns a BigDecimal.
      */
-    public static BigDecimal convertOctalToPush(String str) throws Exception {
+    public static BigDecimal convertOctalToPush(String str) throws ConversionException {
         str = str.substring(2); // Remove the prefix
         Boolean isCorrect = isOctalCorrect(str);
         if (isCorrect) {
             return convertOctalToDecimal(str);
         } else {
-            throw new Exception ("Octal number " + str + " contains invalid characters.");
+            throw new ConversionException ("Octal number " + str + " contains invalid characters.");
         }
     }
 
