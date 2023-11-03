@@ -1,5 +1,5 @@
+import org.paleha.calculator_pl.memory.FileOperator;
 import org.paleha.calculator_pl.languages.LocaleStrings;
-import org.paleha.calculator_pl.logger.Writer;
 import org.paleha.calculator_pl.stack.AbstractStack;
 import org.paleha.calculator_pl.stack.StackArr;
 import org.paleha.calculator_pl.stack.StackList;
@@ -13,16 +13,15 @@ import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class State {
     private boolean isArray = true; // Data structure switch: true = array; false = list;
     private boolean isEnglish = true; // Language switch
     BigDecimal memoryResult = new BigDecimal("0.0"); // Saved memory
     private String numberSystem = OUT_DEC; // Number system
-    private final String fileTxtName = "Memory.txt";
+    //    private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();
+    private final FileOperator memoryOperator = new FileOperator();
     private LocaleStrings localeStrings = new LocaleStrings(isEnglish);
     private int tripMeter = 0; // invisible counter (only visible in Memory.txt string 5)
 
@@ -123,17 +122,10 @@ public class State {
         String languageStatus = String.valueOf(this.isEnglish); // Stores the language state (English/Russian - true/false)
         String tripMeter = String.valueOf(this.tripMeter); // invisible counter
 
-
         String allMemory = dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n" + tripMeter + "\n";
         String allMemoryTest = dataInfo + " " + memoryRes + " " + methodStatus + " " + languageStatus;
         // Pack all memory types into strings
-        try {
-            Writer writer = new Writer(this.fileTxtName, false);
-            writer.writerInTxt(allMemory);
-            writer.closeWriter();
-        } catch (IOException e) {
-            throw new IOException("Can't safe memory to the " + this.fileTxtName);
-        }
+        memoryOperator.wroteToMemoryFile(allMemory);
         return allMemoryTest;
     }
 
@@ -141,12 +133,12 @@ public class State {
      * Function for loading the State from saved txt data.
      */
     public void loadState() throws IOException {
-        if (!Files.exists(Paths.get(this.fileTxtName))) { // Check if the file exists
+        if (!memoryOperator.isFileExist()) {  // Check if the file exists
             saveState(); // If the file does not exist, save the state
         }
 
         try {
-            String fileContent = new String(Files.readAllBytes(Paths.get(this.fileTxtName)));
+            String fileContent = memoryOperator.readFromMemoryFile();
             // Now 'fileContent' contains the file's content as a single string
             String[] massive = fileContent.split("\n"); // Create a string array and split the 'line' string into it
 
@@ -194,7 +186,9 @@ public class State {
     /**
      * Function to switch the variable 'numberSystem' being used.
      */
-    public void setNumberSystem(String newNumberSystem) { this.numberSystem = newNumberSystem; }
+    public void setNumberSystem(String newNumberSystem) {
+        this.numberSystem = newNumberSystem;
+    }
 
     public void push(BigDecimal value) {
         stack.push(value);
