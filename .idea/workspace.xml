@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="change public access to private">
+    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="New package Exception">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/stack/StackList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/stack/StackList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,19 +84,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BinaryNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HexNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CalculatorPL" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="BinaryNumbersTest" />
+      <option name="MAIN_CLASS_NAME" value="HexNumbersTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HexNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LinkedListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CalculatorPL" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="HexNumbersTest" />
+      <option name="MAIN_CLASS_NAME" value="LinkedListTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -112,10 +111,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OctalNumbersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CalculatorPL" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="StateTest" />
+      <option name="MAIN_CLASS_NAME" value="OctalNumbersTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,10 +123,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.LinkedListTest" />
         <item itemvalue="JUnit.MainTest" />
         <item itemvalue="JUnit.HexNumbersTest" />
-        <item itemvalue="JUnit.BinaryNumbersTest" />
-        <item itemvalue="JUnit.StateTest" />
+        <item itemvalue="JUnit.OctalNumbersTest" />
       </list>
     </recent_temporary>
   </component>
@@ -139,55 +138,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696176198628</updated>
-    </task>
-    <task id="LOCAL-00006" summary="adding txt files to gitignore">
-      <created>1696230521363</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1696230521363</updated>
-    </task>
-    <task id="LOCAL-00007" summary="minor revisions">
-      <created>1696230620444</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1696230620444</updated>
-    </task>
-    <task id="LOCAL-00008" summary="added property files">
-      <created>1696260327734</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1696260327734</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Main &amp; State classes rewritten using properti files">
-      <created>1696321017422</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1696321017422</updated>
-    </task>
-    <task id="LOCAL-00010" summary="English translation">
-      <created>1696325616973</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1696325616973</updated>
-    </task>
-    <task id="LOCAL-00011" summary="commentary">
-      <created>1696325656207</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1696325656208</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Finalizing the logger">
-      <created>1696412761324</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1696412761324</updated>
     </task>
     <task id="LOCAL-00013" summary="+ try-catch">
       <created>1696427508265</created>
@@ -483,7 +433,56 @@
       <option name="project" value="LOCAL" />
       <updated>1698142545097</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="change public access to private">
+      <created>1698656181390</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1698656181391</updated>
+    </task>
+    <task id="LOCAL-00056" summary="All exceptions are thrown to Main">
+      <created>1698750196353</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1698750196353</updated>
+    </task>
+    <task id="LOCAL-00057" summary="All exceptions are thrown to Main">
+      <created>1698764943067</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1698764943067</updated>
+    </task>
+    <task id="LOCAL-00058" summary="All exceptions are thrown to Main">
+      <created>1698916019852</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1698916019853</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Renaming packages">
+      <created>1698935282268</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1698935282269</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Renaming packages">
+      <created>1698935424583</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1698935424583</updated>
+    </task>
+    <task id="LOCAL-00061" summary="New package Exception">
+      <created>1698939913876</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1698939913876</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -499,9 +498,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="reconfiguration pom.xml" />
-    <MESSAGE value="Exceptions IO" />
-    <MESSAGE value="ignore logger files" />
     <MESSAGE value="Exceptions Continue remodeling" />
     <MESSAGE value="small design changes" />
     <MESSAGE value="IOExceptions additions and revisions" />
@@ -524,6 +520,9 @@
     <MESSAGE value="Creating new package - package mypackage;" />
     <MESSAGE value="Creating new packages" />
     <MESSAGE value="change public access to private" />
-    <option name="LAST_COMMIT_MESSAGE" value="change public access to private" />
+    <MESSAGE value="All exceptions are thrown to Main" />
+    <MESSAGE value="Renaming packages" />
+    <MESSAGE value="New package Exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="New package Exception" />
   </component>
 </project>
