@@ -6,7 +6,22 @@ import java.math.BigDecimal;
 
 public class StateTest extends TestCase {
 
-//    Scanner sc = new Scanner(System.in).useLocale(Locale.ENGLISH);
+
+    @Test
+    public void testSetLanguage(){
+        State state = new State();
+        assertTrue(state.isEnglish());
+
+        String result = state.getPhrase("hello_massage_one");
+        assertEquals("Enter text in the format: m 10 5 + + 3 /", result);
+
+        state.setLanguage(false);
+        assertFalse(state.isEnglish());
+
+        result = state.getPhrase("hello_massage_one");
+        assertEquals("Введите текст в формате: m 10 5 + + 3 /: m 10 5 + + 3 /", result);
+    }
+
     @Test
     public void testStateIsEmpty() {
         State state = new State();
@@ -23,7 +38,7 @@ public class StateTest extends TestCase {
     }
 
     /**
-     * Проверяем переключение типа данных на противоположный
+     * reversing the data type
      */
     @Test
     public void testIsArrayChange() {
@@ -149,6 +164,29 @@ public class StateTest extends TestCase {
     }
 
     @Test
+    public void testClearStack(){
+        State state = new State(); // Array
+        state.push(BigDecimal.valueOf(120));
+        state.push(BigDecimal.valueOf(130));
+        state.push(BigDecimal.valueOf(140));
+
+        assertFalse(state.isEmpty());
+
+        state.clear();
+        assertTrue(state.isEmpty());
+
+        state.setStorageType(false);  // LinkedList
+        state.push(BigDecimal.valueOf(120));
+        state.push(BigDecimal.valueOf(130));
+        state.push(BigDecimal.valueOf(140));
+
+        assertFalse(state.isEmpty());
+
+        state.clear();
+        assertTrue(state.isEmpty());
+    }
+
+    @Test
     public void testCopyState() {
         State state = new State();
         state.setStorageType(false);
@@ -173,16 +211,14 @@ public class StateTest extends TestCase {
 //    @Disabled
     public void testStateSaveArr() {
         State state = new State();
-//        state.setStorageType(true); // Должен быть true по умолчанию! +++
-        assertTrue(state.isArray());
-
         state.setLanguage(false);
+
         state.push(BigDecimal.valueOf(120));
         state.push(BigDecimal.valueOf(130));
         state.push(BigDecimal.valueOf(140));
         try {
-        String actual = state.saveState(); // Читаем строку результата state.saveState()
-        assertEquals("120 130 140  140 true false", actual);
+            String actual = state.saveState(); // Читаем строку результата state.saveState()
+            assertEquals("120 130 140  140 true false", actual);
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
@@ -197,12 +233,13 @@ public class StateTest extends TestCase {
         state.push(BigDecimal.valueOf(130));
         state.push(BigDecimal.valueOf(140));
         try{
-        String actual = state.saveState(); // Читаем строку результата state.saveState()
-        assertEquals("120 130 140  140 false false", actual);
+            String actual = state.saveState(); // Читаем строку результата state.saveState()
+            assertEquals("120 130 140  140 false false", actual);
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
     }
+
 
     @Test
 //    @Disabled
@@ -212,12 +249,12 @@ public class StateTest extends TestCase {
         state.push(BigDecimal.valueOf(130));
         state.push(BigDecimal.valueOf(140));
         try{
-        state.saveState(); // сохраняем состояние
+            state.saveState(); // сохраняем состояние
 
-        state.pop();
-        state.pop();
-        state.pop();
-        state.loadState(); // загружаем сохраненное состояние
+            state.pop();
+            state.pop();
+            state.pop();
+            state.loadState(); // загружаем сохраненное состояние
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
@@ -267,9 +304,6 @@ public class StateTest extends TestCase {
 
     }
 
-    /**
-     * Проверяем работу функции Info
-     */
     @Test
 //       @Disabled
     public void testMainInfo() {
@@ -285,13 +319,13 @@ public class StateTest extends TestCase {
         actual = state.infoEng();
         assertEquals("Array data structure is used.\n" +
                 "Content: 12 13 Array index: 2 Array length: 10", actual);
-        state.clear(); // Очищаем массив
+        state.clear();
         actual = state.infoEng();
 
         assertEquals("Array data structure is used.\n" +
                 "Content: Null. Array index: 0. Array length: 10", actual);
 
-        state.setStorageType(false); // Переключаем структуру данных на Список
+        state.setStorageType(false); // LinkedList
 
         state.push(BigDecimal.valueOf(12));
         state.push(BigDecimal.valueOf(13));
@@ -305,8 +339,7 @@ public class StateTest extends TestCase {
         assertEquals("Linked List data structure is used.\n" +
                 "Content: Null", actual);
 
-//        state.isArray = true;
-        state.setStorageType(true); // Переключаем структуру данных на Массив
+        state.setStorageType(true); // Array
 
         state.push(BigDecimal.valueOf(1));
         state.push(BigDecimal.valueOf(2));

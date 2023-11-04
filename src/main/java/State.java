@@ -214,5 +214,13 @@ public class State {
         return stack.infoRus();
     }
 
+    public String copyStackTest(){ // For test only
+        return stack.copy(); // Return all data from the stack
+    }
+
+    public void writeToStackTest(String dataInfo){
+        stack.write(dataInfo);
+    }
+
 }
 
