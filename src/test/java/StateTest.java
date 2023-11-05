@@ -1,14 +1,13 @@
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 
 public class StateTest extends TestCase {
 
 
     @Test
-    public void testSetLanguage(){
+    public void testSetLanguage() {
         State state = new State();
         assertTrue(state.isEnglish());
 
@@ -164,7 +163,7 @@ public class StateTest extends TestCase {
     }
 
     @Test
-    public void testClearStack(){
+    public void testClearStack() {
         State state = new State(); // Array
         state.push(BigDecimal.valueOf(120));
         state.push(BigDecimal.valueOf(130));
@@ -209,35 +208,31 @@ public class StateTest extends TestCase {
 
     @Test
 //    @Disabled
-    public void testStateSaveArr() {
+    public void testPrepareSaveArr() {
         State state = new State();
         state.setLanguage(false);
 
         state.push(BigDecimal.valueOf(120));
         state.push(BigDecimal.valueOf(130));
         state.push(BigDecimal.valueOf(140));
-        try {
-            String actual = state.saveState(); // Читаем строку результата state.saveState()
-            assertEquals("120 130 140  140 true false", actual);
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+
+        String actual = state.prepareSave(); // Читаем строку результата state.saveState()
+        assertEquals("120 130 140 \n140\ntrue\nfalse\n0\n", actual);
+
     }
 
     @Test
-    public void testStateSaveList() {
+    public void testPrepareSaveList() {
         State state = new State();
         state.setStorageType(false);
         state.setLanguage(false);
         state.push(BigDecimal.valueOf(120));
         state.push(BigDecimal.valueOf(130));
         state.push(BigDecimal.valueOf(140));
-        try{
-            String actual = state.saveState(); // Читаем строку результата state.saveState()
-            assertEquals("120 130 140  140 false false", actual);
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+
+        String actual = state.prepareSave(); // Читаем строку результата state.saveState()
+        assertEquals("120 130 140 \n140\nfalse\nfalse\n0\n", actual);
+
     }
 
 
@@ -245,25 +240,17 @@ public class StateTest extends TestCase {
 //    @Disabled
     public void testLoadStateArr() {
         State state = new State();
-        state.push(BigDecimal.valueOf(120));
-        state.push(BigDecimal.valueOf(130));
-        state.push(BigDecimal.valueOf(140));
-        try{
-            state.saveState(); // сохраняем состояние
 
-            state.pop();
-            state.pop();
-            state.pop();
-            state.loadState(); // загружаем сохраненное состояние
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+        String control = "120 130 140 \n140\ntrue\ntrue\n0\n";
+        state.loadState(control); // сохраняем состояние State
 
         BigDecimal memoryResult = state.memoryResult;
         String actual = memoryResult.toString();
         assertEquals("140", actual);
 
         assertTrue(state.isArray());
+
+        assertTrue(state.isEnglish());
 
         BigDecimal test = state.pop();
         actual = test.toString();
@@ -273,20 +260,9 @@ public class StateTest extends TestCase {
     @Test
     public void testLoadStateList() {
         State state = new State();
-        state.setStorageType(false);
-        state.push(BigDecimal.valueOf(12));
-        state.push(BigDecimal.valueOf(13));
-        state.push(BigDecimal.valueOf(14));
 
-        try{
-        state.saveState();
-        state.pop();
-        state.pop();
-        state.pop();
-        state.loadState();
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+        String control = "12 13 14 \n14\nfalse\ntrue\n0\n";
+        state.loadState(control); // сохраняем состояние State
 
         BigDecimal memoryResult = state.memoryResult;
         String actual = memoryResult.toString();
@@ -301,7 +277,6 @@ public class StateTest extends TestCase {
         test = state.pop();
         actual += test + " ";
         assertEquals("14 13 12 ", actual);
-
     }
 
     @Test

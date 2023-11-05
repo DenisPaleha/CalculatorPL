@@ -62,7 +62,6 @@ public class State {
         if (!data.equals("0 ")) { // This check is needed to ensure that a zero is only added when the stack is empty
             newStack.write(data);
         }
-
         this.isArray = isArray;
         this.stack = newStack;
     }
@@ -112,56 +111,67 @@ public class State {
     }
 
     /**
-     * Function for saving memory.
+     * Function for saving memory part 1.
      */
-    public String saveState() throws IOException {  // Make the method return a String for testing purposes
+    public String prepareSave() {
         String dataInfo = stack.copy(); // Create a string with the stack's content
         BigDecimal tmp = peek(); // Store the last value
         String memoryRes = tmp.toString(); // Store it as a string
         String methodStatus = String.valueOf(this.isArray); // Stores the method state (array/list - true/false).
         String languageStatus = String.valueOf(this.isEnglish); // Stores the language state (English/Russian - true/false)
         String tripMeter = String.valueOf(this.tripMeter); // invisible counter
-
-        String allMemory = dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n" + tripMeter + "\n";
-        String allMemoryTest = dataInfo + " " + memoryRes + " " + methodStatus + " " + languageStatus;
         // Pack all memory types into strings
-        memoryOperator.wroteToMemoryFile(allMemory);
-        return allMemoryTest;
+        return dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n" + tripMeter + "\n";
     }
 
     /**
-     * Function for loading the State from saved txt data.
+     * Function for saving memory part 2. // Out of test
      */
-    public void loadState() throws IOException {
+    public void saveState() throws IOException {  // Make the method return a String for testing purposes
+        String allMemory = prepareSave();
+        memoryOperator.wroteToMemoryFile(allMemory);
+    }
+
+    /**
+     * Function for loading the State from saved txt data. Part 1 // Out of test
+     */
+    public String prepareLoad() throws IOException {
         if (!memoryOperator.isFileExist()) {  // Check if the file exists
             saveState(); // If the file does not exist, save the state
         }
 
+        String fileContent;
         try {
-            String fileContent = memoryOperator.readFromMemoryFile();
-            // Now 'fileContent' contains the file's content as a single string
-            String[] massive = fileContent.split("\n"); // Create a string array and split the 'line' string into it
-
-            String dataInfo = massive[0]; // Stack contents
-            String memoryRes = massive[1]; // Memory of the last number
-            String methodStatus = massive[2]; // Data structure state
-            String languageStatus = massive[3]; // Language state - as a string
-            String tripMeter = massive[4];
-
-            this.memoryResult = new BigDecimal(memoryRes); // Memory
-            this.isArray = methodStatus.equals("true");  // Simplified notation: If methodStatus = true, then this.isArray = true
-            setLanguage(languageStatus.equals("true")); // Simplified notation: If languageStatus = true, then this.isEnglish = true and update the phrases array
-            clear(); // Clearing is necessary to avoid duplicating data during loading
-            stack.write(dataInfo); // Write the contents of the 'dataInfo' string to the stack
-            this.tripMeter = Integer.parseInt(tripMeter) + 1;
-
-
+            fileContent = memoryOperator.readFromMemoryFile();
         } catch (IOException e) { // In case of unsuccessful loading from the file, restore default data
-            e.printStackTrace();
             this.memoryResult = new BigDecimal("0.0");
             this.isArray = true;
+            this.isEnglish = true;
+            this.tripMeter = 50;
             stack = new StackArr();
+            throw new IOException("Failed to restore saved data");
         }
+        return fileContent;
+    }
+
+    /**
+     * Function for loading the State from saved txt data. Part 2
+     */
+    public void loadState(String fileContent) {
+        //'fileContent' contains the file's content as a single string
+        String[] massive = fileContent.split("\n"); // Create a string array and split the 'line' string into it
+        String dataInfo = massive[0]; // Stack contents
+        String memoryRes = massive[1]; // Memory of the last number
+        String methodStatus = massive[2]; // Data structure state
+        String languageStatus = massive[3]; // Language state - as a string
+        String tripMeter = massive[4];
+
+        this.memoryResult = new BigDecimal(memoryRes); // Memory
+        this.isArray = methodStatus.equals("true");  // Simplified notation: If methodStatus = true, then this.isArray = true
+        setLanguage(languageStatus.equals("true")); // Simplified notation: If languageStatus = true, then this.isEnglish = true and update the phrases array
+        clear(); // Clearing is necessary to avoid duplicating data during loading
+        stack.write(dataInfo); // Write the contents of the 'dataInfo' string to the stack
+        this.tripMeter = Integer.parseInt(tripMeter) + 1;
     }
 
     /**
@@ -212,14 +222,6 @@ public class State {
 
     public String infoRus() {
         return stack.infoRus();
-    }
-
-    public String copyStackTest(){ // For test only
-        return stack.copy(); // Return all data from the stack
-    }
-
-    public void writeToStackTest(String dataInfo){
-        stack.write(dataInfo);
     }
 
 }

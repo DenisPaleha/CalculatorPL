@@ -11,8 +11,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
 
-import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Locale;
@@ -20,28 +18,10 @@ import java.util.Scanner;
 
 public class MainTest {
 
-    /**
-     * Проверяем существует ли документ с сохраненными данными
-     */
-    @Test
-    public void testLoadState() {
-        State state = new State();
-        try {
-            state.loadState();
-            boolean result = false;
-            File memoryTxt = new File("Memory.txt");
-            if (memoryTxt.exists()) {
-                result = true;
-            }
-            Assert.assertTrue(result);
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
-    }
 
 //    /**
-//     * Проверяем работоспособность функции "Является ли строка Дробным числом"
 //     * Теперь эта функция в Core
+//     * Проверяем работоспособность функции "Является ли строка Дробным числом"
 //     */
 //    @Test
 //    @Disabled
@@ -115,13 +95,13 @@ public class MainTest {
             BigDecimal resultRome = RomeNumerals.convertRomeToPush(str1);
             String result = resultRome.toString();
             Assert.assertEquals("2222.0", result);
-        } catch (Exception wrongNumber){
+        } catch (Exception wrongNumber) {
             System.out.println(wrongNumber.getMessage());
         }
 
         str1 = "CCXXLII";
         try {
-           BigDecimal resultRome = RomeNumerals.convertRomeToPush(str1);
+            BigDecimal resultRome = RomeNumerals.convertRomeToPush(str1);
         } catch (Exception wrongNumber) {
             String result = wrongNumber.getMessage();
             Assert.assertEquals("Write error: Two identical Roman numerals of lesser value cannot precede a larger numeral.", result);
@@ -132,7 +112,7 @@ public class MainTest {
             BigDecimal resultOct = OctalNumbers.convertOctalToPush(str2);
             BigDecimal test2 = BigDecimal.valueOf(445.0);
             Assert.assertEquals(resultOct, test2);
-        } catch (Exception wrongNumber){
+        } catch (Exception wrongNumber) {
             System.out.println(wrongNumber.getMessage());
         }
 
@@ -141,16 +121,16 @@ public class MainTest {
             BigDecimal resultHex = HexNumbers.hexNumbersToPush(str3);
             BigDecimal test3 = BigDecimal.valueOf(2677.0);
             Assert.assertEquals(resultHex, test3);
-        } catch (Exception wrongNumber){
+        } catch (Exception wrongNumber) {
             System.out.println(wrongNumber.getMessage());
         }
 
         try {
-        String str4 = "0b10011100010";
-        BigDecimal resultBinary = BinaryNumbers.binaryToPush(str4);
-        BigDecimal test4 = BigDecimal.valueOf(1250.0);
-        Assert.assertEquals(resultBinary, test4);
-        } catch (Exception wrongNumber){
+            String str4 = "0b10011100010";
+            BigDecimal resultBinary = BinaryNumbers.binaryToPush(str4);
+            BigDecimal test4 = BigDecimal.valueOf(1250.0);
+            Assert.assertEquals(resultBinary, test4);
+        } catch (Exception wrongNumber) {
             System.out.println(wrongNumber.getMessage());
         }
     }
@@ -163,12 +143,6 @@ public class MainTest {
     @Disabled
     public void mainMath() {
         State state = new State();
-        try{
-        state.loadState();
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
-        state.clear();
         String line = "1000 420 2 42 12 3 2 St + - * / % root"; // Сохраняем введенное в переменную line
 
         try {  // Проверка исключения для операции деления - просто заглушка
@@ -242,16 +216,9 @@ public class MainTest {
     @Disabled
     public void testMathInHashMap() {
         State state = new State();
-        try {
-            state.loadState(); //Загружаем сохраненные в txt документе данные
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
 
         HashMap hashmap = new HashMap(8); // Создаем таблицу
         hashmap.loadMainHashMap(); // Загружаем данные
-
-        state.clear(); // Очищаем содержимое памяти (мало ли что там в доке было)
 
         String line = "1000 420 2 42 12 3 2 St плюс минус умножить разделить проценты корень";
         // Сохраняем введенное в переменную line
@@ -333,52 +300,20 @@ public class MainTest {
         State state = new State();
         state.push(BigDecimal.valueOf(12));
         state.push(BigDecimal.valueOf(13));
-        try {
-        state.saveState();
-        state.loadState();
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
 
-        System.out.println(state.infoEng());
-
-        BigDecimal test = state.pop();
-        String result = test.toString();
-        Assert.assertEquals("13", result);
-
-        test = state.pop();
-        result = test.toString();
-        Assert.assertEquals("12", result);
-
-        test = state.pop();
-        result = test.toString();
-        Assert.assertEquals("0", result);
+        String control = state.prepareSave();
+        Assert.assertEquals("12 13 \n13\ntrue\ntrue\n0\n", control);
     }
 
     @Test
     public void testSaveList() {
         State state = new State();
-        state.setStorageType(false); // Переключаем на структуру данных LinkedList
-//        Draft.switchMethod(state); // Переключаем на структуру данных LinkedList
-
+        state.setStorageType(false); //  LinkedList
         state.push(BigDecimal.valueOf(12));
-        try{
-        state.saveState(); // Сохраняем введенные данные.
-        state.clear(); // Очищаем память State - иначе при загрузке она удвоится!
-        state.loadState(); //Загружаем сохраненные в txt документе данные
-        }catch (IOException e){
-            System.out.println(e.getMessage());
-        }
 
-        BigDecimal result = state.pop();
-        String actual = result.toString();
-        Assert.assertEquals("12", actual); // Тут все верно, извлекается введенное число.
+        String control = state.prepareSave(); // Save state to string.
+        Assert.assertEquals("12 \n12\nfalse\ntrue\n0\n", control);
 
-        result = state.pop(); // Просто убедиться, что список пуст.
-        actual = result.toString();
-        Assert.assertEquals("0", actual); // Данные удваиваются при сохранении Списка!
-
-//        sc.close(); // <---------------------------------Close Scanner in the END
     }
 
 
