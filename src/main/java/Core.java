@@ -100,7 +100,7 @@ public class Core {
         return true;
     }
 
-    private boolean isDouble(String str) {
+    public boolean isDouble(String str) {
         try {
             Double.parseDouble(str);
             return true;
