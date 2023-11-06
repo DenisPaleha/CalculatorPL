@@ -113,7 +113,7 @@ public class State {
     /**
      * Function for saving memory part 1.
      */
-    public String prepareSave() {
+    public String prepareForSave() {
         String dataInfo = stack.copy(); // Create a string with the stack's content
         BigDecimal tmp = peek(); // Store the last value
         String memoryRes = tmp.toString(); // Store it as a string
@@ -128,14 +128,14 @@ public class State {
      * Function for saving memory part 2. // Out of test
      */
     public void saveState() throws IOException {  // Make the method return a String for testing purposes
-        String allMemory = prepareSave();
+        String allMemory = prepareForSave();
         memoryOperator.wroteToMemoryFile(allMemory);
     }
 
     /**
      * Function for loading the State from saved txt data. Part 1 // Out of test
      */
-    public String prepareLoad() throws IOException {
+    public String prepareForLoad() throws IOException {
         if (!memoryOperator.isFileExist()) {  // Check if the file exists
             saveState(); // If the file does not exist, save the state
         }
@@ -157,7 +157,7 @@ public class State {
     /**
      * Function for loading the State from saved txt data. Part 2
      */
-    public void loadState(String fileContent) {
+    public void loadFromPrepared(String fileContent) {
         //'fileContent' contains the file's content as a single string
         String[] massive = fileContent.split("\n"); // Create a string array and split the 'line' string into it
         String dataInfo = massive[0]; // Stack contents

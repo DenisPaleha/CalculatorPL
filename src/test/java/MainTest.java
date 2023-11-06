@@ -301,7 +301,7 @@ public class MainTest {
         state.push(BigDecimal.valueOf(12));
         state.push(BigDecimal.valueOf(13));
 
-        String control = state.prepareSave();
+        String control = state.prepareForSave();
         Assert.assertEquals("12 13 \n13\ntrue\ntrue\n0\n", control);
     }
 
@@ -311,7 +311,7 @@ public class MainTest {
         state.setStorageType(false); //  LinkedList
         state.push(BigDecimal.valueOf(12));
 
-        String control = state.prepareSave(); // Save state to string.
+        String control = state.prepareForSave(); // Save state to string.
         Assert.assertEquals("12 \n12\nfalse\ntrue\n0\n", control);
 
     }

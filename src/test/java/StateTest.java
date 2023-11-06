@@ -216,7 +216,7 @@ public class StateTest extends TestCase {
         state.push(BigDecimal.valueOf(130));
         state.push(BigDecimal.valueOf(140));
 
-        String actual = state.prepareSave(); // Читаем строку результата state.saveState()
+        String actual = state.prepareForSave(); // Читаем строку результата state.saveState()
         assertEquals("120 130 140 \n140\ntrue\nfalse\n0\n", actual);
 
     }
@@ -230,7 +230,7 @@ public class StateTest extends TestCase {
         state.push(BigDecimal.valueOf(130));
         state.push(BigDecimal.valueOf(140));
 
-        String actual = state.prepareSave(); // Читаем строку результата state.saveState()
+        String actual = state.prepareForSave(); // Читаем строку результата state.saveState()
         assertEquals("120 130 140 \n140\nfalse\nfalse\n0\n", actual);
 
     }
@@ -242,7 +242,7 @@ public class StateTest extends TestCase {
         State state = new State();
 
         String control = "120 130 140 \n140\ntrue\ntrue\n0\n";
-        state.loadState(control); // сохраняем состояние State
+        state.loadFromPrepared(control); // сохраняем состояние State
 
         BigDecimal memoryResult = state.memoryResult;
         String actual = memoryResult.toString();
@@ -262,7 +262,7 @@ public class StateTest extends TestCase {
         State state = new State();
 
         String control = "12 13 14 \n14\nfalse\ntrue\n0\n";
-        state.loadState(control); // сохраняем состояние State
+        state.loadFromPrepared(control); // сохраняем состояние State
 
         BigDecimal memoryResult = state.memoryResult;
         String actual = memoryResult.toString();
