@@ -1,5 +1,7 @@
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 import org.paleha.calculator_pl.constanse.HashMap;
 import org.paleha.calculator_pl.logger.Logger;
 
@@ -9,9 +11,12 @@ import org.junit.Test;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-public class MainTest {
 
-    // Переписать все тесты! +++
+@RunWith(Suite.class)
+@Suite.SuiteClasses({StateTest.class, CoreTest.class, HexNumbersTest.class,
+ OctalNumbersTest.class, BinaryNumbersTest.class, RomeNumeralsTest.class/* all over classes if we need it */})
+
+public class MainTest {
 
     @Test
     public void testNweState() {
@@ -20,8 +25,6 @@ public class MainTest {
         BigDecimal control = state.peek();
         Assert.assertEquals("12", control.toString());
     }
-
-    // Загрузка данных из памяти - проверки нет! Частично есть в State
 
     @Test
     public void testLogger() {
