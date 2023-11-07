@@ -7,9 +7,7 @@ import java.math.BigDecimal;
 
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
-public final class RomeNumerals {
-
-    // The library of Roman numeral strings is located in the ConstantLibrary class
+public final class RomeNumerals { // The library of Roman numeral strings is located in the ConstantLibrary class
 
     /**
      * Function converts a decimal number to Roman numeral (1-3999)
