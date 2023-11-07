@@ -24,7 +24,7 @@ public class Main {
 
         try {
             State state = new State();
-            String memory = state.prepareForLoad();
+            String memory = state.prepareForLoad(); //+++
             state.loadFromPrepared(memory);
 
             Logger logger = new Logger();

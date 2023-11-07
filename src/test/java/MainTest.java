@@ -1,91 +1,139 @@
-import org.paleha.calculator_pl.numbers.BinaryNumbers;
-import org.paleha.calculator_pl.numbers.HexNumbers;
-import org.paleha.calculator_pl.numbers.OctalNumbers;
-import org.paleha.calculator_pl.numbers.RomeNumerals;
+import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
+
+import org.paleha.calculator_pl.constanse.HashMap;
+import org.paleha.calculator_pl.logger.Logger;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 
 public class MainTest {
 
+    // Переписать все тесты! +++
 
-    /**
-     * Check if the function "Is the string a Roman number".
-     */
     @Test
-    public void testIsRome() {
-        boolean romeTrue = RomeNumerals.isRome("mmclxxxvii");
-        boolean romeFalse = RomeNumerals.isRome("fdn");
-        Assert.assertTrue(romeTrue);
-        Assert.assertFalse(romeFalse);
-    }
-
-    /**
-     * Checking the function "Is the string an Octal number"
-     */
-    @Test
-    public void testIsOctal() {
-        boolean octalTrue = OctalNumbers.isOctalNumber("0o465");
-        boolean octalFalse = OctalNumbers.isOctalNumber("fdn");
-        Assert.assertTrue(octalTrue);
-        Assert.assertFalse(octalFalse);
-    }
-
-    /**
-     * Check if the function "Is the string a hexadecimal number"
-     */
-    @Test
-    public void testIsHex() {
-        boolean hexTrue = HexNumbers.isHexNumber("0xab5");
-        boolean hexFalse = HexNumbers.isHexNumber("fdn");
-        Assert.assertTrue(hexTrue);
-        Assert.assertFalse(hexFalse);
-    }
-
-    /**
-     * Check the conversion of decimal numbers to octal, hexadecimal, binary and Roman numerals
-     */
-    @Test
-    public void convertToOctHexRomBin() throws Exception {
-        int num = 48; // Переводим BigDecimal в int
-        String actualOct = OctalNumbers.convertDecimalToOctal(num);
-        Assert.assertEquals("0o60", actualOct);
-
-        String actualHex = HexNumbers.convertDecimalToHex(num);
-        Assert.assertEquals("0x30", actualHex);
-
-        String actualRom = RomeNumerals.convertDecimalToRome(num);
-        Assert.assertEquals("XLVIII", actualRom);
-
-        String actualBinary = BinaryNumbers.convertDecimalToBinary(num);
-        Assert.assertEquals("0b110000", actualBinary);
-    }
-
-    /**
-     * Check the operation of the save function
-     */
-    @Test
-    //   @Disabled // Тест отключен
-    public void testSaveArr() {
-        // Для массива
+    public void testNweState() {
         State state = new State();
         state.push(BigDecimal.valueOf(12));
-        state.push(BigDecimal.valueOf(13));
+        BigDecimal control = state.peek();
+        Assert.assertEquals("12", control.toString());
+    }
 
-        String control = state.prepareForSave();
-        Assert.assertEquals("12 13 \n13\ntrue\ntrue\n0\n", control);
+    // Загрузка данных из памяти - проверки нет! Частично есть в State
+
+    @Test
+    public void testLogger() {
+        String isWork;
+        try {
+            Logger logger = new Logger();
+            String anyWord = "The test of logger work";
+
+            try {
+                logger.logInput(anyWord); // Copy all input data to the logger
+                isWork = "Yes";
+            } catch (Exception e) {
+                isWork = "No";
+            }
+            Assert.assertEquals("Yes", isWork);
+
+        } catch (IOException e) {
+            isWork = "No";
+        }
+        Assert.assertEquals("Yes", isWork);
     }
 
     @Test
-    public void testSaveList() {
-        State state = new State();
-        state.setStorageType(false); //  LinkedList
-        state.push(BigDecimal.valueOf(12));
+    public void testHashmapLoad() {
+        HashMap hashmapMain = new HashMap(8);
+        hashmapMain.loadMainHashMap();
+        String testWord = "help";
+        boolean keyHashMap = hashmapMain.hasKey(testWord);
+        Assert.assertTrue(keyHashMap);
+    }
 
-        String control = state.prepareForSave(); // Save state to string.
-        Assert.assertEquals("12 \n12\nfalse\ntrue\n0\n", control);
+    @Test
+    public void testHashMapWork() {
+        HashMap hashmapMain = new HashMap(8);
+        hashmapMain.loadMainHashMap();
+        String operand = "help";
+        String control = hashmapMain.get(operand); // Get value by key = HELP
+        Assert.assertEquals(HELP, control);
+
+
+        operand = "c";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(CLEAR, control);
+
+        operand = "info";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(INFO, control);
+
+        // Switch method body check in StateTest
+        operand = "sm";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(SWITCH_METHOD, control);
+
+        // Save method body check in StateTest
+        operand = "save";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(SAVE, control);
+
+        // ToRome method body check in RomeNumeralsTest
+        operand = "torome";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(TO_ROME, control);
+
+        // ToOctal method body check in OctalNumbersTest
+        operand = "tooctal";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(TO_OCTAL, control);
+
+        // ToHex method body check in HexNumbersTest
+        operand = "tohex";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(TO_HEX, control);
+
+        // ToBin method body check in BinaryNumbersTest
+        operand = "tobin";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(TO_BIN, control);
+
+        // OutRome method body check in StateTest
+        operand = "outdec";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(OUT_DEC, control);
+
+        // OutRome method body check in StateTest
+        operand = "outrome";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(OUT_ROM, control);
+
+        // OutOctal method body check in StateTest
+        operand = "outoct";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(OUT_OCT, control);
+
+        // OutHex method body check in StateTest
+        operand = "outhex";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(OUT_HEX, control);
+
+        // OutBin method body check in StateTest
+        operand = "outbin";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(OUT_BIN, control);
+
+        // OutRus method body check in StateTest
+        operand = "rus";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(OUT_RUS, control);
+
+        // OutEng method body check in StateTest
+        operand = "eng";
+        control = hashmapMain.get(operand);
+        Assert.assertEquals(OUT_ENG, control);
     }
 
 }
