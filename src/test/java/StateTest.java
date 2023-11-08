@@ -1,7 +1,11 @@
 import junit.framework.TestCase;
+import junit.framework.TestResult;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+
+import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 public class StateTest extends TestCase {
 
@@ -333,7 +337,7 @@ public class StateTest extends TestCase {
     }
 
     /**
-     * Проверяем функцию удаления Массив и затем, Список.
+     * Check the function of deleting Array and then, List
      */
     @Test
     public void testMemoryClearFromArr() {
@@ -369,48 +373,61 @@ public class StateTest extends TestCase {
     }
 
     /**
-     * Проверяем функцию переключения структуры данных Массив/Список
+     * Check the Array/List data structure switching function
      */
     @Test
     public void testIsArrayStorage() {
         State state = new State();
-        state.setStorageType(false); // Переключаем значение на противоположное
+        state.setStorageType(false); // Reverse the value
         assertFalse(state.isArray());
-        state.setStorageType(true); // Опять переключаем на Массив
+        state.setStorageType(true); // Reverse the value
         assertTrue(state.isArray());
     }
 
     @Test
     public void testIsArrayStorageWithData() {
         State state = new State();
-        state.push(BigDecimal.valueOf(12)); // Добавляем число в массив
-        state.setStorageType(false); // Переключаем значение на Список
-        assertFalse(state.isArray());  // Список
+        state.push(BigDecimal.valueOf(12));
+        state.setStorageType(false); // Switch to List
+        assertFalse(state.isArray());  // List
 
         BigDecimal test = state.peek();
         String actual = test.toString();
-        assertEquals("12", actual); // число из списка = 12
+        assertEquals("12", actual); // Number from list = 12
 
         test = state.peek();
         actual = test.toString();
-        assertEquals("12", actual); // Убедились, что в массиве те же 12
+        assertEquals("12", actual); // in Array also 12
 
-        state.setStorageType(true); // Переключаем значение на Массив
-        assertTrue(state.isArray()); // Опять массив
+        state.setStorageType(true); // Switch to Array
+        assertTrue(state.isArray()); // Array
 
         test = state.peek();
         actual = test.toString();
-        assertEquals("12", actual); // Достаем число из массива (должно быть 12)
+        assertEquals("12", actual); // get number from array (12)
     }
 
     @Test
-//    @Disabled
-    public void testPrintPhrasesRUS() {
+    public void testUniversalConverter() throws Exception {
         State state = new State();
-        state.setLanguage(false);
-        System.out.println(state.getPhrase("roman_number")); // Римское число
+        BigDecimal inNumber = new BigDecimal(12);
+        String result;
 
-//        sc.close(); // <---------------------------------Close Scanner in the END
+        state.setNumberSystem(OUT_BIN);
+        result = state.universalConverter(inNumber);
+        Assert.assertEquals("0b1100", result);
+
+        state.setNumberSystem(OUT_OCT);
+        result = state.universalConverter(inNumber);
+        Assert.assertEquals("0o14", result);
+
+        state.setNumberSystem(OUT_HEX);
+        result = state.universalConverter(inNumber);
+        Assert.assertEquals("0xC", result);
+
+        state.setNumberSystem(OUT_ROM);
+        result = state.universalConverter(inNumber);
+        Assert.assertEquals("XII", result);
+
     }
-
 }
