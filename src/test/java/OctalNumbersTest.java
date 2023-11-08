@@ -47,7 +47,6 @@ public class OctalNumbersTest extends TestCase {
         } catch (Exception wrongNumber) {
             String result = wrongNumber.getMessage();
             assertEquals("Octal number 68 contains invalid characters.", result);
-            System.out.println(wrongNumber.getMessage());
         }
     }
 

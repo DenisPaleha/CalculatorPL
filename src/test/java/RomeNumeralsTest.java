@@ -68,7 +68,6 @@ public class RomeNumeralsTest  {
         try {
             RomeNumerals.convertRomeToPush("XXL");
         } catch (ConversionException wrongNumber) {
-            System.out.println(wrongNumber.getMessage());
             String result = wrongNumber.getMessage();
             Assert.assertEquals("Write error: Two identical Roman numerals of lesser value cannot precede a larger numeral.", result);
         }
