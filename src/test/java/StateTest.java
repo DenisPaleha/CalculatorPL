@@ -9,7 +9,6 @@ import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 public class StateTest extends TestCase {
 
-
     @Test
     public void testSetLanguage() {
         State state = new State();
@@ -428,6 +427,6 @@ public class StateTest extends TestCase {
         state.setNumberSystem(OUT_ROM);
         result = state.universalConverter(inNumber);
         Assert.assertEquals("XII", result);
-
     }
+
 }

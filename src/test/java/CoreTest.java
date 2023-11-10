@@ -1,12 +1,8 @@
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.paleha.calculator_pl.math.MathFunctions;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Locale;
-import java.util.Scanner;
 
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
@@ -171,6 +167,5 @@ public class CoreTest extends TestCase {
         BigDecimal result = state.pop();
         Assert.assertEquals("100", result.toString());
     }
-
 
 }
