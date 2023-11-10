@@ -188,7 +188,6 @@ public class Main {
                                     state.saveState();
                                     output = state.getPhrase("exiting");
                                     logger.logOutput(output);
-                                    logger.CopyFilesFromLoggerToTemp();
 
                                     System.out.println(output);
                                     lineScanner.close();
