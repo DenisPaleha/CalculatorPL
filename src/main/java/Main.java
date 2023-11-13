@@ -36,7 +36,6 @@ public class Main {
             System.out.println(state.getPhrase("hello_massage_two")); // Info on calling help
             System.out.println(String.format(state.getPhrase("loaded_memory"), state.memoryResult)); // Reading the saved memory string
 
-//            END_PROGRAM:
             while (scanner.hasNextLine()) { // Main program loop with user input
                 boolean theEnd = false;
                 String line = scanner.nextLine(); // Save user input to the variable line
