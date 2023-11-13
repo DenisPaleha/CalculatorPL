@@ -44,9 +44,9 @@ public class Main {
                 String line = scanner.nextLine(); // Save user input to the variable line
 
                 try {
-                    logger.logInput(line); // Copy all input data to the logger
+                    logger.logOutput(line, "in"); // Copy all input data to the logger
                 } catch (IOException e) {
-                    logger.logOutput(e.getMessage());
+                    logger.logOutput(e.getMessage(), "out");
                     System.out.println(e.getMessage());
 
                 }
@@ -68,7 +68,7 @@ public class Main {
                             coreNotUsed = core.calculator(operand);
                         } catch (ConversionException wrongNumber) {
                             coreNotUsed = false;
-                            logger.logOutput(wrongNumber.getMessage());
+                            logger.logOutput(wrongNumber.getMessage(), "out");
                             System.out.println(wrongNumber.getMessage());
                         }
 
@@ -86,7 +86,7 @@ public class Main {
                                 } else if (operand.equals(CLEAR)) { // Memory clearing function, "c" command
                                     state.clear(); // Clear memory
                                     output = state.getPhrase("memory_cleared");
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(INFO)) { // Screen output function, "info" command
@@ -96,7 +96,7 @@ public class Main {
                                     } else {
                                         info = state.infoRus();
                                     }
-                                    logger.logOutput(info);
+                                    logger.logOutput(info, "out");
                                     System.out.println(info);
 
                                 } else if (operand.equals(SWITCH_METHOD)) {  // Data structure switching function Array/List
@@ -108,12 +108,12 @@ public class Main {
                                     } else {
                                         output = state.getPhrase("now_calculator_uses_List");
                                     }
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(SAVE)) {  //  "S" command Saves all data to MemoryTwo.txt
                                     output = state.getPhrase("data_saved");
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     state.saveState();
                                     System.out.println(output);
 
@@ -122,70 +122,70 @@ public class Main {
                                     double mem = state.memoryResult.doubleValue(); // Convert BigDecimal to double
                                     String result = RomeNumerals.convertDecimalToRome(mem);
                                     output = String.format(state.getPhrase("roman_number_equal"), result);
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output); // Roman numeral
 
                                 } else if (operand.equals(TO_OCTAL)) {
                                     int num = state.memoryResult.intValue(); // Convert BigDecimal to int with rounding to the nearest integer
                                     String result = OctalNumbers.convertDecimalToOctal(num); // Conversion
                                     output = String.format(state.getPhrase("octal_number_equal"), result);
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(TO_HEX)) {
                                     int num = state.memoryResult.intValue(); // Convert BigDecimal to int with rounding to the nearest integer
                                     String result = HexNumbers.convertDecimalToHex(num); // Conversion
                                     output = String.format(state.getPhrase("hexadecimal_number_equal"), result);
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(TO_BIN)) {
                                     int num = state.memoryResult.intValue(); // Convert BigDecimal to int with rounding to the nearest integer
                                     String result = BinaryNumbers.convertDecimalToBinary(num); // Conversion
                                     output = String.format(state.getPhrase("binary_number_equal"), result);
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(OUT_DEC)) { // Automatically converts all results to
                                     state.setNumberSystem(OUT_DEC);
                                     output = state.getPhrase("decimal_enabled"); // Decimal number system enabled
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(OUT_BIN)) {
                                     state.setNumberSystem(OUT_BIN);
                                     output = state.getPhrase("binary_enabled"); // Binary number system enabled
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(OUT_OCT)) {
                                     state.setNumberSystem(OUT_OCT);
                                     output = state.getPhrase("octal_enabled"); // Octal number system enabled
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(OUT_HEX)) {
                                     state.setNumberSystem(OUT_HEX);
                                     output = state.getPhrase("hexadecimal_enabled"); // Hexadecimal number system enabled
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(OUT_ROM)) {
                                     state.setNumberSystem(OUT_ROM);
                                     output = state.getPhrase("roman_enabled"); // Roman number system enabled
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(OUT_RUS)) { // Language switch
                                     state.setLanguage(false);
                                     output = "Язык: Русский";
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(OUT_ENG)) { // Language switch
                                     state.setLanguage(true);
                                     output = "Language: English";
-                                    logger.logOutput(output);
+                                    logger.logOutput(output, "out");
                                     System.out.println(output);
 
                                 } else if (operand.equals(EXIT)) { // Exit function "E"
@@ -193,17 +193,17 @@ public class Main {
                                 }
                             } catch (OutOfRangeException e) { // operand.equals(TO_ROME)
                                 output = e.getMessage();
-                                logger.logOutput(output);
+                                logger.logOutput(output, "out");
                                 System.out.println(output); // Roman numeral
 
                             } catch (IOException e) { // logger.CopyFilesFromLoggerToTemp()
-                                logger.logOutput(e.getMessage());
+                                logger.logOutput(e.getMessage(), "out");
                                 System.out.println(e.getMessage());
                             }
                         } else {
                             if (coreNotUsed) {
                                 output = String.format(state.getPhrase("unknown_value"), operand);
-                                logger.logOutput(output);
+                                logger.logOutput(output, "out");
                                 System.out.println(output);
                             }
                         }
@@ -212,7 +212,7 @@ public class Main {
                     if (theEnd) { // If theEnd boolean value is true, exit the program.
                         state.saveState();
                         output = state.getPhrase("exiting");
-                        logger.logOutput(output);
+                        logger.logOutput(output, "out");
 
                         System.out.println(output);
                         lineScanner.close();
@@ -230,13 +230,13 @@ public class Main {
                         result += " " + e.getMessage();
                     }
                     output = String.format(state.getPhrase("result"), result);
-                    logger.logOutput(output); // Result
+                    logger.logOutput(output, "out"); // Result
                     System.out.println(output); // Result
                 } catch (Exception e) {
 //                e.printStackTrace();
                     System.out.println(e.getMessage()); // In case of an error
                     output = state.getPhrase("output_error");
-                    logger.logOutput(output);
+                    logger.logOutput(output, "out");
                     System.out.println(output);
                     state = copy; //  return previous org.paleha.calculator_pl.main.State values
                 }

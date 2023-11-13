@@ -79,19 +79,9 @@ public final class Logger {
     /**
      * Function to write a string to the file.
      */
-    public void logInput(String string) throws Exception {
+    public void logOutput(String result, String prefix) throws Exception {
         String dateTime = generateFileName();
-        String logInput = dateTime + " in " + string + "\n";
-        isFileExist();
-        writeFileToDir(this.outputFile, logInput); // Append the string to the document.
-    }
-
-    /**
-     * Function to write a string to the file.
-     */
-    public void logOutput(String string) throws Exception {
-        String dateTime = generateFileName();
-        String logOutput = dateTime + " out " + string + "\n";
+        String logOutput = dateTime + " " + prefix + ": " + result + "\n";
         isFileExist();
         writeFileToDir(this.outputFile, logOutput); // Append the string to the document.
     }
