@@ -36,8 +36,9 @@ public class Main {
             System.out.println(state.getPhrase("hello_massage_two")); // Info on calling help
             System.out.println(String.format(state.getPhrase("loaded_memory"), state.memoryResult)); // Reading the saved memory string
 
-            END_PROGRAM:
+//            END_PROGRAM:
             while (scanner.hasNextLine()) { // Main program loop with user input
+                boolean theEnd = false;
                 String line = scanner.nextLine(); // Save user input to the variable line
 
                 try {
@@ -45,6 +46,7 @@ public class Main {
                 } catch (IOException e) {
                     logger.logOutput(e.getMessage());
                     System.out.println(e.getMessage());
+
                 }
 
                 String output; // Declare output string
@@ -185,14 +187,7 @@ public class Main {
                                     System.out.println(output);
 
                                 } else if (operand.equals(EXIT)) { // Exit function "E"
-                                    state.saveState();
-                                    output = state.getPhrase("exiting");
-                                    logger.logOutput(output);
-
-                                    System.out.println(output);
-                                    lineScanner.close();
-                                    scanner.close();
-                                    break END_PROGRAM;
+                                    theEnd = true;
                                 }
                             } catch (OutOfRangeException e) { // operand.equals(TO_ROME)
                                 output = e.getMessage();
@@ -210,6 +205,16 @@ public class Main {
                                 System.out.println(output);
                             }
                         }
+                    }
+
+                    if (theEnd) { // If theEnd boolean value is true, exit the program.
+                        state.saveState();
+                        output = state.getPhrase("exiting");
+                        logger.logOutput(output);
+
+                        System.out.println(output);
+                        lineScanner.close();
+                        scanner.close();
                     }
 
                     state.memoryResult = state.peek();
