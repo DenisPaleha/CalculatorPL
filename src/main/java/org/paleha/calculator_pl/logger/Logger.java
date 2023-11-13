@@ -25,7 +25,7 @@ public final class Logger {
     /**
      * Function write file to dir
      */
-    public void writeFileToDir(File outputFile, String content) throws IOException {
+    private void writeFileToDir(File outputFile, String content) throws IOException {
         try {
             deleteFileIfNeed();
         } catch (Exception e) {
@@ -44,7 +44,7 @@ public final class Logger {
     /**
      * Method checks if the file exists
      */
-    public void isFileExist() throws Exception {
+    private void isFileExist() throws Exception {
         if (!Files.exists(this.outputFile.toPath())) {
             isFoldersExist(); // Checking if folders exist first
             String fileTxtName = generateFileName();
@@ -59,7 +59,7 @@ public final class Logger {
     /**
      * The function checks for directories and corrects errors if possible
      */
-    public void isFoldersExist() throws Exception {
+    private void isFoldersExist() throws Exception {
         Path targetDirectory = Paths.get(loggerPath);
 
         if (!Files.isDirectory(targetDirectory)) { // Check if the specified directories exist
@@ -70,7 +70,7 @@ public final class Logger {
     /**
      * Function returns a string with the date and time in the required format.
      */
-    public String generateFileName() {
+    private String generateFileName() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd_HH-mm-ss");
         return now.format(formatter);
@@ -96,7 +96,7 @@ public final class Logger {
         writeFileToDir(this.outputFile, logOutput); // Append the string to the document.
     }
 
-    public void createNewDir(String folderPath) throws IOException { // "LoggerFiles/TempLogs"
+    private void createNewDir(String folderPath) throws IOException { // "LoggerFiles/TempLogs"
         Path newDirPath = Paths.get(folderPath); // Create Path of new Directory
         if (!Files.exists(newDirPath)) { // If the directory has not been created yet (at the first startup)
             try {
@@ -118,13 +118,13 @@ public final class Logger {
             List<Path> files = filesStream.toList(); // Get the list of files in the source directory Temp
 
             if (availableFileIndex < files.size()) { // Если максимальное количество файлов в папке превышено
-                removeOldestFile(loggerPath);
+                removeOldestFile();
             }
         }
     }
 
-    public static void removeOldestFile(String folderPath) {
-        File folder = new File(folderPath);
+    private void removeOldestFile() {
+        File folder = new File(this.loggerPath);
         File[] files = folder.listFiles();
 
         if (files != null && files.length > 0) {
