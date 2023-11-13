@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 public class State {
     private boolean isArray = true; // Data structure switch: true = array; false = list;
     private boolean isEnglish = true; // Language switch
-    public BigDecimal memoryResult = new BigDecimal("0.0"); // Saved memory
+    BigDecimal memoryResult = new BigDecimal("0.0"); // Saved memory
     private String numberSystem = OUT_DEC; // Number system
     //    private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();

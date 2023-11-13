@@ -46,7 +46,7 @@ public class HexNumbersTest extends TestCase {
 
         num = "0x3Z";
         try {
-            BigDecimal actualHex = HexNumbers.hexNumbersToPush(num);
+            HexNumbers.hexNumbersToPush(num);
         } catch (Exception wrongNumber) {
             String result = wrongNumber.getMessage();
             assertEquals("Write error: Hexadecimal number 3Z contains invalid characters.", result);
