@@ -158,7 +158,7 @@ public final class HashMap {
     }
 
     /**
-     * This method writes data for Main class.
+     * This method writes data for org.paleha.calculator_pl.main.Main class.
      */
 
     public void loadMainHashMap() {
@@ -220,7 +220,7 @@ public final class HashMap {
     }
 
     /**
-     * This method writes data for Core class.
+     * This method writes data for org.paleha.calculator_pl.main.Core class.
      */
 
     public void loadCoreHashMap() {

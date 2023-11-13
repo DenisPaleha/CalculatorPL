@@ -1,3 +1,5 @@
+package org.paleha.calculator_pl.main;
+
 import org.paleha.calculator_pl.memory.FileOperator;
 import org.paleha.calculator_pl.languages.LocaleStrings;
 import org.paleha.calculator_pl.stack.AbstractStack;
@@ -17,7 +19,7 @@ import java.math.BigDecimal;
 public class State {
     private boolean isArray = true; // Data structure switch: true = array; false = list;
     private boolean isEnglish = true; // Language switch
-    BigDecimal memoryResult = new BigDecimal("0.0"); // Saved memory
+    public BigDecimal memoryResult = new BigDecimal("0.0"); // Saved memory
     private String numberSystem = OUT_DEC; // Number system
     //    private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();
@@ -133,7 +135,7 @@ public class State {
     }
 
     /**
-     * Function for loading the State from saved txt data. Part 1 // Out of test
+     * Function for loading the org.paleha.calculator_pl.main.State from saved txt data. Part 1 // Out of test
      */
     public String prepareForLoad() throws IOException {
         if (!memoryOperator.isFileExist()) {  // Check if the file exists
@@ -155,7 +157,7 @@ public class State {
     }
 
     /**
-     * Function for loading the State from saved txt data. Part 2
+     * Function for loading the org.paleha.calculator_pl.main.State from saved txt data. Part 2
      */
     public void loadFromPrepared(String fileContent) {
         //'fileContent' contains the file's content as a single string

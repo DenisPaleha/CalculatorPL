@@ -1,6 +1,7 @@
+package org.paleha.calculator_pl.constanse;
+
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
-import org.paleha.calculator_pl.constanse.HashMap;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -134,4 +135,5 @@ public class HashMapTest extends TestCase {
         hashmap.printHashMapKeys(); // Print keys to the screen
         hashmap.printHashMapValues(); // Print values to the screen
     }
+
 }

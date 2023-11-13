@@ -1,6 +1,7 @@
-import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
+package org.paleha.calculator_pl.numbers;
+
 import junit.framework.TestCase;
-import org.paleha.calculator_pl.numbers.BinaryNumbers;
+import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -42,9 +43,9 @@ public class BinaryNumbersTest extends TestCase {
     public void testBinaryToDecimal() {
         String binary = "0b10011100010";
         try {
-        BigDecimal Bd = BinaryNumbers.binaryToPush(binary);
-        String result = Bd.toString();
-        assertEquals("1250.0", result);
+            BigDecimal Bd = BinaryNumbers.binaryToPush(binary);
+            String result = Bd.toString();
+            assertEquals("1250.0", result);
         } catch (Exception wrongNumber){
             System.out.println(wrongNumber.getMessage());
         }

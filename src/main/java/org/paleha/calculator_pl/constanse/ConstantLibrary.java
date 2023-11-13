@@ -1,6 +1,6 @@
 package org.paleha.calculator_pl.constanse;
 public final class ConstantLibrary {
-    // Constant library, for the Main class
+    // Constant library, for the org.paleha.calculator_pl.main.Main class
     public static final String EXIT = "E";
     public static final String PLUS = "+";
     public static final String MINUS = "-";
@@ -12,7 +12,7 @@ public final class ConstantLibrary {
     public static final String SQUARE = "root";// Square root extraction command
     public static final String PERCENT = "%";// Percentage calculation command
     public static final String HELP = "h";// Help command
-    public static final String INFO = "info";// State information command
+    public static final String INFO = "info";// org.paleha.calculator_pl.main.State information command
     public static final String SWITCH_METHOD = "sm";// Switch data structure command (array / list)
     public static final String SAVE = "S";// Save command
     public static final String TO_ROME = "toRom";// Conversion of the last result to Roman numerals command
@@ -102,7 +102,7 @@ public final class ConstantLibrary {
             "| The 'root' command extracts the square root of the last number.                     |\n" +
             "| The '%' command extracts the percentage of the penultimate number equal to the last |\n" +
             "| number. For example, '120 10 %' will return 12.00                                   |\n" +
-            "| The 'info' command displays the contents of the State class on the screen.          |\n" +
+            "| The 'info' command displays the contents of the org.paleha.calculator_pl.main.State class on the screen.          |\n" +
             "| The 'S' command saves the current data to a document.                               |\n" +
             "| The 'sm' command switches between the Array / List data structure method.           |\n" +
             "| The 'toRom' command converts the memory content into Roman numerals.                |\n" +
@@ -130,7 +130,7 @@ public final class ConstantLibrary {
             "| Команда 'root' - извлечет квадратный корень из последнего числа.                   |\n" +
             "| Команда '%' - извлечет из предпоследнего числа проценты, количество которых равно  |\n" +
             "| последнему числу. Например, '120 10 %' вернет 12.00                                |\n" +
-            "| Команда 'info' - выведет на экран содержимое класса State.                         |\n" +
+            "| Команда 'info' - выведет на экран содержимое класса org.paleha.calculator_pl.main.State.                         |\n" +
             "| Команда 'S' - Сохраняет текущие данные в документ.                                 |\n" +
             "| Команда 'sm' - переключает метод структуры данных Массив / Строка                  |\n" +
             "| Команда 'toRom' - конвертирует содержимое памяти в римские числа.                  |\n" +

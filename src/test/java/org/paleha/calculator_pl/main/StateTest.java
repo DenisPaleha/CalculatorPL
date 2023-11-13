@@ -1,5 +1,6 @@
+package org.paleha.calculator_pl.main;
+
 import junit.framework.TestCase;
-import junit.framework.TestResult;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,6 @@ import java.math.BigDecimal;
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 public class StateTest extends TestCase {
-
     @Test
     public void testSetLanguage() {
         State state = new State();
@@ -245,7 +245,7 @@ public class StateTest extends TestCase {
         State state = new State();
 
         String control = "120 130 140 \n140\ntrue\ntrue\n0\n";
-        state.loadFromPrepared(control); // сохраняем состояние State
+        state.loadFromPrepared(control); // сохраняем состояние org.paleha.calculator_pl.main.State
 
         BigDecimal memoryResult = state.memoryResult;
         String actual = memoryResult.toString();
@@ -265,7 +265,7 @@ public class StateTest extends TestCase {
         State state = new State();
 
         String control = "12 13 14 \n14\nfalse\ntrue\n0\n";
-        state.loadFromPrepared(control); // сохраняем состояние State
+        state.loadFromPrepared(control); // сохраняем состояние org.paleha.calculator_pl.main.State
 
         BigDecimal memoryResult = state.memoryResult;
         String actual = memoryResult.toString();

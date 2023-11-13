@@ -1,3 +1,5 @@
+package org.paleha.calculator_pl.main;
+
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 import org.paleha.calculator_pl.constanse.HashMap;
@@ -5,6 +7,7 @@ import org.paleha.calculator_pl.constanse.HashMap;
 import org.paleha.calculator_pl.exception.ConversionException;
 import org.paleha.calculator_pl.exception.OutOfRangeException;
 import org.paleha.calculator_pl.logger.Logger;
+
 import org.paleha.calculator_pl.numbers.BinaryNumbers;
 import org.paleha.calculator_pl.numbers.HexNumbers;
 import org.paleha.calculator_pl.numbers.OctalNumbers;
@@ -32,11 +35,11 @@ public class Main {
             HashMap hashmapMain = new HashMap(8);
             hashmapMain.loadMainHashMap();
 
-            System.out.println(state.getPhrase("hello_massage_one")); // Main info
+            System.out.println(state.getPhrase("hello_massage_one")); // org.paleha.calculator_pl.main.Main info
             System.out.println(state.getPhrase("hello_massage_two")); // Info on calling help
             System.out.println(String.format(state.getPhrase("loaded_memory"), state.memoryResult)); // Reading the saved memory string
 
-            while (scanner.hasNextLine()) { // Main program loop with user input
+            while (scanner.hasNextLine()) { // org.paleha.calculator_pl.main.Main program loop with user input
                 boolean theEnd = false;
                 String line = scanner.nextLine(); // Save user input to the variable line
 
@@ -50,7 +53,7 @@ public class Main {
 
                 String output; // Declare output string
 
-                State copy = state.copyState();  // Copy the State class instance to insert in case of expression reading error
+                State copy = state.copyState();  // Copy the org.paleha.calculator_pl.main.State class instance to insert in case of expression reading error
 
                 Core core = new Core(state);
 
@@ -235,7 +238,7 @@ public class Main {
                     output = state.getPhrase("output_error");
                     logger.logOutput(output);
                     System.out.println(output);
-                    state = copy; //  return previous State values
+                    state = copy; //  return previous org.paleha.calculator_pl.main.State values
                 }
             }
 

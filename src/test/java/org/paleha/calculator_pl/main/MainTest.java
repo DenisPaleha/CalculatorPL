@@ -1,3 +1,7 @@
+package org.paleha.calculator_pl.main;
+
+import junit.framework.TestCase;
+
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 import org.junit.runner.RunWith;
@@ -8,15 +12,19 @@ import org.paleha.calculator_pl.logger.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.paleha.calculator_pl.numbers.BinaryNumbersTest;
+import org.paleha.calculator_pl.numbers.HexNumbersTest;
+import org.paleha.calculator_pl.numbers.OctalNumbersTest;
+import org.paleha.calculator_pl.numbers.RomeNumeralsTest;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 
-
 @RunWith(Suite.class)
 @Suite.SuiteClasses({StateTest.class, CoreTest.class, HexNumbersTest.class,
- OctalNumbersTest.class, BinaryNumbersTest.class, RomeNumeralsTest.class/* all over classes if we need it */})
+        OctalNumbersTest.class, BinaryNumbersTest.class, RomeNumeralsTest.class/* all over classes if we need it */})
 
-public class MainTest {
+public class MainTest extends TestCase {
 
     @Test
     public void testNweState() {
@@ -138,5 +146,6 @@ public class MainTest {
         control = hashmapMain.get(operand);
         Assert.assertEquals(OUT_ENG, control);
     }
+
 
 }

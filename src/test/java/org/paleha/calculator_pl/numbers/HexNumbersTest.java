@@ -1,5 +1,7 @@
+package org.paleha.calculator_pl.numbers;
+
 import junit.framework.TestCase;
-import org.paleha.calculator_pl.numbers.HexNumbers;
+
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
@@ -74,4 +76,5 @@ public class HexNumbersTest extends TestCase {
         String result = HexNumbers.convertDecimalToHex(num);
         assertEquals("0x30", result);
     }
+
 }

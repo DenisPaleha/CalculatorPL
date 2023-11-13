@@ -1,3 +1,5 @@
+package org.paleha.calculator_pl.main;
+
 import org.paleha.calculator_pl.constanse.HashMap;
 import org.paleha.calculator_pl.math.MathFunctions;
 import org.paleha.calculator_pl.numbers.BinaryNumbers;

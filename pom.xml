@@ -15,7 +15,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>calculatorPL.Main</start-class>
+        <start-class>calculatorPL.org.paleha.calculator_pl.main.Main</start-class>
     </properties>
 
     <dependencies>
@@ -51,7 +51,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>org.paleha.calculator_pl.main.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

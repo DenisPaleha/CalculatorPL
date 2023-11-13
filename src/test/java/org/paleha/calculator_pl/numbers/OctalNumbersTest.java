@@ -1,10 +1,11 @@
+package org.paleha.calculator_pl.numbers;
+
 import junit.framework.TestCase;
 import org.paleha.calculator_pl.numbers.OctalNumbers;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
 public class OctalNumbersTest extends TestCase {
-
     /**
      * Проверяем работоспособность функции "Является ли строка Восьмеричным числом"
      */
@@ -42,7 +43,7 @@ public class OctalNumbersTest extends TestCase {
         }
 
         try {
-        num = "0o68"; // Переводим BigDecimal в int
+            num = "0o68"; // Переводим BigDecimal в int
             BigDecimal actualOct = OctalNumbers.convertOctalToPush(num);
         } catch (Exception wrongNumber) {
             String result = wrongNumber.getMessage();
@@ -73,4 +74,5 @@ public class OctalNumbersTest extends TestCase {
         String result = OctalNumbers.convertDecimalToOctal(num);
         assertEquals("0o60", result);
     }
+
 }

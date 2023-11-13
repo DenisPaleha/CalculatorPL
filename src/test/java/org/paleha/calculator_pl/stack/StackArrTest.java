@@ -1,13 +1,11 @@
-import org.paleha.calculator_pl.stack.AbstractStack;
-import org.paleha.calculator_pl.stack.StackArr;
+package org.paleha.calculator_pl.stack;
 
 import junit.framework.TestCase;
-import org.junit.jupiter.api.Test;
 
+import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
 public class StackArrTest extends TestCase {
-
     @Test
     public void testIsEmptyStack() {
         StackArr stackArr = new StackArr();

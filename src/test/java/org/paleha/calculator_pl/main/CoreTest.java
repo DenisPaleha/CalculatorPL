@@ -1,13 +1,15 @@
+package org.paleha.calculator_pl.main;
+
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+
 
 import java.math.BigDecimal;
 
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 public class CoreTest extends TestCase {
-
     /**
      * Does the string contain a fractional number
      */

@@ -1,13 +1,11 @@
+package org.paleha.calculator_pl.stack;
 
-import org.paleha.calculator_pl.stack.StackList;
-import org.paleha.calculator_pl.stack.AbstractStack;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
 public class StackListTest extends TestCase {
-
     @Test
     public void testIsEmpty() {
         StackList stList = new StackList();
@@ -115,5 +113,5 @@ public class StackListTest extends TestCase {
             System.out.println(tmp);
         }
     }
-}
 
+}

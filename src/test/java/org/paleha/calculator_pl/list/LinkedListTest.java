@@ -1,7 +1,7 @@
-import org.paleha.calculator_pl.list.LinkedList;
-import org.paleha.calculator_pl.list.Iterator;
+package org.paleha.calculator_pl.list;
 
 import junit.framework.TestCase;
+
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
@@ -226,4 +226,5 @@ public class LinkedListTest extends TestCase {
         list.deleteLast();
         assertEquals(size - 1, list.listSize());
     }
+
 }

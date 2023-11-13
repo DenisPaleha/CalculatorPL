@@ -1,13 +1,13 @@
-import junit.framework.TestCase;
+package org.paleha.calculator_pl.numbers;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.paleha.calculator_pl.exception.ConversionException;
 import org.paleha.calculator_pl.exception.OutOfRangeException;
-import org.paleha.calculator_pl.numbers.RomeNumerals;
 
 import java.math.BigDecimal;
 
-public class RomeNumeralsTest  {
+public class RomeNumeralsTest {
 
     @Test
     public void testConvertDecimalToRome() throws Exception {

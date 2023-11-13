@@ -42,7 +42,7 @@
 ////        passwordScanner.close();                                                            //  +++???+++
 //    }
 //
-//    public void checkPassword(State state, Scanner passwordScanner) {
+//    public void checkPassword(org.paleha.calculator_pl.main.State state, Scanner passwordScanner) {
 //        System.out.println("Insert your password");
 ////        Scanner passwordScanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
 //        while (passwordScanner.hasNextLine()) { // scan input line
