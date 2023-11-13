@@ -8,6 +8,7 @@ import org.paleha.calculator_pl.exception.ConversionException;
 import org.paleha.calculator_pl.exception.OutOfRangeException;
 import org.paleha.calculator_pl.logger.Logger;
 
+import org.paleha.calculator_pl.memory.FileOperator;
 import org.paleha.calculator_pl.numbers.BinaryNumbers;
 import org.paleha.calculator_pl.numbers.HexNumbers;
 import org.paleha.calculator_pl.numbers.OctalNumbers;
@@ -23,23 +24,32 @@ public class Main {
 
     public static void main(String[] args) {
 
+        String memoryFileName = "Memory.txt"; // Name of the memory file
+
         Scanner scanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
 
         try {
             State state = new State();
-            String memory = state.prepareForLoad(); //+++
-            state.loadFromPrepared(memory);
+
 
             Logger logger = new Logger();
 
             HashMap hashmapMain = new HashMap(8);
             hashmapMain.loadMainHashMap();
 
-            System.out.println(state.getPhrase("hello_massage_one")); // org.paleha.calculator_pl.main.Main info
+            try {
+                String memory = loadFromMemoryFile(state, memoryFileName) ; //+++
+                state.loadFromPrepared(memory);
+            } catch (IOException e) {
+                logger.logOutput("Failed to load saved data", "out");
+                System.out.println("Failed to load saved data");
+            }
+
+            System.out.println(state.getPhrase("hello_massage_one")); // Main info
             System.out.println(state.getPhrase("hello_massage_two")); // Info on calling help
             System.out.println(String.format(state.getPhrase("loaded_memory"), state.memoryResult)); // Reading the saved memory string
 
-            while (scanner.hasNextLine()) { // org.paleha.calculator_pl.main.Main program loop with user input
+            while (scanner.hasNextLine()) { // Main program loop with user input
                 boolean theEnd = false;
                 String line = scanner.nextLine(); // Save user input to the variable line
 
@@ -53,7 +63,7 @@ public class Main {
 
                 String output; // Declare output string
 
-                State copy = state.copyState();  // Copy the org.paleha.calculator_pl.main.State class instance to insert in case of expression reading error
+                State copy = state.copyState();  // Copy the State class instance to insert in case of expression reading error
 
                 Core core = new Core(state);
 
@@ -114,7 +124,7 @@ public class Main {
                                 } else if (operand.equals(SAVE)) {  //  "S" command Saves all data to MemoryTwo.txt
                                     output = state.getPhrase("data_saved");
                                     logger.logOutput(output, "out");
-                                    state.saveState();
+                                    saveStateToMemoryFile(state, memoryFileName);
                                     System.out.println(output);
 
                                 } else if (operand.equals(TO_ROME)) { // "ToRome" function, converts memory to Roman numeral
@@ -210,7 +220,7 @@ public class Main {
                     }
 
                     if (theEnd) { // If theEnd boolean value is true, exit the program.
-                        state.saveState();
+                        saveStateToMemoryFile(state, memoryFileName);
                         output = state.getPhrase("exiting");
                         logger.logOutput(output, "out");
 
@@ -238,12 +248,40 @@ public class Main {
                     output = state.getPhrase("output_error");
                     logger.logOutput(output, "out");
                     System.out.println(output);
-                    state = copy; //  return previous org.paleha.calculator_pl.main.State values
+                    state = copy; //  return previous State values
                 }
             }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    /**
+     * The function gets a string from State and writes it to memoryFileName // Out of test
+     */
+    public static void saveStateToMemoryFile(State state, String memoryFileName) throws IOException {  // Make the method return a String for testing purposes
+        try {
+            String allMemory = state.prepareForSave();
+            FileOperator memoryOperator = new FileOperator();
+            memoryOperator.wroteToMemoryFile(allMemory, memoryFileName);
+        } catch (IOException e) {
+            throw new IOException("Can't save memory to the file " + memoryFileName);
+        }
+    }
+
+    /**
+     * Функция получает строку из memoryFileName и записывает ее в State // Out of test
+     */
+    public static String loadFromMemoryFile(State state, String memoryFileName) throws IOException {
+        String fileContent;
+
+            FileOperator memoryOperator = new FileOperator();
+            if (!memoryOperator.isFileExist(memoryFileName)) {  // Check if the file exists
+                saveStateToMemoryFile(state, memoryFileName); // If the file does not exist, save the state
+            }
+            fileContent = memoryOperator.readFromMemoryFile(memoryFileName);
+
+        return fileContent;
     }
 }

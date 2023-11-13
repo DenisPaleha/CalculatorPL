@@ -42,7 +42,7 @@ public class MainTest extends TestCase {
             String anyWord = "The test of logger work";
 
             try {
-                logger.logInput(anyWord); // Copy all input data to the logger
+                logger.logOutput(anyWord, "in"); // Copy all input data to the logger
                 isWork = "Yes";
             } catch (Exception e) {
                 isWork = "No";

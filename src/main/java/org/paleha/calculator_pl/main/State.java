@@ -1,6 +1,5 @@
 package org.paleha.calculator_pl.main;
 
-import org.paleha.calculator_pl.memory.FileOperator;
 import org.paleha.calculator_pl.languages.LocaleStrings;
 import org.paleha.calculator_pl.stack.AbstractStack;
 import org.paleha.calculator_pl.stack.StackArr;
@@ -13,7 +12,6 @@ import org.paleha.calculator_pl.numbers.RomeNumerals;
 
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 
 public class State {
@@ -21,9 +19,7 @@ public class State {
     private boolean isEnglish = true; // Language switch
     BigDecimal memoryResult = new BigDecimal("0.0"); // Saved memory
     private String numberSystem = OUT_DEC; // Number system
-    //    private final String fileTxtName = "Memory.txt";
     private AbstractStack stack = new StackArr();
-    private final FileOperator memoryOperator = new FileOperator();
     private LocaleStrings localeStrings = new LocaleStrings(isEnglish);
     private int tripMeter = 0; // invisible counter (only visible in Memory.txt string 5)
 
@@ -124,36 +120,6 @@ public class State {
         String tripMeter = String.valueOf(this.tripMeter); // invisible counter
         // Pack all memory types into strings
         return dataInfo + "\n" + memoryRes + "\n" + methodStatus + "\n" + languageStatus + "\n" + tripMeter + "\n";
-    }
-
-    /**
-     * Function for saving memory part 2. // Out of test
-     */
-    public void saveState() throws IOException {  // Make the method return a String for testing purposes
-        String allMemory = prepareForSave();
-        memoryOperator.wroteToMemoryFile(allMemory);
-    }
-
-    /**
-     * Function for loading the org.paleha.calculator_pl.main.State from saved txt data. Part 1 // Out of test
-     */
-    public String prepareForLoad() throws IOException {
-        if (!memoryOperator.isFileExist()) {  // Check if the file exists
-            saveState(); // If the file does not exist, save the state
-        }
-
-        String fileContent;
-        try {
-            fileContent = memoryOperator.readFromMemoryFile();
-        } catch (IOException e) { // In case of unsuccessful loading from the file, restore default data
-            this.memoryResult = new BigDecimal("0.0");
-            this.isArray = true;
-            this.isEnglish = true;
-            this.tripMeter = 50;
-            stack = new StackArr();
-            throw new IOException("Failed to restore saved data");
-        }
-        return fileContent;
     }
 
     /**
