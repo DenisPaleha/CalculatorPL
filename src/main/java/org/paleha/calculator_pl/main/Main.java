@@ -4,13 +4,14 @@ import org.paleha.calculator_pl.constanse.HashMap;
 import org.paleha.calculator_pl.exception.ConversionException;
 import org.paleha.calculator_pl.exception.OutOfRangeException;
 import org.paleha.calculator_pl.logger.AbstractLogger;
-import org.paleha.calculator_pl.logger.JaLogger;
-import org.paleha.calculator_pl.logger.MyLogger;
+import org.paleha.calculator_pl.logger.LoggerPl;
+import org.paleha.calculator_pl.logger.LoggerSlf4j;
 import org.paleha.calculator_pl.memory.FileOperator;
 import org.paleha.calculator_pl.numbers.BinaryNumbers;
 import org.paleha.calculator_pl.numbers.HexNumbers;
 import org.paleha.calculator_pl.numbers.OctalNumbers;
 import org.paleha.calculator_pl.numbers.RomeNumerals;
+
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -31,7 +32,7 @@ public class Main {
         try {
             State state = new State();
 
-            AbstractLogger logger = new JaLogger();
+            AbstractLogger logger = changeLogger(false);
 
             HashMap hashmapMain = new HashMap(8);
             hashmapMain.loadMainHashMap();
@@ -198,6 +199,18 @@ public class Main {
                                     logger.logOutput(output, "out");
                                     System.out.println(output);
 
+                                } else if (operand.equals(LOG_PL)) {  // Logger switch to LoggerPL
+                                    logger = changeLogger(false);
+                                    output = "LoggerPL enabled";
+                                    logger.logOutput(output, "out");
+                                    System.out.println(output);
+
+                                } else if (operand.equals(LOG_SLF4J)) {  // Logger switch to slf4j
+                                    logger = changeLogger(true);
+                                    output = "LoggerSlf4j enabled";
+                                    logger.logOutput(output, "out");
+                                    System.out.println(output);
+
                                 } else if (operand.equals(EXIT)) { // Exit function "E"
                                     theEnd = true;
                                 }
@@ -255,7 +268,6 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     /**
@@ -272,7 +284,7 @@ public class Main {
     }
 
     /**
-     * Функция получает строку из memoryFileName и записывает ее в State // Out of test
+     * The function gets a string from memoryFileName and writes it to State // Out of test
      */
     public static String loadFromMemoryFile(State state, String memoryFileName) throws IOException {
         String fileContent;
@@ -285,4 +297,26 @@ public class Main {
 
         return fileContent;
     }
+
+    /**
+     * The function changes the logger used in the program
+     */
+    public static AbstractLogger changeLogger(boolean set) throws IOException {
+        if (set) {
+            try {
+                return new LoggerSlf4j();
+            } catch (IOException e) {
+                return new LoggerPl(); // If an error occurs when loading one of the loggers,
+                // the other logger will be loaded
+            }
+        } else {
+            try {
+                return new LoggerPl();
+            }catch (IOException e){
+                return new LoggerSlf4j(); // If an error occurs when loading one of the loggers,
+                // the other logger will be loaded
+            }
+        }
+    }
+
 }
