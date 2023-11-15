@@ -7,7 +7,7 @@ import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.paleha.calculator_pl.constanse.HashMap;
-import org.paleha.calculator_pl.logger.MyLogger;
+import org.paleha.calculator_pl.logger.LoggerPl;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -38,7 +38,7 @@ public class MainTest extends TestCase {
     public void testLogger() {
         String isWork;
         try {
-            MyLogger myLogger = new MyLogger();
+            LoggerPl myLogger = new LoggerPl();
             String anyWord = "The test of logger work";
 
             try {
