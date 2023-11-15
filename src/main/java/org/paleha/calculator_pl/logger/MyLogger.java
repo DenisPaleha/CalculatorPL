@@ -2,7 +2,9 @@ package org.paleha.calculator_pl.logger;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -10,12 +12,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
-public final class Logger {
+public final class MyLogger extends AbstractLogger {
     private final String loggerPath = "LoggerFiles";
     private File outputFile; // Creating File, combining the file path and file name
     private final int availableFileIndex = 5; // minimum number of files in the folder loggerPath
 
-    public Logger() throws IOException {  // The constructor should generate a file name and create the file itself.
+    public MyLogger() throws IOException {  // The constructor should generate a file name and create the file itself.
         String fileTxtName = generateFileName() + ".txt"; // generate a filename
         createNewDir(this.loggerPath); // Create a logger folder if there is no folder
         this.outputFile = new File(this.loggerPath, fileTxtName); // File object combining the file path and file name
@@ -107,7 +109,7 @@ public final class Logger {
         try (Stream<Path> filesStream = Files.list(sourceDirectory)) {
             List<Path> files = filesStream.toList(); // Get the list of files in the source directory Temp
 
-            if (availableFileIndex < files.size()) { // Если максимальное количество файлов в папке превышено
+            if (availableFileIndex < files.size()) { // If the maximum number of files in a folder is exceeded
                 removeOldestFile();
             }
         }
