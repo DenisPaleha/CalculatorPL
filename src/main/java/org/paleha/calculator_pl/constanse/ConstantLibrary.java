@@ -30,7 +30,10 @@ public final class ConstantLibrary {
     public static final String OUT_RUS = "outRus"; // Language switch command (Russian)
     public static final String OUT_ENG = "outEng"; // Language switch command (English)
 
-    //    Библиотека констант, для класса OctalAndHexNumbers ===========================================================
+    public static final String LOG_PL = "LOG_PL"; // Logger Pl
+    public static final String LOG_SLF4J = "LOG_slf4j"; // Logger slf4j
+
+    //    Constants library, for OctalAndHexNumbers class =============================
     public static final String PREFIX_8 = "0o";
     public static final String PREFIX_16 = "0x";
     public static final String PREFIX_2 = "0b";
@@ -102,7 +105,7 @@ public final class ConstantLibrary {
             "| The 'root' command extracts the square root of the last number.                     |\n" +
             "| The '%' command extracts the percentage of the penultimate number equal to the last |\n" +
             "| number. For example, '120 10 %' will return 12.00                                   |\n" +
-            "| The 'info' command displays the contents of the org.paleha.calculator_pl.main.State class on the screen.          |\n" +
+            "| The 'info' command displays the contents of the State class on the screen.          |\n" +
             "| The 'S' command saves the current data to a document.                               |\n" +
             "| The 'sm' command switches between the Array / List data structure method.           |\n" +
             "| The 'toRom' command converts the memory content into Roman numerals.                |\n" +
@@ -116,6 +119,7 @@ public final class ConstantLibrary {
             "| To automatically output all results in the desired numbering format, use the        |\n" +
             "| commands: outDec (decimal), outBin (binary), outOct (octal), outHex (hexadecimal),  |\n" +
             "| ourRome (Roman).                                                                    |\n" +
+            "| For switch logger method use command logPl (simple) or logSl (slf4j)                |\n" +
             "| Exit the program: 'E + Enter'.                                                      |\n" +
             "---------------------------------------------------------------------------------------";
 
@@ -144,6 +148,7 @@ public final class ConstantLibrary {
             "| Для вывода всех результатов в нужном формате исчисления автоматически, используйте |\n" +
             "| команды: outDec (десятеричные), outBin (двоичные), outOct (восьмеричные),          |\n" +
             "| outHex (шестнадцатеричные), ourRome (римские).                                     |\n" +
+            "| Для переключения логгера используйте команды logPl (simple) or logSl (slf4j)       |\n" +
             "| Выход из программы: 'E + Enter'.                                                   |\n" +
             "--------------------------------------------------------------------------------------";
 
