@@ -1,6 +1,8 @@
 package org.paleha.calculator_pl.main;
 
 import org.paleha.calculator_pl.languages.LocaleStrings;
+import org.paleha.calculator_pl.logger.AbstractLogger;
+import org.paleha.calculator_pl.logger.MyLogger;
 import org.paleha.calculator_pl.stack.AbstractStack;
 import org.paleha.calculator_pl.stack.StackArr;
 import org.paleha.calculator_pl.stack.StackList;
@@ -12,6 +14,7 @@ import org.paleha.calculator_pl.numbers.RomeNumerals;
 
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 
 public class State {

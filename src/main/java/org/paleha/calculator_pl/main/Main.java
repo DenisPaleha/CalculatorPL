@@ -1,13 +1,11 @@
 package org.paleha.calculator_pl.main;
 
-import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
-
 import org.paleha.calculator_pl.constanse.HashMap;
-
 import org.paleha.calculator_pl.exception.ConversionException;
 import org.paleha.calculator_pl.exception.OutOfRangeException;
-import org.paleha.calculator_pl.logger.Logger;
-
+import org.paleha.calculator_pl.logger.AbstractLogger;
+import org.paleha.calculator_pl.logger.JaLogger;
+import org.paleha.calculator_pl.logger.MyLogger;
 import org.paleha.calculator_pl.memory.FileOperator;
 import org.paleha.calculator_pl.numbers.BinaryNumbers;
 import org.paleha.calculator_pl.numbers.HexNumbers;
@@ -20,6 +18,8 @@ import java.math.RoundingMode;
 import java.util.Locale;
 import java.util.Scanner;
 
+import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -31,15 +31,16 @@ public class Main {
         try {
             State state = new State();
 
-
-            Logger logger = new Logger();
+            AbstractLogger logger = new JaLogger();
 
             HashMap hashmapMain = new HashMap(8);
             hashmapMain.loadMainHashMap();
 
             try {
-                String memory = loadFromMemoryFile(state, memoryFileName) ; //+++
+                String memory = loadFromMemoryFile(state, memoryFileName); //+++
                 state.loadFromPrepared(memory);
+
+                logger.logOutput(memory + "- Boot Memory", "out");
             } catch (IOException e) {
                 logger.logOutput("Failed to load saved data", "out");
                 System.out.println("Failed to load saved data");
@@ -58,7 +59,6 @@ public class Main {
                 } catch (IOException e) {
                     logger.logOutput(e.getMessage(), "out");
                     System.out.println(e.getMessage());
-
                 }
 
                 String output; // Declare output string
@@ -255,6 +255,7 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
     }
 
     /**
@@ -276,11 +277,11 @@ public class Main {
     public static String loadFromMemoryFile(State state, String memoryFileName) throws IOException {
         String fileContent;
 
-            FileOperator memoryOperator = new FileOperator();
-            if (!memoryOperator.isFileExist(memoryFileName)) {  // Check if the file exists
-                saveStateToMemoryFile(state, memoryFileName); // If the file does not exist, save the state
-            }
-            fileContent = memoryOperator.readFromMemoryFile(memoryFileName);
+        FileOperator memoryOperator = new FileOperator();
+        if (!memoryOperator.isFileExist(memoryFileName)) {  // Check if the file exists
+            saveStateToMemoryFile(state, memoryFileName); // If the file does not exist, save the state
+        }
+        fileContent = memoryOperator.readFromMemoryFile(memoryFileName);
 
         return fileContent;
     }
