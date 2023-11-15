@@ -100,7 +100,7 @@ public final class LoggerPl extends AbstractLogger {
     }
 
     /**
-     * Функция удаления файлов из логгера
+     * Function for deleting files from the logger 2
      */
     private void deleteFileIfNeed() throws Exception {
         Path sourceDirectory = Paths.get(loggerPath);
@@ -115,6 +115,7 @@ public final class LoggerPl extends AbstractLogger {
         }
     }
 
+    /** Function for deleting files from the logger 1 */
     private void removeOldestFile() {
         File folder = new File(this.loggerPath);
         File[] files = folder.listFiles();

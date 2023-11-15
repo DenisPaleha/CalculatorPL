@@ -25,6 +25,7 @@ public class LoggerSlf4j extends AbstractLogger {
         configureLogger();
     }
 
+    /** Function for writing a string to the log */
     public void logOutput(String result, String prefix) throws Exception {
         ensureLogFolderExists();
         deleteFileIfNeed();
@@ -32,6 +33,7 @@ public class LoggerSlf4j extends AbstractLogger {
         logger.info(logMessage);
     }
 
+    /** Checking the existence of the Logger folder */
     private void ensureLogFolderExists() throws IOException {
         File logFolder = new File("LoggerFiles");
         if (!logFolder.exists() && !logFolder.mkdirs()) {
@@ -43,30 +45,28 @@ public class LoggerSlf4j extends AbstractLogger {
         String timestamp = new SimpleDateFormat("yy-MM-dd_HH-mm-ss").format(new Date());
         String logFileName = "LoggerFiles/log_" + timestamp + ".txt";
 
-        // Отключаем вывод сообщений в консоль для корневого логгера
+        // Disable the output of messages to the console for the root logger
         LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
-        loggerContext.reset(); // Необходимо сбросить контекст перед повторной настройкой
+        loggerContext.reset(); // You need to reset the context before reconfiguration
 
-        // Создаем контекст логгера и конфигуратор
+        // Create logger context and configurator
         JoranConfigurator configurator = new JoranConfigurator();
         configurator.setContext(loggerContext);
 
-        // Настраиваем логгер с использованием файла конфигурации
+        // Configuring the logger using the configuration file
         try {
             configurator.doConfigure(Objects.requireNonNull(getClass().getClassLoader().getResource("logback.xml")));
         } catch (Exception e) {
-            // Если возникает ошибка при конфигурации логгера, выводим сообщение и выбрасываем IOException
-//            System.err.println("Error configuring logger: " + e.getMessage());
             throw new IOException("Failed to configure logger", e);
         }
 
-        // Открываем файл лога
+        // Open the log file
         File logFile = new File(logFileName);
         if (!logFile.exists() && !logFile.createNewFile()) {
             throw new IOException("Failed to create log file: " + logFileName);
         }
 
-        // Устанавливаем обработчик для записи логов в файл
+        // Set the handler to write logs to a file
         FileAppender fileAppender = (FileAppender) logger.getAppender("FILE");
         if (fileAppender != null) {
             fileAppender.setFile(logFileName);
@@ -75,16 +75,15 @@ public class LoggerSlf4j extends AbstractLogger {
             throw new IOException("Failed to find FILE appender in logback.xml");
         }
 
-        // Выводим статус Logback в консоль (это может быть полезно при отладке)
+        // Output Logback status to the console (this may be useful for debugging)
         StatusPrinter.printInCaseOfErrorsOrWarnings(loggerContext);
     }
 
     /**
-     * Функция удаления файлов из логгера
+     * Function for deleting files from the logger 2
      */
     private void deleteFileIfNeed() throws Exception {
         Path sourceDirectory = Paths.get("LoggerFiles");
-//        isFoldersExist();
 
         try (Stream<Path> filesStream = Files.list(sourceDirectory)) {
             List<Path> files = filesStream.toList(); // Get the list of files in the source directory Temp
@@ -96,7 +95,7 @@ public class LoggerSlf4j extends AbstractLogger {
     }
 
     /**
-     * Функция удаления файлов из логгера 2
+     * Function for deleting files from the logger 1
      */
     private void removeOldestFile() {
         File folder = new File("LoggerFiles");
