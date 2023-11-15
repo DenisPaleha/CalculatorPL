@@ -13,24 +13,30 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
-public class JaLogger extends AbstractLogger {
+public class LoggerSlf4j extends AbstractLogger {
 
     private static final Logger logger = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
-
-    public JaLogger() throws IOException {
+    private final int availableFilesQuantity = 5; // minimum number of files in the folder loggerPath
+    public LoggerSlf4j() throws IOException {
+        ensureLogFolderExists();
         configureLogger();
     }
 
     public void logOutput(String result, String prefix) throws Exception {
+        ensureLogFolderExists();
         deleteFileIfNeed();
         String logMessage = prefix + " " + result;
         logger.info(logMessage);
+    }
+
+    private void ensureLogFolderExists() throws IOException {
+        File logFolder = new File("LoggerFiles");
+        if (!logFolder.exists() && !logFolder.mkdirs()) {
+            throw new IOException("Failed to create directory: LoggerFiles");
+        }
     }
 
     private void configureLogger() throws IOException {
@@ -47,10 +53,10 @@ public class JaLogger extends AbstractLogger {
 
         // Настраиваем логгер с использованием файла конфигурации
         try {
-            configurator.doConfigure(getClass().getClassLoader().getResource("logback.xml"));
+            configurator.doConfigure(Objects.requireNonNull(getClass().getClassLoader().getResource("logback.xml")));
         } catch (Exception e) {
             // Если возникает ошибка при конфигурации логгера, выводим сообщение и выбрасываем IOException
-            System.err.println("Error configuring logger: " + e.getMessage());
+//            System.err.println("Error configuring logger: " + e.getMessage());
             throw new IOException("Failed to configure logger", e);
         }
 
@@ -83,12 +89,15 @@ public class JaLogger extends AbstractLogger {
         try (Stream<Path> filesStream = Files.list(sourceDirectory)) {
             List<Path> files = filesStream.toList(); // Get the list of files in the source directory Temp
 
-            if (5 < files.size()) { // If the maximum number of files in a folder is exceeded
+            if (availableFilesQuantity < files.size()) { // If the maximum number of files in a folder is exceeded
                 removeOldestFile();
             }
         }
     }
 
+    /**
+     * Функция удаления файлов из логгера 2
+     */
     private void removeOldestFile() {
         File folder = new File("LoggerFiles");
         File[] files = folder.listFiles();

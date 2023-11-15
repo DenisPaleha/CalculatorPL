@@ -12,13 +12,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
-public final class MyLogger extends AbstractLogger {
+public final class LoggerPl extends AbstractLogger {
     private final String loggerPath = "LoggerFiles";
     private File outputFile; // Creating File, combining the file path and file name
-    private final int availableFileIndex = 5; // minimum number of files in the folder loggerPath
+    private final int availableFilesQuantity = 5; // minimum number of files in the folder loggerPath
 
-    public MyLogger() throws IOException {  // The constructor should generate a file name and create the file itself.
-        String fileTxtName = generateFileName() + ".txt"; // generate a filename
+    public LoggerPl() throws IOException {  // The constructor should generate a file name and create the file itself.
+        String fileTxtName = "log_" + generateFileName() + ".txt"; // generate a filename
         createNewDir(this.loggerPath); // Create a logger folder if there is no folder
         this.outputFile = new File(this.loggerPath, fileTxtName); // File object combining the file path and file name
         writeFileToDir(this.outputFile, "New document \n"); // Write file to dir
@@ -109,7 +109,7 @@ public final class MyLogger extends AbstractLogger {
         try (Stream<Path> filesStream = Files.list(sourceDirectory)) {
             List<Path> files = filesStream.toList(); // Get the list of files in the source directory Temp
 
-            if (availableFileIndex < files.size()) { // If the maximum number of files in a folder is exceeded
+            if (availableFilesQuantity < files.size()) { // If the maximum number of files in a folder is exceeded
                 removeOldestFile();
             }
         }
