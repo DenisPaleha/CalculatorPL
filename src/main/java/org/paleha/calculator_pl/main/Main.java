@@ -16,9 +16,12 @@ import org.paleha.calculator_pl.numbers.RomeNumerals;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 public class Main {
@@ -32,7 +35,7 @@ public class Main {
         try {
             State state = new State();
 
-            AbstractLogger logger = changeLogger(false);
+            AbstractLogger logger = loggerLoad();
 
             HashMap hashmapMain = new HashMap(8);
             hashmapMain.loadMainHashMap();
@@ -205,7 +208,7 @@ public class Main {
                                     logger.logOutput(output, "out");
                                     System.out.println(output);
 
-                                } else if (operand.equals(LOG_SLF4J)) {  // Logger switch to slf4j
+                                } else if (operand.equals(LOG_SLF4J)) {  // Logger switch to Slf4j
                                     logger = changeLogger(true);
                                     output = "LoggerSlf4j enabled";
                                     logger.logOutput(output, "out");
@@ -303,20 +306,29 @@ public class Main {
      */
     public static AbstractLogger changeLogger(boolean set) throws IOException {
         if (set) {
-            try {
-                return new LoggerSlf4j();
-            } catch (IOException e) {
-                return new LoggerPl(); // If an error occurs when loading one of the loggers,
-                // the other logger will be loaded
-            }
+            return new LoggerSlf4j();
         } else {
-            try {
-                return new LoggerPl();
-            }catch (IOException e){
-                return new LoggerSlf4j(); // If an error occurs when loading one of the loggers,
-                // the other logger will be loaded
-            }
+            return new LoggerPl();
         }
+    }
+
+    /**
+     * Функция загружает регистратор в зависимости от времени дня
+     */
+    public static AbstractLogger loggerLoad() throws IOException {
+        String time;
+        boolean amTime;
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH"); // "yy-MM-dd_HH-mm-ss"
+        time = now.format(formatter);
+        amTime = parseInt(time) < 12;
+
+        if (amTime) {
+            return new LoggerPl();
+        } else {
+            return new LoggerSlf4j();
+        }
+
     }
 
 }

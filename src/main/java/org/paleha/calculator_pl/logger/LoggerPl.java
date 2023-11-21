@@ -21,7 +21,7 @@ public final class LoggerPl extends AbstractLogger {
         String fileTxtName = "log_" + generateFileName() + ".txt"; // generate a filename
         createNewDir(this.loggerPath); // Create a logger folder if there is no folder
         this.outputFile = new File(this.loggerPath, fileTxtName); // File object combining the file path and file name
-        writeFileToDir(this.outputFile, "New document \n"); // Write file to dir
+        writeFileToDir(this.outputFile, "New document: PL logger is used.\n"); // Write file to dir
     }
 
     /**
@@ -51,7 +51,7 @@ public final class LoggerPl extends AbstractLogger {
             isFoldersExist(); // Checking if folders exist first
             String fileTxtName = generateFileName();
             this.outputFile = new File(this.loggerPath, fileTxtName);
-            writeFileToDir(this.outputFile, "New document \n"); // Write new file to dir
+            writeFileToDir(this.outputFile, "New document: PL logger is used. \n"); // Write new file to dir
             if (!Files.exists(this.outputFile.toPath())) {
                 throw new Exception("Can't create the log to file " + outputFile);
             }

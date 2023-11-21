@@ -23,10 +23,11 @@ public class LoggerSlf4j extends AbstractLogger {
     public LoggerSlf4j() throws IOException {
         ensureLogFolderExists();
         configureLogger();
+        logOutput("Slf4j logger is used.", "New document: ");
     }
 
     /** Function for writing a string to the log */
-    public void logOutput(String result, String prefix) throws Exception {
+    public void logOutput(String result, String prefix) throws IOException {
         ensureLogFolderExists();
         deleteFileIfNeed();
         String logMessage = prefix + " " + result;
@@ -82,7 +83,7 @@ public class LoggerSlf4j extends AbstractLogger {
     /**
      * Function for deleting files from the logger 2
      */
-    private void deleteFileIfNeed() throws Exception {
+    private void deleteFileIfNeed() throws IOException {
         Path sourceDirectory = Paths.get("LoggerFiles");
 
         try (Stream<Path> filesStream = Files.list(sourceDirectory)) {
