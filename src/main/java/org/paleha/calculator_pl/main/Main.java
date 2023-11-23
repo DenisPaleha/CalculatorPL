@@ -1,8 +1,7 @@
 package org.paleha.calculator_pl.main;
 
 import org.paleha.calculator_pl.constanse.HashMap;
-import org.paleha.calculator_pl.exception.ConversionException;
-import org.paleha.calculator_pl.exception.OutOfRangeException;
+import org.paleha.calculator_pl.exception.*;
 import org.paleha.calculator_pl.logger.AbstractLogger;
 import org.paleha.calculator_pl.logger.LoggerPl;
 import org.paleha.calculator_pl.logger.LoggerSlf4j;
@@ -32,23 +31,19 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
 
+        boolean amTime = isAmTime();
+
         try {
             State state = new State();
 
-            AbstractLogger logger = loggerLoad();
+            AbstractLogger logger = loggerLoad(amTime);
 
             HashMap hashmapMain = new HashMap(8);
             hashmapMain.loadMainHashMap();
 
-            try {
-                String memory = loadFromMemoryFile(state, memoryFileName); //+++
-                state.loadFromPrepared(memory);
 
-                logger.logOutput(memory + "- Boot Memory", "out");
-            } catch (IOException e) {
-                logger.logOutput("Failed to load saved data", "out");
-                System.out.println("Failed to load saved data");
-            }
+            String memory = loadFromMemoryFile(state, memoryFileName); //  Исправить трай-кэтч+++
+            state.loadFromPrepared(memory);
 
             System.out.println(state.getPhrase("hello_massage_one")); // Main info
             System.out.println(state.getPhrase("hello_massage_two")); // Info on calling help
@@ -58,12 +53,7 @@ public class Main {
                 boolean theEnd = false;
                 String line = scanner.nextLine(); // Save user input to the variable line
 
-                try {
-                    logger.logOutput(line, "in"); // Copy all input data to the logger
-                } catch (IOException e) {
-                    logger.logOutput(e.getMessage(), "out");
-                    System.out.println(e.getMessage());
-                }
+                logger.logOutput(line, "in"); // Copy all input data to the logger
 
                 String output; // Declare output string
 
@@ -258,19 +248,27 @@ public class Main {
                     output = String.format(state.getPhrase("result"), result);
                     logger.logOutput(output, "out"); // Result
                     System.out.println(output); // Result
-                } catch (Exception e) {
+                } catch (IOException e) {
 //                e.printStackTrace();
                     System.out.println(e.getMessage()); // In case of an error
-                    output = state.getPhrase("output_error");
+                    output = state.getPhrase("output_error, previous State values reloaded");
                     logger.logOutput(output, "out");
                     System.out.println(output);
                     state = copy; //  return previous State values
                 }
             }
+        } catch (LoggerException e) {
+            System.out.println("failed to connect the logger");
+            System.out.println(e.getMessage());
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
 
         } catch (Exception e) {
+            // Тут по идее должны вываливаться сообщения вообще обо всех ошибках.
             System.out.println(e.getMessage());
         }
+
     }
 
     /**
@@ -304,7 +302,7 @@ public class Main {
     /**
      * The function changes the logger used in the program
      */
-    public static AbstractLogger changeLogger(boolean set) throws IOException {
+    public static AbstractLogger changeLogger(boolean set) throws LoggerException {
         if (set) {
             return new LoggerSlf4j();
         } else {
@@ -313,22 +311,25 @@ public class Main {
     }
 
     /**
-     * Функция загружает регистратор в зависимости от времени дня
+     * The function loads the logger depending on the time of day
      */
-    public static AbstractLogger loggerLoad() throws IOException {
+    public static AbstractLogger loggerLoad(boolean amTime) throws LoggerException {
+        if (amTime) {
+            return new LoggerPl();
+        } else {
+            return new LoggerSlf4j();
+        }
+    }
+
+    /** function determines whether the time is before or after noon */
+    public static boolean isAmTime(){
         String time;
         boolean amTime;
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH"); // "yy-MM-dd_HH-mm-ss"
         time = now.format(formatter);
         amTime = parseInt(time) < 12;
-
-        if (amTime) {
-            return new LoggerPl();
-        } else {
-            return new LoggerSlf4j();
-        }
-
+        return amTime;
     }
 
 }

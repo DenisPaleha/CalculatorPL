@@ -5,6 +5,7 @@ import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.FileAppender;
 import ch.qos.logback.core.util.StatusPrinter;
+import org.paleha.calculator_pl.exception.LoggerException;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
@@ -20,14 +21,16 @@ public class LoggerSlf4j extends AbstractLogger {
 
     private static final Logger logger = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
     private final int availableFilesQuantity = 5; // minimum number of files in the folder loggerPath
-    public LoggerSlf4j() throws IOException {
+    public LoggerSlf4j() throws LoggerException {
         ensureLogFolderExists();
         configureLogger();
-        logOutput("Slf4j logger is used.", "New document: ");
+        logOutput("Slf4j logger" +
+                " is used.", "New document: ");
     }
 
+
     /** Function for writing a string to the log */
-    public void logOutput(String result, String prefix) throws IOException {
+    public void logOutput(String result, String prefix) throws LoggerException {
         ensureLogFolderExists();
         deleteFileIfNeed();
         String logMessage = prefix + " " + result;
@@ -35,14 +38,14 @@ public class LoggerSlf4j extends AbstractLogger {
     }
 
     /** Checking the existence of the Logger folder */
-    private void ensureLogFolderExists() throws IOException {
+    private void ensureLogFolderExists() throws LoggerException {
         File logFolder = new File("LoggerFiles");
         if (!logFolder.exists() && !logFolder.mkdirs()) {
-            throw new IOException("Failed to create directory: LoggerFiles");
+            throw new LoggerException("Failed to create directory: LoggerFiles");
         }
     }
 
-    private void configureLogger() throws IOException {
+    private void configureLogger() throws LoggerException {
         String timestamp = new SimpleDateFormat("yy-MM-dd_HH-mm-ss").format(new Date());
         String logFileName = "LoggerFiles/log_" + timestamp + ".txt";
 
@@ -58,13 +61,17 @@ public class LoggerSlf4j extends AbstractLogger {
         try {
             configurator.doConfigure(Objects.requireNonNull(getClass().getClassLoader().getResource("logback.xml")));
         } catch (Exception e) {
-            throw new IOException("Failed to configure logger", e);
+            throw new LoggerException("Failed to configure logger");
         }
 
         // Open the log file
         File logFile = new File(logFileName);
-        if (!logFile.exists() && !logFile.createNewFile()) {
-            throw new IOException("Failed to create log file: " + logFileName);
+        try {
+            if (!logFile.exists() && !logFile.createNewFile()) {
+                throw new LoggerException("Failed to create log file: " + logFileName);
+            }
+        } catch (IOException e){
+            throw new LoggerException("Failed to create log file: " + logFileName);
         }
 
         // Set the handler to write logs to a file
@@ -73,7 +80,7 @@ public class LoggerSlf4j extends AbstractLogger {
             fileAppender.setFile(logFileName);
             fileAppender.start();
         } else {
-            throw new IOException("Failed to find FILE appender in logback.xml");
+            throw new LoggerException("Failed to find FILE appender in logback.xml");
         }
 
         // Output Logback status to the console (this may be useful for debugging)
@@ -83,7 +90,7 @@ public class LoggerSlf4j extends AbstractLogger {
     /**
      * Function for deleting files from the logger 2
      */
-    private void deleteFileIfNeed() throws IOException {
+    private void deleteFileIfNeed() throws LoggerException {
         Path sourceDirectory = Paths.get("LoggerFiles");
 
         try (Stream<Path> filesStream = Files.list(sourceDirectory)) {
@@ -92,6 +99,8 @@ public class LoggerSlf4j extends AbstractLogger {
             if (availableFilesQuantity < files.size()) { // If the maximum number of files in a folder is exceeded
                 removeOldestFile();
             }
+        } catch (IOException e) {
+            throw new LoggerException("Can't delete file from folder 'LoggerFiles'");
         }
     }
 

@@ -7,6 +7,7 @@ import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.paleha.calculator_pl.constanse.HashMap;
+import org.paleha.calculator_pl.exception.LoggerException;
 import org.paleha.calculator_pl.logger.LoggerPl;
 
 import org.junit.Assert;
@@ -17,7 +18,6 @@ import org.paleha.calculator_pl.numbers.HexNumbersTest;
 import org.paleha.calculator_pl.numbers.OctalNumbersTest;
 import org.paleha.calculator_pl.numbers.RomeNumeralsTest;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 
 @RunWith(Suite.class)
@@ -44,12 +44,12 @@ public class MainTest extends TestCase {
             try {
                 myLogger.logOutput(anyWord, "in"); // Copy all input data to the logger
                 isWork = "Yes";
-            } catch (Exception e) {
+            } catch (LoggerException e) {
                 isWork = "No";
             }
             Assert.assertEquals("Yes", isWork);
 
-        } catch (IOException e) {
+        } catch (LoggerException e) {
             isWork = "No";
         }
         Assert.assertEquals("Yes", isWork);

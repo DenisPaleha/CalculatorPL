@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="design revision">
+    <list default="true" id="607c8ff9-7490-4d58-a253-cadd2101e144" name="Changes" comment="Time-dependent logger loading">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/paleha/calculator_pl/exception/LoggerException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/paleha/calculator_pl/logger/AbstractLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/paleha/calculator_pl/logger/AbstractLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/paleha/calculator_pl/logger/LoggerPl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/paleha/calculator_pl/logger/LoggerPl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/paleha/calculator_pl/logger/LoggerSlf4j.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/paleha/calculator_pl/logger/LoggerSlf4j.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/paleha/calculator_pl/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/paleha/calculator_pl/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/paleha/calculator_pl/main/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/paleha/calculator_pl/main/MainTest.java" afterDir="false" />
     </list>
     <list id="ff8b2511-6584-4a73-9d68-41977c3f807b" name="Changes by Artyom" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit3 Test Class" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -100,16 +103,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StackListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CalculatorPL" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.paleha.calculator_pl.stack.*" />
+          <option name="PATTERN" value="org.paleha.calculator_pl.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.paleha.calculator_pl.stack" />
-      <option name="MAIN_CLASS_NAME" value="org.paleha.calculator_pl.stack.StackListTest" />
+      <option name="PACKAGE_NAME" value="org.paleha.calculator_pl.main" />
+      <option name="MAIN_CLASS_NAME" value="org.paleha.calculator_pl.main.MainTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,10 +152,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MainTest" />
         <item itemvalue="JUnit.calculator_pl in CalculatorPL" />
         <item itemvalue="JUnit.java in CalculatorPL" />
         <item itemvalue="JUnit.StateTest" />
-        <item itemvalue="JUnit.StackListTest" />
       </list>
     </recent_temporary>
   </component>
@@ -164,13 +167,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696176198628</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Remaking Exceptions">
-      <created>1697638148933</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1697638148933</updated>
     </task>
     <task id="LOCAL-00044" summary="Info changing">
       <created>1697731229645</created>
@@ -508,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700055564649</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Time-dependent logger loading">
+      <created>1700561700747</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1700561700750</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -524,7 +527,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="remane methods SaveState load State" />
     <MESSAGE value="Tests are written for the Core class" />
     <MESSAGE value="rewrite the MainTest.java" />
     <MESSAGE value="MainTest.java Runs multiple test classes at once" />
@@ -549,7 +551,8 @@
     <MESSAGE value="Logger switching function" />
     <MESSAGE value="Changes related to the new logger" />
     <MESSAGE value="design revision" />
-    <option name="LAST_COMMIT_MESSAGE" value="design revision" />
+    <MESSAGE value="Time-dependent logger loading" />
+    <option name="LAST_COMMIT_MESSAGE" value="Time-dependent logger loading" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

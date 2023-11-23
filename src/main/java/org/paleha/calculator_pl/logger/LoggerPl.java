@@ -1,5 +1,7 @@
 package org.paleha.calculator_pl.logger;
 
+import org.paleha.calculator_pl.exception.LoggerException;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,7 +19,7 @@ public final class LoggerPl extends AbstractLogger {
     private File outputFile; // Creating File, combining the file path and file name
     private final int availableFilesQuantity = 5; // minimum number of files in the folder loggerPath
 
-    public LoggerPl() throws IOException {  // The constructor should generate a file name and create the file itself.
+    public LoggerPl() throws LoggerException {  // The constructor should generate a file name and create the file itself.
         String fileTxtName = "log_" + generateFileName() + ".txt"; // generate a filename
         createNewDir(this.loggerPath); // Create a logger folder if there is no folder
         this.outputFile = new File(this.loggerPath, fileTxtName); // File object combining the file path and file name
@@ -27,11 +29,11 @@ public final class LoggerPl extends AbstractLogger {
     /**
      * Function write file to dir
      */
-    private void writeFileToDir(File outputFile, String content) throws IOException {
+    private void writeFileToDir(File outputFile, String content) throws LoggerException {
         try {
             deleteFileIfNeed();
         } catch (Exception e) {
-            throw new IOException("Cannot delete file from " + loggerPath + "The file not exist or folder is empty");
+            throw new LoggerException("Cannot delete file from " + loggerPath + "The file not exist or folder is empty");
         }
 
         try {
@@ -39,21 +41,21 @@ public final class LoggerPl extends AbstractLogger {
             writer.writerInTxt(content);
             writer.closeWriter();
         } catch (IOException e) {
-            throw new IOException("Writing to logger folder error");
+            throw new LoggerException("Writing to logger folder error");
         }
     }
 
     /**
      * Method checks if the file exists
      */
-    private void isFileExist() throws Exception {
+    private void isFileExist() throws LoggerException {
         if (!Files.exists(this.outputFile.toPath())) {
             isFoldersExist(); // Checking if folders exist first
             String fileTxtName = generateFileName();
             this.outputFile = new File(this.loggerPath, fileTxtName);
             writeFileToDir(this.outputFile, "New document: PL logger is used. \n"); // Write new file to dir
             if (!Files.exists(this.outputFile.toPath())) {
-                throw new Exception("Can't create the log to file " + outputFile);
+                throw new LoggerException("Can't create the log to file " + outputFile);
             }
         }
     }
@@ -61,7 +63,7 @@ public final class LoggerPl extends AbstractLogger {
     /**
      * The function checks for directories and corrects errors if possible
      */
-    private void isFoldersExist() throws Exception {
+    private void isFoldersExist() throws LoggerException {
         Path targetDirectory = Paths.get(loggerPath);
 
         if (!Files.isDirectory(targetDirectory)) { // Check if the specified directories exist
@@ -81,20 +83,20 @@ public final class LoggerPl extends AbstractLogger {
     /**
      * Function to write a string to the file.
      */
-    public void logOutput(String result, String prefix) throws Exception {
+    public void logOutput(String result, String prefix) throws LoggerException {
         String dateTime = generateFileName();
         String logOutput = dateTime + " " + prefix + ": " + result + "\n";
         isFileExist();
         writeFileToDir(this.outputFile, logOutput); // Append the string to the document.
     }
 
-    private void createNewDir(String folderPath) throws IOException { // "LoggerFiles/TempLogs"
+    private void createNewDir(String folderPath) throws LoggerException { // "LoggerFiles/TempLogs"
         Path newDirPath = Paths.get(folderPath); // Create Path of new Directory
         if (!Files.exists(newDirPath)) { // If the directory has not been created yet (at the first startup)
             try {
                 Files.createDirectory(newDirPath); // Create new directory
             } catch (IOException e) {
-                throw new IOException("Can't create a folder " + this.loggerPath);
+                throw new LoggerException("Can't create a folder " + this.loggerPath);
             }
         }
     }
@@ -102,7 +104,7 @@ public final class LoggerPl extends AbstractLogger {
     /**
      * Function for deleting files from the logger 2
      */
-    private void deleteFileIfNeed() throws Exception {
+    private void deleteFileIfNeed() throws LoggerException {
         Path sourceDirectory = Paths.get(loggerPath);
         isFoldersExist();
 
@@ -112,6 +114,8 @@ public final class LoggerPl extends AbstractLogger {
             if (availableFilesQuantity < files.size()) { // If the maximum number of files in a folder is exceeded
                 removeOldestFile();
             }
+        } catch (IOException e) {
+            throw new LoggerException("Can't delete file from folder " + this.loggerPath);
         }
     }
 
