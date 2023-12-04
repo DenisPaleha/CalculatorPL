@@ -218,12 +218,6 @@ public final class HashMap {
         put("eng", ConstantLibrary.OUT_ENG);
         put("инг", ConstantLibrary.OUT_ENG);
 
-        put("logpl", ConstantLibrary.LOG_PL);
-        put("logp", ConstantLibrary.LOG_PL);
-        put("logs", ConstantLibrary.LOG_SLF4J);
-        put("logsl", ConstantLibrary.LOG_SLF4J);
-        put("logslf4j", ConstantLibrary.LOG_SLF4J);
-
     }
 
     /**

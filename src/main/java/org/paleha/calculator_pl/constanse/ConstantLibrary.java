@@ -30,9 +30,6 @@ public final class ConstantLibrary {
     public static final String OUT_RUS = "outRus"; // Language switch command (Russian)
     public static final String OUT_ENG = "outEng"; // Language switch command (English)
 
-    public static final String LOG_PL = "LOG_PL"; // Logger Pl
-    public static final String LOG_SLF4J = "LOG_slf4j"; // Logger slf4j
-
     //    Constants library, for OctalAndHexNumbers class =============================
     public static final String PREFIX_8 = "0o";
     public static final String PREFIX_16 = "0x";

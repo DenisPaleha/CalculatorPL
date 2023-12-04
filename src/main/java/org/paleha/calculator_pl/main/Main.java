@@ -3,8 +3,7 @@ package org.paleha.calculator_pl.main;
 import org.paleha.calculator_pl.constanse.HashMap;
 import org.paleha.calculator_pl.exception.*;
 import org.paleha.calculator_pl.logger.AbstractLogger;
-import org.paleha.calculator_pl.logger.LoggerPl;
-import org.paleha.calculator_pl.logger.LoggerSlf4j;
+import org.paleha.calculator_pl.logger.LoadLoggerByTime;
 import org.paleha.calculator_pl.memory.FileOperator;
 import org.paleha.calculator_pl.numbers.BinaryNumbers;
 import org.paleha.calculator_pl.numbers.HexNumbers;
@@ -15,12 +14,9 @@ import org.paleha.calculator_pl.numbers.RomeNumerals;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
 
-import static java.lang.Integer.parseInt;
 import static org.paleha.calculator_pl.constanse.ConstantLibrary.*;
 
 public class Main {
@@ -31,12 +27,12 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
 
-        boolean amTime = isAmTime();
+        boolean amTime = LoadLoggerByTime.isAmTime();
 
         try {
             State state = new State();
 
-            AbstractLogger logger = loggerLoad(amTime);
+            AbstractLogger logger = new LoadLoggerByTime();
 
             HashMap hashmapMain = new HashMap(8);
             hashmapMain.loadMainHashMap();
@@ -192,18 +188,6 @@ public class Main {
                                     logger.logOutput(output, "out");
                                     System.out.println(output);
 
-                                } else if (operand.equals(LOG_PL)) {  // Logger switch to LoggerPL
-                                    logger = changeLogger(false);
-                                    output = "LoggerPL enabled";
-                                    logger.logOutput(output, "out");
-                                    System.out.println(output);
-
-                                } else if (operand.equals(LOG_SLF4J)) {  // Logger switch to Slf4j
-                                    logger = changeLogger(true);
-                                    output = "LoggerSlf4j enabled";
-                                    logger.logOutput(output, "out");
-                                    System.out.println(output);
-
                                 } else if (operand.equals(EXIT)) { // Exit function "E"
                                     theEnd = true;
                                 }
@@ -248,6 +232,10 @@ public class Main {
                     output = String.format(state.getPhrase("result"), result);
                     logger.logOutput(output, "out"); // Result
                     System.out.println(output); // Result
+
+                    if (amTime != (LoadLoggerByTime.isAmTime())){ // Logger control
+                        logger = new LoadLoggerByTime();
+                    }
                 } catch (IOException e) {
 //                e.printStackTrace();
                     System.out.println(e.getMessage()); // In case of an error
@@ -297,39 +285,6 @@ public class Main {
         fileContent = memoryOperator.readFromMemoryFile(memoryFileName);
 
         return fileContent;
-    }
-
-    /**
-     * The function changes the logger used in the program
-     */
-    public static AbstractLogger changeLogger(boolean set) throws LoggerException {
-        if (set) {
-            return new LoggerSlf4j();
-        } else {
-            return new LoggerPl();
-        }
-    }
-
-    /**
-     * The function loads the logger depending on the time of day
-     */
-    public static AbstractLogger loggerLoad(boolean amTime) throws LoggerException {
-        if (amTime) {
-            return new LoggerPl();
-        } else {
-            return new LoggerSlf4j();
-        }
-    }
-
-    /** function determines whether the time is before or after noon */
-    public static boolean isAmTime(){
-        String time;
-        boolean amTime;
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH"); // "yy-MM-dd_HH-mm-ss"
-        time = now.format(formatter);
-        amTime = parseInt(time) < 12;
-        return amTime;
     }
 
 }
