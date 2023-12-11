@@ -24,8 +24,7 @@ public class LoggerSlf4j extends AbstractLogger {
     public LoggerSlf4j() throws LoggerException {
         ensureLogFolderExists();
         configureLogger();
-        logOutput("Slf4j logger" +
-                " is used.", "New document: ");
+//        logOutput("Slf4j logger is used.", "New document: ");
     }
 
 
@@ -33,7 +32,7 @@ public class LoggerSlf4j extends AbstractLogger {
     public void logOutput(String result, String prefix) throws LoggerException {
         ensureLogFolderExists();
         deleteFileIfNeed();
-        String logMessage = prefix + " " + result;
+        String logMessage = "[Slf4j] " +prefix + " " + result;
         logger.info(logMessage);
     }
 
@@ -46,7 +45,7 @@ public class LoggerSlf4j extends AbstractLogger {
     }
 
     private void configureLogger() throws LoggerException {
-        String timestamp = new SimpleDateFormat("yy-MM-dd_HH-mm-ss").format(new Date());
+        String timestamp = new SimpleDateFormat("MM-dd_HH-mm").format(new Date());
         String logFileName = "LoggerFiles/log_" + timestamp + ".txt";
 
         // Disable the output of messages to the console for the root logger

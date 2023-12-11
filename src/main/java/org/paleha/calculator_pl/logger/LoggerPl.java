@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -23,7 +24,7 @@ public final class LoggerPl extends AbstractLogger {
         String fileTxtName = "log_" + generateFileName() + ".txt"; // generate a filename
         createNewDir(this.loggerPath); // Create a logger folder if there is no folder
         this.outputFile = new File(this.loggerPath, fileTxtName); // File object combining the file path and file name
-        writeFileToDir(this.outputFile, "New document: PL logger is used.\n"); // Write file to dir
+        writeFileToDir(this.outputFile, "New document:\n"); // Write file to dir
     }
 
     /**
@@ -76,7 +77,7 @@ public final class LoggerPl extends AbstractLogger {
      */
     private String generateFileName() {
         LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd_HH-mm-ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd_HH-mm");
         return now.format(formatter);
     }
 
@@ -84,8 +85,8 @@ public final class LoggerPl extends AbstractLogger {
      * Function to write a string to the file.
      */
     public void logOutput(String result, String prefix) throws LoggerException {
-        String dateTime = generateFileName();
-        String logOutput = dateTime + " " + prefix + ": " + result + "\n";
+        DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd_HH-mm-ss");
+        String logOutput = dateTime + " [LogPl] " + prefix + ": " + result + "\n";
         isFileExist();
         writeFileToDir(this.outputFile, logOutput); // Append the string to the document.
     }

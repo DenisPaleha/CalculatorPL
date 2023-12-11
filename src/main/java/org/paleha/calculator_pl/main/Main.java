@@ -2,8 +2,7 @@ package org.paleha.calculator_pl.main;
 
 import org.paleha.calculator_pl.constanse.HashMap;
 import org.paleha.calculator_pl.exception.*;
-import org.paleha.calculator_pl.logger.AbstractLogger;
-import org.paleha.calculator_pl.logger.LoadLoggerByTime;
+import org.paleha.calculator_pl.logger.*;
 import org.paleha.calculator_pl.memory.FileOperator;
 import org.paleha.calculator_pl.numbers.BinaryNumbers;
 import org.paleha.calculator_pl.numbers.HexNumbers;
@@ -27,12 +26,12 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
 
-        boolean amTime = LoadLoggerByTime.isAmTime();
+//        boolean amTime = LoadLoggerByTime.isAmTime();
 
         try {
             State state = new State();
 
-            AbstractLogger logger = new LoadLoggerByTime();
+            AbstractLogger logger = new LoadLogger(new LoggerPl(),new LoggerSlf4j());
 
             HashMap hashmapMain = new HashMap(8);
             hashmapMain.loadMainHashMap();
@@ -233,9 +232,6 @@ public class Main {
                     logger.logOutput(output, "out"); // Result
                     System.out.println(output); // Result
 
-                    if (amTime != (LoadLoggerByTime.isAmTime())){ // Logger control
-                        logger = new LoadLoggerByTime();
-                    }
                 } catch (IOException e) {
 //                e.printStackTrace();
                     System.out.println(e.getMessage()); // In case of an error
